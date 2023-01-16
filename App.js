@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
-import GameSetup from "./GameSetup";
+import GameSetup from "./pages/GameSetup";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" backgroundColor="#cc7400" />
-      <GameSetup style={{ marginTop: 50 }} />
+      <GameSetup />
     </View>
   );
 }

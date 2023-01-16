@@ -1,8 +1,14 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function CustomButton({ children, onPress, height, fontSize }) {
+export default function CustomButton({
+  children,
+  onPress,
+  height,
+  fontSize,
+  style,
+}) {
   return (
-    <View style={styles.buttonOuterContainer}>
+    <View style={[styles.buttonOuterContainer, style]}>
       <Pressable
         style={({ pressed }) =>
           pressed
@@ -24,7 +30,7 @@ export default function CustomButton({ children, onPress, height, fontSize }) {
 const styles = StyleSheet.create({
   buttonOuterContainer: {
     borderRadius: 10,
-    margin: 4,
+    // margin: 4,
     overflow: "hidden",
   },
   buttonInnerContainer: {
@@ -35,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonText: {
-    color: "white",
+    color: "#fff5e8",
     textAlign: "center",
   },
   pressed: {

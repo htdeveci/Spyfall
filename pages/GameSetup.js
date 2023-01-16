@@ -2,10 +2,10 @@ import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { v1 as uuidv1 } from "uuid";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-import CustomButton from "./CustomButton";
-import PlayerItem from "./PlayerItem";
 import Slider from "@react-native-community/slider";
+
+import CustomButton from "../components/UI/CustomButton";
+import PlayerItem from "../components/PlayerItem";
 
 export default function GameSetup(props) {
   const [players, setPlayers] = useState([]);
@@ -32,20 +32,28 @@ export default function GameSetup(props) {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.playersLabel}>{players.length} OYUNCU</Text>
       {players.map((player) => {
         return (
           <PlayerItem
             key={player.id}
             player={player}
             removePlayer={removePlayerHandler}
+            style={styles.verticalGap}
           />
         );
       })}
-      <CustomButton onPress={addPlayerHandler} height={60} fontSize={24}>
+
+      <CustomButton
+        style={styles.verticalGap}
+        onPress={addPlayerHandler}
+        height={50}
+        fontSize={24}
+      >
         Oyuncu Ekle
       </CustomButton>
 
-      <View style={styles.spyCountContainer}>
+      <View style={[styles.spyCountContainer, styles.verticalGap]}>
         <Text style={styles.text}>Casus Sayısı: {numberOfSpy}</Text>
         <Slider
           maximumValue={3}
@@ -55,9 +63,9 @@ export default function GameSetup(props) {
           thumbTintColor="#ff9100"
           minimumTrackTintColor="#cc7400"
           maximumTrackTintColor="white"
-          style={{ flex: 1 }}
+          style={{ flex: 1, marginTop: 3 }}
         />
-        <MaterialCommunityIcons name="pirate" size={42} color="#9100ff" />
+        <MaterialCommunityIcons name="pirate" size={42} color="#006eff" />
       </View>
     </View>
   );
@@ -65,16 +73,21 @@ export default function GameSetup(props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 100,
+    marginTop: 70,
     paddingHorizontal: 25,
   },
+  playersLabel: {
+    color: "#fff5e8",
+    fontSize: 30,
+    textAlign: "center",
+  },
   text: {
-    color: "white",
+    color: "#fff5e8",
     fontSize: 20,
   },
   spyCountContainer: {
     flexDirection: "row",
     alignItems: "center",
-    margin: 4,
   },
+  verticalGap: { marginVertical: 4 },
 });
