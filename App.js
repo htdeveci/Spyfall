@@ -1,11 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { Button, StyleSheet, Text, View } from "react-native";
+
+import GameSetup from "./GameSetup";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Spyfall</Text>
-      <StatusBar style="auto" />
+      <StatusBar style="light" backgroundColor="#cc7400" />
+      <GameSetup style={{ marginTop: 50 }} />
     </View>
   );
 }
@@ -13,8 +15,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#3f3f3f",
+    alignItems: "stretch",
+    justifyContent: "flex-start",
   },
 });
