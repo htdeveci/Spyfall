@@ -11,7 +11,7 @@
   "dependencies": {
     "@fontsource/roboto": "^4.5.8",
     "@react-native-community/slider": "4.2.4",
-    "expo": "^47.0.0",
+    "expo": "^47.0.13",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
     "react-native": "0.70.5",
@@ -20,5 +20,16 @@
   "devDependencies": {
     "@babel/core": "^7.19.3"
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htdeveci/Spyfall.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/htdeveci/Spyfall/issues"
+  },
+  "homepage": "https://github.com/htdeveci/Spyfall#readme",
+  "description": ""
 }
