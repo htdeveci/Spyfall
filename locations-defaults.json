@@ -1,0 +1,7 @@
+[
+  {
+    "locationName": "Restorant",
+    "roles": ["Aşçı", "Garson"]
+  },
+  { "locationName": "Otel", "roles": ["Pansiyon"] }
+]

@@ -6,10 +6,12 @@ import Slider from "@react-native-community/slider";
 
 import CustomButton from "../components/UI/CustomButton";
 import PlayerItem from "../components/PlayerItem";
+import COLORS from "../constants/colors";
 
 export default function GameSetup(props) {
   const [players, setPlayers] = useState([]);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
+  const maxSpyNumber = 3;
 
   const addPlayerHandler = () => {
     setPlayers((players) => [
@@ -31,59 +33,78 @@ export default function GameSetup(props) {
   };
 
   return (
-    <View style={styles.container}>
+    <>
       <Text style={styles.playersLabel}>{players.length} OYUNCU</Text>
       {players.map((player) => {
         return (
-          <PlayerItem
-            key={player.id}
-            player={player}
-            removePlayer={removePlayerHandler}
-            style={styles.verticalGap}
-          />
+          <View style={styles.lineHeight} key={player.id}>
+            <PlayerItem
+              player={player}
+              removePlayer={removePlayerHandler}
+              style={styles.verticalGap}
+            />
+          </View>
         );
       })}
 
-      <CustomButton
-        style={styles.verticalGap}
-        onPress={addPlayerHandler}
-        height={50}
-        fontSize={24}
-      >
-        Oyuncu Ekle
-      </CustomButton>
+      <View style={styles.lineHeight}>
+        <CustomButton
+          style={styles.verticalGap}
+          onPress={addPlayerHandler}
+          fontSize={20}
+        >
+          Oyuncu Ekle
+        </CustomButton>
+      </View>
 
       <View style={[styles.spyCountContainer, styles.verticalGap]}>
         <Text style={styles.text}>Casus Sayısı: {numberOfSpy}</Text>
         <Slider
-          maximumValue={3}
+          maximumValue={maxSpyNumber}
           step={1}
           value={numberOfSpy}
           onValueChange={numberOfSpyChangeHandler}
-          thumbTintColor="#ff9100"
-          minimumTrackTintColor="#cc7400"
-          maximumTrackTintColor="white"
+          thumbTintColor={COLORS.primary}
+          minimumTrackTintColor={COLORS.primaryDark}
+          maximumTrackTintColor={COLORS.text}
           style={{ flex: 1, marginTop: 3 }}
         />
-        <MaterialCommunityIcons name="pirate" size={42} color="#006eff" />
+        <View
+          style={{
+            borderColor: COLORS.secondary,
+            borderStyle: "dashed",
+            borderWidth: 2,
+            padding: 5,
+            paddingRight: 4,
+            borderRadius: 10,
+          }}
+        >
+          <MaterialCommunityIcons
+            name="pirate"
+            size={40}
+            color={COLORS.secondary}
+            style={{
+              opacity: numberOfSpy / maxSpyNumber,
+            }}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 70,
-    paddingHorizontal: 25,
-  },
   playersLabel: {
-    color: "#fff5e8",
+    color: COLORS.text,
     fontSize: 30,
     textAlign: "center",
   },
   text: {
-    color: "#fff5e8",
+    color: COLORS.text,
     fontSize: 20,
+  },
+  lineHeight: {
+    height: 55,
   },
   spyCountContainer: {
     flexDirection: "row",

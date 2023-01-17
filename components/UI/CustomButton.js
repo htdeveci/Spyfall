@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import COLORS from "../../constants/colors";
 
 export default function CustomButton({
   children,
@@ -6,18 +7,31 @@ export default function CustomButton({
   height,
   fontSize,
   style,
+  cancel = false,
 }) {
+  let buttonColor = COLORS.primary;
+  let rippleColor = COLORS.primaryDark;
+
+  if (cancel) {
+    buttonColor = COLORS.error;
+    rippleColor = COLORS.errorDark;
+  }
+
   return (
     <View style={[styles.buttonOuterContainer, style]}>
       <Pressable
         style={({ pressed }) =>
           pressed
-            ? [styles.buttonInnerContainer, styles.pressed]
-            : styles.buttonInnerContainer
+            ? [
+                styles.buttonInnerContainer,
+                styles.pressed,
+                { backgroundColor: buttonColor },
+              ]
+            : [styles.buttonInnerContainer, { backgroundColor: buttonColor }]
         }
-        height={height}
+        // height={height}
         onPress={onPress}
-        android_ripple={{ color: "#cc7400" }}
+        android_ripple={{ color: rippleColor }}
       >
         <Text style={[styles.buttonText, { fontSize }]}>
           {children.toUpperCase()}
@@ -30,18 +44,18 @@ export default function CustomButton({
 const styles = StyleSheet.create({
   buttonOuterContainer: {
     borderRadius: 10,
-    // margin: 4,
     overflow: "hidden",
+    flex: 1,
   },
   buttonInnerContainer: {
-    backgroundColor: "#ff9100",
+    flex: 1,
     paddingVertical: 8,
     paddingHorizontal: 16,
     elevation: 2,
     justifyContent: "center",
   },
   buttonText: {
-    color: "#fff5e8",
+    color: COLORS.text,
     textAlign: "center",
   },
   pressed: {

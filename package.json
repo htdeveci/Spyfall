@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/roboto": "^4.5.8",
+    "@react-native-community/checkbox": "^0.5.14",
     "@react-native-community/slider": "4.2.4",
     "expo": "^47.0.13",
     "expo-status-bar": "~1.4.2",
