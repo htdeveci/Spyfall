@@ -1,23 +1,66 @@
-import { Pressable, StyleSheet, Switch, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import COLORS from "../constants/colors";
+import { useState } from "react";
+import { Checkbox } from "react-native-paper";
 
-export default function Location({ location }) {
+import COLORS from "../constants/colors";
+import Role from "./Role";
+
+export default function Location({ location, height }) {
+  const [enableLocation, setEnableLocation] = useState(location.enabled);
+  const [expandRoles, setExpandRoles] = useState(false);
+
   const toggleLocationHandler = () => {
-    // setLocation((location) => !location);
+    setEnableLocation((state) => !state);
+  };
+
+  const toggleRolesHandler = () => {
+    setExpandRoles((state) => !state);
+  };
+
+  const getRoles = () => {
+    let result = [];
+    for (let i = 0; i < 12; i++) {
+      result.push(
+        <Role
+          key={i}
+          index={i + 1}
+          onRoleChange={(newRole) => (location.roles[i] = newRole)}
+        >
+          {location.roles[i] ? location.roles[i] : ""}
+        </Role>
+      );
+    }
+    return result;
   };
 
   return (
-    <View style={styles.container}>
-      <Switch value={location} onValueChange={toggleLocationHandler} />
+    <View style={{ marginBottom: 10 }}>
+      <View style={[styles.container, { height: height }]}>
+        <Checkbox
+          status={enableLocation ? "checked" : "unchecked"}
+          onPress={toggleLocationHandler}
+          color={COLORS.primary}
+        />
 
-      <Pressable onPress={toggleLocationHandler} style={styles.locationSwitch}>
-        <Text style={styles.locationSwitchText}>{location.locationName}</Text>
-      </Pressable>
+        <Pressable
+          style={styles.locationSwitch}
+          onPress={toggleLocationHandler}
+        >
+          <Text style={styles.locationSwitchText}>{location.locationName}</Text>
+        </Pressable>
 
-      <Pressable style={styles.openDetailButton}>
-        <Ionicons name="caret-down" size={24} color={COLORS.text} />
-      </Pressable>
+        <Pressable style={styles.openDetailButton} onPress={toggleRolesHandler}>
+          {!expandRoles && (
+            <Ionicons name="caret-down" size={24} color={COLORS.text} />
+          )}
+          {expandRoles && (
+            <Ionicons name="caret-up" size={24} color={COLORS.text} />
+          )}
+        </Pressable>
+      </View>
+
+      {expandRoles && <View style={styles.rolesContainer}>{getRoles()}</View>}
     </View>
   );
 }
@@ -26,11 +69,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
+    paddingHorizontal: 10,
     borderColor: COLORS.border,
     borderStyle: "solid",
     borderWidth: 1,
-    paddingHorizontal: 10,
     borderRadius: 10,
   },
   locationSwitch: {
@@ -47,5 +89,10 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     justifyContent: "center",
     paddingHorizontal: 10,
+  },
+  rolesContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    padding: 5,
   },
 });

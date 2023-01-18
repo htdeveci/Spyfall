@@ -1,7 +1,8 @@
 [
   {
     "locationName": "Restorant",
+    "enabled": true,
     "roles": ["Aşçı", "Garson"]
   },
-  { "locationName": "Otel", "roles": ["Pansiyon"] }
+  { "locationName": "Otel", "enabled": false, "roles": ["Pansiyon"] }
 ]

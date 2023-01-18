@@ -6,6 +6,8 @@ import Location from "../components/Location";
 import CustomButton from "../components/UI/CustomButton";
 import locationsDefaults from "../locations-defaults.json";
 
+const lineHeight = 50;
+
 export default function Locations() {
   const [locations, setLocations] = useState([]);
 
@@ -16,7 +18,9 @@ export default function Locations() {
   return (
     <View style={styles.container}>
       {locations.map((location) => {
-        return <Location key={uuidv1()} location={location} />;
+        return (
+          <Location key={uuidv1()} location={location} height={lineHeight} />
+        );
       })}
 
       <View style={styles.buttonContainer}>
@@ -35,6 +39,6 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    height: 50,
+    height: lineHeight,
   },
 });
