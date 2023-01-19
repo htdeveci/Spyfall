@@ -1,10 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import COLORS from "../../constants/colors";
+import { COLORS } from "../../constants/globalConstants";
 
 export default function CustomButton({
   children,
   onPress,
-  height,
+  // height,
   fontSize,
   style,
   cancel = false,

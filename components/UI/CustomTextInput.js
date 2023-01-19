@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, TextInput } from "react-native";
 
-import COLORS from "../../constants/colors";
+import { COLORS } from "../../constants/globalConstants";
 
 export default function CustomTextInput({
   style,

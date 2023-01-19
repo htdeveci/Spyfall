@@ -1,26 +1,43 @@
+import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import COLORS from "../constants/colors";
+import { Checkbox } from "react-native-paper";
+import { COLORS } from "../constants/globalConstants";
 import CustomTextInput from "./UI/CustomTextInput";
 
-export default function Role({ children, index, onRoleChange }) {
+export default function Role({
+  children,
+  index,
+  onRoleChange,
+  style,
+  showCheckbox,
+  textAlign = "left",
+}) {
+  const [enableRole, setEnableRole] = useState(true);
+
+  const toggleRoleEnableHandler = () => {
+    setEnableRole((state) => !state);
+  };
+
   const roleChangeHandler = (changedRole) => {
     onRoleChange(changedRole);
   };
 
   return (
-    <View style={styles.container}>
-      <Text
-        style={{
-          color: COLORS.textReverse,
-          textAlign: "right",
-          width: 50,
-          marginRight: 4,
-        }}
-      >
-        {`${index}. Rol:`}
-      </Text>
-      <CustomTextInput value={children} onChangeText={roleChangeHandler} />
-      {/* <Text style={{ color: COLORS.textReverse }}>{children}</Text> */}
+    <View style={[styles.container, style]}>
+      {showCheckbox && (
+        <Checkbox
+          status={enableRole ? "checked" : "unchecked"}
+          onPress={toggleRoleEnableHandler}
+          color={COLORS.secondary}
+        />
+      )}
+
+      <CustomTextInput
+        value={children}
+        placeholder={`${index}. Rol`}
+        onChangeText={roleChangeHandler}
+        style={{ textAlign: textAlign }}
+      />
     </View>
   );
 }

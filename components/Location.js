@@ -1,21 +1,32 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Checkbox } from "react-native-paper";
 
-import COLORS from "../constants/colors";
+import { COLORS } from "../constants/globalConstants";
 import Role from "./Role";
+import CustomTextInput from "./UI/CustomTextInput";
 
-export default function Location({ location, height }) {
+export default function Location({ location, onLocationChange, height }) {
   const [enableLocation, setEnableLocation] = useState(location.enabled);
   const [expandRoles, setExpandRoles] = useState(false);
+  // const [location, setLocation] = useState(null);
+
+  // useEffect(() => {
+  //   setLocation(location);
+  // }, []);
 
   const toggleLocationHandler = () => {
-    setEnableLocation((state) => !state);
+    setEnableLocation((prevState) => !prevState);
+    onLocationChange({ ...location, enabled: !location.enabled });
   };
 
   const toggleRolesHandler = () => {
     setExpandRoles((state) => !state);
+  };
+
+  const locationNameChangeHandler = (value) => {
+    onLocationChange({ ...location, locationName: value });
   };
 
   const getRoles = () => {
@@ -26,6 +37,7 @@ export default function Location({ location, height }) {
           key={i}
           index={i + 1}
           onRoleChange={(newRole) => (location.roles[i] = newRole)}
+          showCheckbox
         >
           {location.roles[i] ? location.roles[i] : ""}
         </Role>
@@ -35,33 +47,56 @@ export default function Location({ location, height }) {
   };
 
   return (
-    <View style={{ marginBottom: 10 }}>
-      <View style={[styles.container, { height: height }]}>
-        <Checkbox
-          status={enableLocation ? "checked" : "unchecked"}
-          onPress={toggleLocationHandler}
-          color={COLORS.primary}
-        />
+    <>
+      {location && (
+        <View style={{ marginBottom: 10 }}>
+          <View style={[styles.container, { height: height }]}>
+            <Checkbox
+              status={enableLocation ? "checked" : "unchecked"}
+              onPress={toggleLocationHandler}
+              color={COLORS.primary}
+            />
 
-        <Pressable
-          style={styles.locationSwitch}
-          onPress={toggleLocationHandler}
-        >
-          <Text style={styles.locationSwitchText}>{location.locationName}</Text>
-        </Pressable>
+            <Pressable
+              style={styles.locationSwitch}
+              onPress={toggleLocationHandler}
+            >
+              <Text style={styles.locationSwitchText}>
+                {location.locationName}
+              </Text>
+            </Pressable>
 
-        <Pressable style={styles.openDetailButton} onPress={toggleRolesHandler}>
-          {!expandRoles && (
-            <Ionicons name="caret-down" size={24} color={COLORS.text} />
-          )}
+            <Pressable
+              style={styles.openDetailButton}
+              onPress={toggleRolesHandler}
+            >
+              {!expandRoles && (
+                <Ionicons name="caret-down" size={24} color={COLORS.text} />
+              )}
+              {expandRoles && (
+                <Ionicons name="caret-up" size={24} color={COLORS.text} />
+              )}
+            </Pressable>
+          </View>
+
           {expandRoles && (
-            <Ionicons name="caret-up" size={24} color={COLORS.text} />
+            <View style={styles.rolesContainer}>
+              <Role
+                style={{
+                  width: "70%",
+                  backgroundColor: COLORS.lightGray,
+                }}
+                textAlign="center"
+                onRoleChange={locationNameChangeHandler}
+              >
+                {location.locationName}
+              </Role>
+              {getRoles()}
+            </View>
           )}
-        </Pressable>
-      </View>
-
-      {expandRoles && <View style={styles.rolesContainer}>{getRoles()}</View>}
-    </View>
+        </View>
+      )}
+    </>
   );
 }
 
@@ -94,5 +129,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     padding: 5,
+    justifyContent: "center",
   },
 });

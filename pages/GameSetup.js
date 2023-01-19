@@ -6,9 +6,12 @@ import Slider from "@react-native-community/slider";
 
 import CustomButton from "../components/UI/CustomButton";
 import PlayerItem from "../components/PlayerItem";
-import COLORS from "../constants/colors";
+import {
+  COLORS,
+  NAVIGATION_NAME_LOCATIONS,
+} from "../constants/globalConstants";
 
-export default function GameSetup(props) {
+export default function GameSetup({ navigation }) {
   const [players, setPlayers] = useState([]);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
   const maxSpyNumber = 3;
@@ -32,6 +35,10 @@ export default function GameSetup(props) {
     setNumberOfSpy(value);
   };
 
+  const locationsButtonHandler = () => {
+    navigation.navigate(NAVIGATION_NAME_LOCATIONS);
+  };
+
   return (
     <>
       <Text style={styles.playersLabel}>{players.length} OYUNCU</Text>
@@ -46,7 +53,6 @@ export default function GameSetup(props) {
           </View>
         );
       })}
-
       <View style={styles.lineHeight}>
         <CustomButton
           style={styles.verticalGap}
@@ -56,7 +62,6 @@ export default function GameSetup(props) {
           Oyuncu Ekle
         </CustomButton>
       </View>
-
       <View style={[styles.spyCountContainer, styles.verticalGap]}>
         <Text style={styles.text}>Casus Sayısı: {numberOfSpy}</Text>
         <Slider
@@ -89,6 +94,9 @@ export default function GameSetup(props) {
           />
         </View>
       </View>
+      <View style={styles.lineHeight}>
+        <CustomButton onPress={locationsButtonHandler}>mekanlar</CustomButton>
+      </View>
     </>
   );
 }
@@ -98,6 +106,7 @@ const styles = StyleSheet.create({
     color: COLORS.text,
     fontSize: 30,
     textAlign: "center",
+    marginBottom: 6,
   },
   text: {
     color: COLORS.text,
