@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Switch, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import { Checkbox } from "react-native-paper";
@@ -6,27 +6,56 @@ import { Checkbox } from "react-native-paper";
 import { COLORS } from "../constants/globalConstants";
 import Role from "./Role";
 import CustomTextInput from "./UI/CustomTextInput";
+import CustomButton from "./UI/CustomButton";
+import Card from "./UI/Card";
 
 export default function Location({ location, onLocationChange, height }) {
-  const [enableLocation, setEnableLocation] = useState(location.enabled);
+  const [loc, setLocation] = useState(location);
   const [expandRoles, setExpandRoles] = useState(false);
-  // const [location, setLocation] = useState(null);
+  const [enableAllRoles, setEnableAllRoles] = useState("indeterminate");
 
-  // useEffect(() => {
-  //   setLocation(location);
-  // }, []);
-
-  const toggleLocationHandler = () => {
-    setEnableLocation((prevState) => !prevState);
-    onLocationChange({ ...location, enabled: !location.enabled });
+  const toggleLocationEnableHandler = () => {
+    setStates({ ...location, enabled: !location.enabled });
   };
 
-  const toggleRolesHandler = () => {
+  const toggleExpandRolesHandler = () => {
     setExpandRoles((state) => !state);
   };
 
   const locationNameChangeHandler = (value) => {
-    onLocationChange({ ...location, locationName: value });
+    setStates({ ...location, locationName: value });
+  };
+
+  const roleNameChangeHandler = (newRoleName, index) => {
+    let roles = location.roles;
+    roles[index - 1].roleName = newRoleName;
+    setStates({ ...location, roles: roles });
+  };
+
+  const toggleRoleEnabledHandler = (value, index) => {
+    let roles = location.roles;
+    roles[index - 1].enabled = value;
+    setStates({ ...location, roles: roles });
+    if (!value) {
+      setEnableAllRoles("indeterminate");
+    }
+  };
+
+  const setStates = (currentState) => {
+    setLocation(currentState);
+    onLocationChange(currentState);
+  };
+
+  const toggleAllRolesHandler = () => {
+    let enabled = "checked";
+    if (enableAllRoles === "checked") enabled = "unchecked";
+    setEnableAllRoles(enabled);
+    setStates({
+      ...location,
+      roles: location.roles.map((role) => {
+        return { ...role, enabled: enabled === "checked" ? true : false };
+      }),
+    });
   };
 
   const getRoles = () => {
@@ -36,10 +65,12 @@ export default function Location({ location, onLocationChange, height }) {
         <Role
           key={i}
           index={i + 1}
-          onRoleChange={(newRole) => (location.roles[i] = newRole)}
+          onRoleNameChange={roleNameChangeHandler}
           showCheckbox
+          enableRole={location.roles[i].enabled}
+          onRoleEnabledChange={toggleRoleEnabledHandler}
         >
-          {location.roles[i] ? location.roles[i] : ""}
+          {location.roles[i].roleName}
         </Role>
       );
     }
@@ -52,14 +83,14 @@ export default function Location({ location, onLocationChange, height }) {
         <View style={{ marginBottom: 10 }}>
           <View style={[styles.container, { height: height }]}>
             <Checkbox
-              status={enableLocation ? "checked" : "unchecked"}
-              onPress={toggleLocationHandler}
+              status={location.enabled ? "checked" : "unchecked"}
+              onPress={toggleLocationEnableHandler}
               color={COLORS.primary}
             />
 
             <Pressable
               style={styles.locationSwitch}
-              onPress={toggleLocationHandler}
+              onPress={toggleLocationEnableHandler}
             >
               <Text style={styles.locationSwitchText}>
                 {location.locationName}
@@ -68,7 +99,7 @@ export default function Location({ location, onLocationChange, height }) {
 
             <Pressable
               style={styles.openDetailButton}
-              onPress={toggleRolesHandler}
+              onPress={toggleExpandRolesHandler}
             >
               {!expandRoles && (
                 <Ionicons name="caret-down" size={24} color={COLORS.text} />
@@ -82,15 +113,28 @@ export default function Location({ location, onLocationChange, height }) {
           {expandRoles && (
             <View style={styles.rolesContainer}>
               <Role
-                style={{
-                  width: "70%",
-                  backgroundColor: COLORS.lightGray,
-                }}
+                style={{ backgroundColor: COLORS.lightGray }}
                 textAlign="center"
-                onRoleChange={locationNameChangeHandler}
+                onRoleNameChange={locationNameChangeHandler}
               >
                 {location.locationName}
               </Role>
+
+              <Card style={{ flexDirection: "row", width: "50%" }}>
+                <Text
+                  style={{
+                    color: COLORS.textReverse,
+                  }}
+                >
+                  Bütün Roller
+                </Text>
+                <Checkbox
+                  status={enableAllRoles}
+                  onPress={toggleAllRolesHandler}
+                  color={COLORS.secondary}
+                />
+              </Card>
+
               {getRoles()}
             </View>
           )}

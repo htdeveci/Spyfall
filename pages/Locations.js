@@ -24,6 +24,45 @@ export default function Locations({ navigation }) {
     console.log(locations);
   };
 
+  const toggleAllRolesHandler = (enabled) => {
+    /* let updatedLocation = Object.assign([], locations);
+    updatedLocation = updatedLocation.map((location) => {
+      return {
+        ...location,
+        roles: location.roles.map((role) => {
+          return { ...role, enabled: enabled };
+        }),
+      };
+    });
+
+    console.log(locations[0].roles);
+    console.log(updatedLocation[0].roles);
+    setLocations([...locations, updatedLocation]); */
+
+    const state = [
+      ...locations.map((location) => {
+        return {
+          ...location,
+          roles: [
+            ...location.roles.map((role) => {
+              return { ...role, enabled: enabled };
+            }),
+          ],
+        };
+      }),
+    ];
+    setLocations(state);
+  };
+
+  const locationChangeHandler = (event, index, updatedLocation) => {
+    setLocations(
+      locations.map((location) => {
+        if (locations.indexOf(location) === index) return updatedLocation;
+        return location;
+      })
+    );
+  };
+
   return (
     <>
       <Text style={styles.locationsLabel}>MEKANLAR</Text>
@@ -33,10 +72,11 @@ export default function Locations({ navigation }) {
             <Location
               key={uuidv1()}
               location={location}
-              onLocationChange={(updatedLocation) => {
-                console.log(updatedLocation);
-                // setLocations({ ...locations, location: updatedLocation });
-              }}
+              onLocationChange={locationChangeHandler.bind(
+                null,
+                null,
+                locations.indexOf(location)
+              )}
               height={lineHeight}
             />
           );

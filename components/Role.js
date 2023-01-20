@@ -7,19 +7,19 @@ import CustomTextInput from "./UI/CustomTextInput";
 export default function Role({
   children,
   index,
-  onRoleChange,
+  onRoleNameChange,
   style,
   showCheckbox,
+  enableRole,
+  onRoleEnabledChange,
   textAlign = "left",
 }) {
-  const [enableRole, setEnableRole] = useState(true);
-
   const toggleRoleEnableHandler = () => {
-    setEnableRole((state) => !state);
+    onRoleEnabledChange(!enableRole, index);
   };
 
-  const roleChangeHandler = (changedRole) => {
-    onRoleChange(changedRole);
+  const roleNameChangeHandler = (newRoleName) => {
+    onRoleNameChange(newRoleName, index);
   };
 
   return (
@@ -35,7 +35,7 @@ export default function Role({
       <CustomTextInput
         value={children}
         placeholder={`${index}. Rol`}
-        onChangeText={roleChangeHandler}
+        onChangeText={roleNameChangeHandler}
         style={{ textAlign: textAlign }}
       />
     </View>
@@ -52,6 +52,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingRight: 5,
     paddingVertical: 6,
-    // marginHorizontal: 10,
   },
 });

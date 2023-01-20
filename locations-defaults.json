@@ -2,7 +2,37 @@
   {
     "locationName": "Restorant",
     "enabled": true,
-    "roles": ["Aşçı", "Garson"]
+    "roles": [
+      { "enabled": false, "roleName": "Aşçı" },
+      { "enabled": true, "roleName": "Garson" },
+      { "enabled": true, "roleName": "Müşteri" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" }
+    ]
   },
-  { "locationName": "Otel", "enabled": false, "roles": ["Pansiyon"] }
+  {
+    "locationName": "Otel",
+    "enabled": false,
+    "roles": [
+      { "enabled": true, "roleName": "Pansiyon" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" },
+      { "enabled": true, "roleName": "" }
+    ]
+  }
 ]
