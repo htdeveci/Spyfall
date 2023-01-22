@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,28 +6,44 @@ import { v1 as uuidv1 } from "uuid";
 
 import Location from "../components/Location";
 import CustomButton from "../components/UI/CustomButton";
-import { COLORS } from "../constants/globalConstants";
-import useLocation from "../hooks/location-hook";
+import {
+  COLORS,
+  NAVIGATION_NAME_GAME_SETUP,
+} from "../constants/globalConstants";
 import locationsDefaults from "../locations-defaults.json";
-import { cancelChanges, saveLocationsToFile } from "../store/locationsSlice";
+import {
+  cancelChanges,
+  getLocations,
+  initLocations,
+  saveLocationsToStorage,
+} from "../store/locationsSlice";
 
 const lineHeight = 50;
 
-export default function Locations({ navigation }) {
+export default function Locations({ navigation, locationsProp }) {
   // const { locations } = useLocation();
   // const storedLocations = useSelector((state) => state.locations);
-  const [locations, setLocations] = useState(locationsDefaults);
+  const [locations, setLocations] = useState(locationsProp);
   const dispatch = useDispatch();
 
+  /*   useEffect(() => {
+    const fetchLocationData = async () => {
+      const storedLocations = await getLocations();
+      // console.log(storedLocations);
+      // dispatch(initLocations({ storedLocations: storedLocations }));
+      setLocations(storedLocations);
+    };
+    fetchLocationData();
+  }, []); */
+
   const cancelHandler = () => {
-    // console.log(locations);
     dispatch(cancelChanges());
-    // setLocations(locationsDefaults);
     navigation.goBack();
   };
 
   const saveLocationsHandler = () => {
-    dispatch(saveLocationsToFile());
+    dispatch(saveLocationsToStorage());
+    navigation.navigate(NAVIGATION_NAME_GAME_SETUP);
   };
 
   const getLocationComponents = () => {
@@ -43,23 +60,26 @@ export default function Locations({ navigation }) {
     <>
       <Text style={styles.locationsLabel}>MEKANLAR</Text>
       <View style={styles.container}>
-        {getLocationComponents()}
-
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            onPress={cancelHandler}
-            cancel
-            style={{ marginRight: 5 }}
-          >
-            İptal
-          </CustomButton>
-          <CustomButton
-            style={{ marginLeft: 5 }}
-            onPress={saveLocationsHandler}
-          >
-            Kaydet
-          </CustomButton>
-        </View>
+        {locations && (
+          <>
+            {getLocationComponents()}
+            <View style={styles.buttonContainer}>
+              <CustomButton
+                onPress={cancelHandler}
+                cancel
+                style={{ marginRight: 5 }}
+              >
+                İptal
+              </CustomButton>
+              <CustomButton
+                style={{ marginLeft: 5 }}
+                onPress={saveLocationsHandler}
+              >
+                Kaydet
+              </CustomButton>
+            </View>
+          </>
+        )}
       </View>
     </>
   );

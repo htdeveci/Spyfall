@@ -3,7 +3,6 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import { COLORS } from "../constants/globalConstants";
-import useLocation from "../hooks/location-hook";
 import { changeRoleName, toggleRoleStatus } from "../store/locationsSlice";
 import CustomTextInput from "./UI/CustomTextInput";
 

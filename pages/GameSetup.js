@@ -36,7 +36,7 @@ export default function GameSetup({ navigation }) {
   };
 
   const locationsButtonHandler = () => {
-    navigation.navigate(NAVIGATION_NAME_LOCATIONS);
+    navigation.navigate("Deneme");
   };
 
   return (

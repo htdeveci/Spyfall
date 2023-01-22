@@ -11,8 +11,10 @@ import {
 } from "./constants/globalConstants";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Provider, useSelector } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./store/store";
+import { initLocations } from "./store/locationsSlice";
+import Deneme from "./deneme";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -34,10 +36,7 @@ export default function App() {
             name={NAVIGATION_NAME_GAME_SETUP}
             component={GameSetup}
           />
-          <Stack.Screen
-            name={NAVIGATION_NAME_LOCATIONS}
-            component={Locations}
-          />
+          <Stack.Screen name="Deneme" component={Deneme} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

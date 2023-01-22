@@ -14,7 +14,6 @@ import {
   toggleAllRolesStatusForOneLocation,
   toggleLocationStatus,
 } from "../store/locationsSlice";
-import useLocation from "../hooks/location-hook";
 
 export default function Location({ locationIndex, height }) {
   const location = useSelector((state) => state.locations[locationIndex]);

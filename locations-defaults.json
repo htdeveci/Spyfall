@@ -2,7 +2,7 @@
   {
     "locationName": "Restorant",
     "id": 1,
-    "enabled": true,
+    "enabled": false,
     "roles": [
       { "enabled": false, "roleName": "Aşçı", "id": 11 },
       { "enabled": true, "roleName": "Garson", "id": 12 },
