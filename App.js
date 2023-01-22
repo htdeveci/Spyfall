@@ -11,12 +11,14 @@ import {
 } from "./constants/globalConstants";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Provider, useSelector } from "react-redux";
+import store from "./store/store";
 
 export default function App() {
   const Stack = createStackNavigator();
 
   return (
-    <>
+    <Provider store={store}>
       <StatusBar style="light" backgroundColor={COLORS.primaryDark} />
       <NavigationContainer>
         <Stack.Navigator
@@ -38,7 +40,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </Provider>
   );
 }
 

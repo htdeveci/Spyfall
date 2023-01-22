@@ -1,44 +1,46 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { Checkbox } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
 import { COLORS } from "../constants/globalConstants";
+import useLocation from "../hooks/location-hook";
+import { changeRoleName, toggleRoleStatus } from "../store/locationsSlice";
 import CustomTextInput from "./UI/CustomTextInput";
 
-export default function Role({
-  children,
-  index,
-  onRoleNameChange,
-  style,
-  showCheckbox,
-  enableRole,
-  onRoleEnabledChange,
-  textAlign = "left",
-}) {
-  const toggleRoleEnableHandler = () => {
-    onRoleEnabledChange(!enableRole, index);
+export default function Role({ index, style, locationIndex, roleIndex }) {
+  const role = useSelector(
+    (state) => state.locations[locationIndex].roles[roleIndex]
+  );
+  const dispatch = useDispatch();
+
+  const toggleRoleStatusHandler = () => {
+    dispatch(toggleRoleStatus({ locationIndex, roleIndex }));
   };
 
   const roleNameChangeHandler = (newRoleName) => {
-    onRoleNameChange(newRoleName, index);
+    dispatch(
+      changeRoleName({ locationIndex, roleIndex, roleName: newRoleName })
+    );
   };
 
   return (
-    <View style={[styles.container, style]}>
-      {showCheckbox && (
-        <Checkbox
-          status={enableRole ? "checked" : "unchecked"}
-          onPress={toggleRoleEnableHandler}
-          color={COLORS.secondary}
-        />
-      )}
+    <>
+      {role && (
+        <View style={[styles.container, style]}>
+          <Checkbox
+            status={role.enabled ? "checked" : "unchecked"}
+            onPress={toggleRoleStatusHandler}
+            color={COLORS.secondary}
+          />
 
-      <CustomTextInput
-        value={children}
-        placeholder={`${index}. Rol`}
-        onChangeText={roleNameChangeHandler}
-        style={{ textAlign: textAlign }}
-      />
-    </View>
+          <CustomTextInput
+            value={role.roleName}
+            placeholder={`${index}. Rol`}
+            onChangeText={roleNameChangeHandler}
+          />
+        </View>
+      )}
+    </>
   );
 }
 

@@ -1,86 +1,49 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import { v1 as uuidv1 } from "uuid";
 
 import Location from "../components/Location";
 import CustomButton from "../components/UI/CustomButton";
 import { COLORS } from "../constants/globalConstants";
+import useLocation from "../hooks/location-hook";
 import locationsDefaults from "../locations-defaults.json";
+import { cancelChanges, saveLocationsToFile } from "../store/locationsSlice";
 
 const lineHeight = 50;
 
 export default function Locations({ navigation }) {
-  const [locations, setLocations] = useState([]);
-
-  useEffect(() => {
-    setLocations(locationsDefaults);
-  }, []);
+  // const { locations } = useLocation();
+  // const storedLocations = useSelector((state) => state.locations);
+  const [locations, setLocations] = useState(locationsDefaults);
+  const dispatch = useDispatch();
 
   const cancelHandler = () => {
+    // console.log(locations);
+    dispatch(cancelChanges());
+    // setLocations(locationsDefaults);
     navigation.goBack();
   };
 
   const saveLocationsHandler = () => {
-    console.log(locations);
+    dispatch(saveLocationsToFile());
   };
 
-  const toggleAllRolesHandler = (enabled) => {
-    /* let updatedLocation = Object.assign([], locations);
-    updatedLocation = updatedLocation.map((location) => {
-      return {
-        ...location,
-        roles: location.roles.map((role) => {
-          return { ...role, enabled: enabled };
-        }),
-      };
-    });
-
-    console.log(locations[0].roles);
-    console.log(updatedLocation[0].roles);
-    setLocations([...locations, updatedLocation]); */
-
-    const state = [
-      ...locations.map((location) => {
-        return {
-          ...location,
-          roles: [
-            ...location.roles.map((role) => {
-              return { ...role, enabled: enabled };
-            }),
-          ],
-        };
-      }),
-    ];
-    setLocations(state);
-  };
-
-  const locationChangeHandler = (event, index, updatedLocation) => {
-    setLocations(
-      locations.map((location) => {
-        if (locations.indexOf(location) === index) return updatedLocation;
-        return location;
-      })
-    );
+  const getLocationComponents = () => {
+    let locationComponents = [];
+    for (let i = 0; i < locations.length; i++) {
+      locationComponents.push(
+        <Location key={uuidv1()} locationIndex={i} height={lineHeight} />
+      );
+    }
+    return locationComponents;
   };
 
   return (
     <>
       <Text style={styles.locationsLabel}>MEKANLAR</Text>
       <View style={styles.container}>
-        {locations.map((location) => {
-          return (
-            <Location
-              key={uuidv1()}
-              location={location}
-              onLocationChange={locationChangeHandler.bind(
-                null,
-                null,
-                locations.indexOf(location)
-              )}
-              height={lineHeight}
-            />
-          );
-        })}
+        {getLocationComponents()}
 
         <View style={styles.buttonContainer}>
           <CustomButton
