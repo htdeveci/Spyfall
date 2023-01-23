@@ -14,7 +14,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./store/store";
 import { initLocations } from "./store/locationsSlice";
-import Deneme from "./deneme";
+import Deneme from "./Deneme";
 
 export default function App() {
   const Stack = createStackNavigator();

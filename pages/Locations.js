@@ -20,10 +20,10 @@ import {
 
 const lineHeight = 50;
 
-export default function Locations({ navigation, locationsProp }) {
+export default function Locations({ navigation, storedLocations }) {
   // const { locations } = useLocation();
   // const storedLocations = useSelector((state) => state.locations);
-  const [locations, setLocations] = useState(locationsProp);
+  const [locations, setLocations] = useState(storedLocations);
   const dispatch = useDispatch();
 
   /*   useEffect(() => {

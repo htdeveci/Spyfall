@@ -3,19 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import locationsDefaults from "../locations-defaults.json";
 
-let initialState;
-
-export const getLocations = async () => {
-  try {
-    const jsonValue = await AsyncStorage.getItem("activeLocations");
-    console.log(jsonValue);
-    initialState =
-      jsonValue == null ? locationsDefaults : JSON.parse(jsonValue);
-    // return initialState;
-  } catch (err) {
-    console.log(err);
-  }
-};
+let initialState = locationsDefaults;
 
 const saveLocations = async (state) => {
   try {
@@ -28,11 +16,13 @@ const saveLocations = async (state) => {
 
 export const locationsSlice = createSlice({
   name: "locations",
-  initialState: locationsDefaults,
+  initialState: initialState,
   reducers: {
     initLocations: (state, action) => {
-      console.log(JSON.stringify(initialState));
-      state = JSON.stringify(initialState);
+      console.log("Action    " + action.payload.storedLocations);
+      /*  return action.payload.storedLocations === null
+        ? state
+        : action.payload.storedLocations; */
     },
     toggleLocationStatus: (state, action) => {
       const location = state[action.payload.index];
