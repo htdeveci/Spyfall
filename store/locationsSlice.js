@@ -20,6 +20,7 @@ export const locationsSlice = createSlice({
   reducers: {
     initLocations: (state, action) => {
       console.log("Action    " + action.payload.storedLocations);
+      return action.payload.storedLocations;
       /*  return action.payload.storedLocations === null
         ? state
         : action.payload.storedLocations; */
@@ -48,8 +49,8 @@ export const locationsSlice = createSlice({
       const role = location.roles[action.payload.roleIndex];
       role.roleName = action.payload.roleName;
     },
-    cancelChanges: () => {
-      return initialState;
+    cancelChanges: (state) => {
+      state = initialState;
     },
     saveLocationsToStorage: (state) => {
       saveLocations(state);

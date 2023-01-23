@@ -4,8 +4,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
 import Locations from "./pages/Locations";
 import { initLocations } from "./store/locationsSlice";
+import locationsDefaults from "./locations-defaults.json";
 
-export default function Deneme() {
+export default function Deneme({ navigation }) {
   const dispatch = useDispatch();
 
   const [locations, setLocations] = useState(null);
@@ -15,7 +16,8 @@ export default function Deneme() {
       console.log(" 1   " + (await AsyncStorage.getAllKeys()));
       const jsonValue = await AsyncStorage.getItem("activeLocations");
       console.log(" 2   " + jsonValue);
-      const value = jsonValue === null ? null : JSON.parse(jsonValue);
+      const value =
+        jsonValue === null ? locationsDefaults : JSON.parse(jsonValue);
       console.log(" 3   " + value);
       return value;
     } catch (err) {
@@ -27,17 +29,18 @@ export default function Deneme() {
     const fetchLocations = async () => {
       const storedLocations = await getLocations();
 
-      console.log(" 4   " + storedLocations);
+      console.log(" 4   " + storedLocations[0].enabled);
       dispatch(initLocations({ storedLocations }));
+      setLocations(storedLocations);
     };
     fetchLocations();
   }, []);
 
-  let storedLocations = useSelector((store) => store.locations);
+  // let storedLocations = useSelector((store) => store.locations);
 
-  useEffect(() => {
-    setLocations(storedLocations);
-  }, [storedLocations]);
+  // useEffect(() => {
+  //   setLocations(storedLocations);
+  // }, [storedLocations]);
 
   return (
     <>
@@ -47,7 +50,9 @@ export default function Deneme() {
       )} */}
       <Text style={{ color: "white" }}>Deneme</Text>
       <Text style={{ color: "white" }}>Deneme2</Text>
-      {locations && <Locations storedLocations={locations} />}
+      {locations && (
+        <Locations navigation={navigation} storedLocations={locations} />
+      )}
     </>
   );
 }
