@@ -33,6 +33,5 @@ const styles = StyleSheet.create({
     flex: 1,
     color: COLORS.textReverse,
     alignSelf: "stretch",
-    // backgroundColor: "red",
   },
 });

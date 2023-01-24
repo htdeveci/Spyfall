@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import Locations from "./pages/Locations";
 import { initLocations } from "./store/locationsSlice";
 import locationsDefaults from "./locations-defaults.json";
+import { STORE_ACTIVE_LOCATIONS } from "./constants/globalConstants";
 
 export default function Deneme({ navigation }) {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export default function Deneme({ navigation }) {
 
   const getLocations = async () => {
     try {
-      const jsonValue = await AsyncStorage.getItem("activeLocations");
+      const jsonValue = await AsyncStorage.getItem(STORE_ACTIVE_LOCATIONS);
       return jsonValue === null ? locationsDefaults : JSON.parse(jsonValue);
     } catch (err) {
       console.log(err);

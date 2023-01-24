@@ -15,3 +15,5 @@ export const COLORS = {
 
 export const NAVIGATION_NAME_GAME_SETUP = "GameSetup";
 export const NAVIGATION_NAME_LOCATIONS = "Locations";
+export const STORE_ACTIVE_LOCATIONS = "ActiveLocations";
+export const STORE_ACTIVE_PLAYERS = "ActivePlayers";

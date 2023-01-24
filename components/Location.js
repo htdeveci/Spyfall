@@ -16,14 +16,16 @@ import {
 } from "../store/locationsSlice";
 import CustomButton from "./UI/CustomButton";
 
-export default function Location({ locationIndex, height, style }) {
-  const location = useSelector((state) => state.locations[locationIndex]);
+export default function Location({ locationId, height, style }) {
+  const location = useSelector((store) =>
+    store.locations.find((loc) => loc.id === locationId)
+  );
   const [expandRoles, setExpandRoles] = useState(false);
   const [enableAllRoles, setEnableAllRoles] = useState("indeterminate");
   const dispatch = useDispatch();
 
   const toggleLocationStatusHandler = () => {
-    dispatch(toggleLocationStatus({ index: locationIndex }));
+    dispatch(toggleLocationStatus({ locationId }));
   };
 
   const toggleExpandRolesHandler = () => {
@@ -31,7 +33,7 @@ export default function Location({ locationIndex, height, style }) {
   };
 
   const locationNameChangeHandler = (value) => {
-    dispatch(changeLocationName({ index: locationIndex, locationName: value }));
+    dispatch(changeLocationName({ locationId, locationName: value }));
   };
 
   const toggleAllRolesStatusHandler = () => {
@@ -39,7 +41,7 @@ export default function Location({ locationIndex, height, style }) {
     if (enableAllRoles === "checked") enabled = "unchecked";
     dispatch(
       toggleAllRolesStatusForOneLocation({
-        index: locationIndex,
+        locationId,
         status: enabled === "checked",
       })
     );
@@ -48,23 +50,15 @@ export default function Location({ locationIndex, height, style }) {
 
   const getRoles = () => {
     let result = [];
-    for (let i = 0; i < 12; i++) {
-      result.push(
-        <Role
-          key={i}
-          index={i + 1}
-          locationIndex={locationIndex}
-          roleIndex={i}
-          roleId={location.roles[i].id}
-        />
-      );
+    for (let i = 0; i < location.roles.length; i++) {
+      result.push(<Role key={i} index={i + 1} roleId={location.roles[i].id} />);
     }
     return result;
   };
 
   const deleteLocationHandler = () => {
-    dispatch(deleteLocation({ locationId: location.id }));
-    setExpandRoles(false);
+    dispatch(deleteLocation({ locationId }));
+    // setExpandRoles(false);
   };
 
   return (
@@ -83,7 +77,7 @@ export default function Location({ locationIndex, height, style }) {
               onPress={toggleLocationStatusHandler}
             >
               <Text style={styles.locationSwitchText}>
-                {location.locationName}
+                {location.locationName ? location.locationName : "Mekan Adı"}
               </Text>
             </Pressable>
 
@@ -103,7 +97,7 @@ export default function Location({ locationIndex, height, style }) {
           {expandRoles && (
             <>
               <View style={styles.rolesContainer}>
-                <Card style={{ width: "50%" }}>
+                <Card style={{ width: "50%", height: height }}>
                   <CustomTextInput
                     placeholder="Mekan Adı"
                     value={location.locationName}
@@ -112,19 +106,30 @@ export default function Location({ locationIndex, height, style }) {
                   />
                 </Card>
 
-                <Card style={{ flexDirection: "row", width: "50%" }}>
-                  <Text
-                    style={{
-                      color: COLORS.textReverse,
-                    }}
-                  >
-                    Bütün Roller
-                  </Text>
-                  <Checkbox
-                    status={enableAllRoles}
+                <Card
+                  style={{
+                    width: "50%",
+                    height: height,
+                    paddingVertical: 0,
+                  }}
+                >
+                  <Pressable
                     onPress={toggleAllRolesStatusHandler}
-                    color={COLORS.secondary}
-                  />
+                    style={styles.allRolesPressable}
+                  >
+                    <Text
+                      style={{
+                        color: COLORS.textReverse,
+                      }}
+                    >
+                      Bütün Roller
+                    </Text>
+                    <Checkbox
+                      status={enableAllRoles}
+                      onPress={toggleAllRolesStatusHandler}
+                      color={COLORS.secondary}
+                    />
+                  </Pressable>
                 </Card>
 
                 {getRoles()}
@@ -138,7 +143,7 @@ export default function Location({ locationIndex, height, style }) {
                   }}
                 >
                   <CustomButton onPress={deleteLocationHandler} cancel>
-                    mekanı sİl
+                    MEKANI SİL
                   </CustomButton>
                 </View>
               </View>
@@ -180,5 +185,13 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     padding: 5,
     justifyContent: "center",
+  },
+  allRolesPressable: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingLeft: 15,
+    height: "100%",
+    width: "100%",
   },
 });

@@ -6,19 +6,27 @@ import { COLORS } from "../constants/globalConstants";
 import { changeRoleName, toggleRoleStatus } from "../store/locationsSlice";
 import CustomTextInput from "./UI/CustomTextInput";
 
-export default function Role({ index, style, locationIndex, roleIndex }) {
-  const role = useSelector(
-    (state) => state.locations[locationIndex].roles[roleIndex]
-  );
+export default function Role({ index, style, roleId }) {
+  const role = useSelector((store) => {
+    let selectedRole;
+    for (let i = 0; i < store.locations.length; i++) {
+      selectedRole = store.locations[i].roles.find((r) => r.id === roleId);
+      if (!!selectedRole) break;
+    }
+    return selectedRole;
+  });
   const dispatch = useDispatch();
 
   const toggleRoleStatusHandler = () => {
-    dispatch(toggleRoleStatus({ locationIndex, roleIndex }));
+    dispatch(toggleRoleStatus({ roleId }));
   };
 
   const roleNameChangeHandler = (newRoleName) => {
     dispatch(
-      changeRoleName({ locationIndex, roleIndex, roleName: newRoleName })
+      changeRoleName({
+        roleId,
+        roleName: newRoleName,
+      })
     );
   };
 

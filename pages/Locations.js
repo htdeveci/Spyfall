@@ -38,7 +38,7 @@ export default function Locations({ navigation, storedLocations }) {
       locationComponents.push(
         <Location
           key={uuidv1()}
-          locationIndex={i}
+          locationId={locations[i].id}
           height={lineHeight}
           style={styles.addMarginBottom}
         />
@@ -55,7 +55,7 @@ export default function Locations({ navigation, storedLocations }) {
 
   const addNewLocationHandler = () => {
     const newLocation = {
-      locationName: "Yeni Mekan",
+      locationName: "",
       id: uuidv1(),
       enabled: true,
       roles: [
@@ -86,7 +86,7 @@ export default function Locations({ navigation, storedLocations }) {
             {getLocationComponents()}
             <View style={[styles.buttonContainer, styles.addMarginBottom]}>
               <CustomButton onPress={addNewLocationHandler} success>
-                Yeni mekan ekle
+                YENİ MEKAN EKLE
               </CustomButton>
             </View>
             <View style={[styles.buttonContainer, styles.addMarginBottom]}>
@@ -106,7 +106,7 @@ export default function Locations({ navigation, storedLocations }) {
             </View>
             <View style={styles.buttonContainer}>
               <CustomButton onPress={returnToDefaultSettingsHandler}>
-                varsayılana dön
+                VARSAYILANA DÖN
               </CustomButton>
             </View>
           </>

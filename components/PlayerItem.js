@@ -2,24 +2,33 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../constants/globalConstants";
 import CustomTextInput from "./UI/CustomTextInput";
+import { useDispatch } from "react-redux";
+import { changePlayerName, deletePlayer } from "../store/playersSlice";
 
-export default function PlayerItem(props) {
+export default function PlayerItem({ style, player }) {
+  const dispatch = useDispatch();
+
   const playerNameChangeHandler = (newPlayerName) => {
-    // console.log(newPlayerName);
+    dispatch(changePlayerName({ id: player.id, newPlayerName }));
+  };
+
+  const removePlayerHandler = () => {
+    dispatch(deletePlayer({ playerId: player.id }));
   };
 
   return (
-    <View style={[styles.container, props.style]}>
+    <View style={[styles.container, style]}>
       <CustomTextInput
-        placeholder={props.player.name}
+        placeholder="Oyuncu Adı"
         onChangeText={playerNameChangeHandler}
+        value={player.playerName}
       />
 
       <Ionicons
         name="remove-circle"
         size={30}
         color={COLORS.error}
-        onPress={props.removePlayer.bind(null, props.player.id)}
+        onPress={removePlayerHandler}
         style={{
           alignSelf: "stretch",
           textAlignVertical: "center",

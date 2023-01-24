@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { v1 as uuidv1 } from "uuid";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -9,26 +9,21 @@ import PlayerItem from "../components/PlayerItem";
 import {
   COLORS,
   NAVIGATION_NAME_LOCATIONS,
+  STORE_ACTIVE_PLAYERS,
 } from "../constants/globalConstants";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewPlayerSlot } from "../store/playersSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function GameSetup({ navigation }) {
-  const [players, setPlayers] = useState([]);
+  const players = useSelector((store) => store.players);
+  const dispatch = useDispatch();
+  // const [players, setPlayers] = useState([]);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
   const maxSpyNumber = 3;
 
   const addPlayerHandler = () => {
-    setPlayers((players) => [
-      ...players,
-      { name: `${players.length + 1}. Oyuncu`, id: uuidv1() },
-    ]);
-  };
-
-  const removePlayerHandler = (playerId) => {
-    setPlayers((players) => {
-      return players.filter((player) => {
-        return player.id != playerId;
-      });
-    });
+    dispatch(addNewPlayerSlot({ newPlayer: { playerName: "", id: uuidv1() } }));
   };
 
   const numberOfSpyChangeHandler = (value) => {
@@ -45,11 +40,7 @@ export default function GameSetup({ navigation }) {
       {players.map((player) => {
         return (
           <View style={styles.lineHeight} key={player.id}>
-            <PlayerItem
-              player={player}
-              removePlayer={removePlayerHandler}
-              style={styles.verticalGap}
-            />
+            <PlayerItem player={player} style={styles.verticalGap} />
           </View>
         );
       })}
