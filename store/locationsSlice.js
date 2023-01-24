@@ -19,11 +19,10 @@ export const locationsSlice = createSlice({
   initialState: initialState,
   reducers: {
     initLocations: (state, action) => {
-      console.log("Action    " + action.payload.storedLocations);
       return action.payload.storedLocations;
-      /*  return action.payload.storedLocations === null
-        ? state
-        : action.payload.storedLocations; */
+    },
+    returnToDefaultSettings: (state) => {
+      return locationsDefaults;
     },
     toggleLocationStatus: (state, action) => {
       const location = state[action.payload.index];
@@ -55,16 +54,14 @@ export const locationsSlice = createSlice({
     saveLocationsToStorage: (state) => {
       saveLocations(state);
     },
+    addNewLocationSlot: (state, action) => {
+      state.push(action.payload.newLocation);
+    },
+    deleteLocation: (state, action) => {
+      return state.filter((loc) => loc.id !== action.payload.locationId);
+    },
   },
 });
-
-// const getLocationById = (state, id) => {
-//   return state.find((location) => location.id === id);
-// };
-
-// const getRoleById = (location, id) => {
-//   return location.roles.find((role) => role.id === id);
-// };
 
 export const {
   toggleLocationStatus,
@@ -75,5 +72,8 @@ export const {
   cancelChanges,
   saveLocationsToStorage,
   initLocations,
+  returnToDefaultSettings,
+  addNewLocationSlot,
+  deleteLocation,
 } = locationsSlice.actions;
 export default locationsSlice.reducer;

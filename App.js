@@ -1,19 +1,17 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
+import { Provider } from "react-redux";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import GameSetup from "./pages/GameSetup";
-import Locations from "./pages/Locations";
 import {
   COLORS,
   NAVIGATION_NAME_GAME_SETUP,
   NAVIGATION_NAME_LOCATIONS,
 } from "./constants/globalConstants";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./store/store";
-import { initLocations } from "./store/locationsSlice";
 import Deneme from "./Deneme";
 
 export default function App() {

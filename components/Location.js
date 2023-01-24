@@ -1,21 +1,22 @@
-import { Pressable, StyleSheet, Switch, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { Checkbox } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
 
 import { COLORS } from "../constants/globalConstants";
 import Role from "./Role";
 import CustomTextInput from "./UI/CustomTextInput";
-import CustomButton from "./UI/CustomButton";
 import Card from "./UI/Card";
-import { useDispatch, useSelector } from "react-redux";
 import {
   changeLocationName,
+  deleteLocation,
   toggleAllRolesStatusForOneLocation,
   toggleLocationStatus,
 } from "../store/locationsSlice";
+import CustomButton from "./UI/CustomButton";
 
-export default function Location({ locationIndex, height }) {
+export default function Location({ locationIndex, height, style }) {
   const location = useSelector((state) => state.locations[locationIndex]);
   const [expandRoles, setExpandRoles] = useState(false);
   const [enableAllRoles, setEnableAllRoles] = useState("indeterminate");
@@ -61,10 +62,15 @@ export default function Location({ locationIndex, height }) {
     return result;
   };
 
+  const deleteLocationHandler = () => {
+    dispatch(deleteLocation({ locationId: location.id }));
+    setExpandRoles(false);
+  };
+
   return (
     <>
       {location && (
-        <View style={{ marginBottom: 10 }}>
+        <View style={style}>
           <View style={[styles.container, { height: height }]}>
             <Checkbox
               status={location.enabled ? "checked" : "unchecked"}
@@ -95,33 +101,48 @@ export default function Location({ locationIndex, height }) {
           </View>
 
           {expandRoles && (
-            <View style={styles.rolesContainer}>
-              <Card style={{ width: "50%" }}>
-                <CustomTextInput
-                  placeholder="Mekan Adı"
-                  value={location.locationName}
-                  onChangeText={locationNameChangeHandler}
-                  style={{ textAlign: "center" }}
-                />
-              </Card>
+            <>
+              <View style={styles.rolesContainer}>
+                <Card style={{ width: "50%" }}>
+                  <CustomTextInput
+                    placeholder="Mekan Adı"
+                    value={location.locationName}
+                    onChangeText={locationNameChangeHandler}
+                    style={{ textAlign: "center" }}
+                  />
+                </Card>
 
-              <Card style={{ flexDirection: "row", width: "50%" }}>
-                <Text
+                <Card style={{ flexDirection: "row", width: "50%" }}>
+                  <Text
+                    style={{
+                      color: COLORS.textReverse,
+                    }}
+                  >
+                    Bütün Roller
+                  </Text>
+                  <Checkbox
+                    status={enableAllRoles}
+                    onPress={toggleAllRolesStatusHandler}
+                    color={COLORS.secondary}
+                  />
+                </Card>
+
+                {getRoles()}
+
+                <View
                   style={{
-                    color: COLORS.textReverse,
+                    height: height,
+                    width: "50%",
+                    borderWidth: 1,
+                    borderColor: COLORS.backgroud,
                   }}
                 >
-                  Bütün Roller
-                </Text>
-                <Checkbox
-                  status={enableAllRoles}
-                  onPress={toggleAllRolesStatusHandler}
-                  color={COLORS.secondary}
-                />
-              </Card>
-
-              {getRoles()}
-            </View>
+                  <CustomButton onPress={deleteLocationHandler} cancel>
+                    mekanı sİl
+                  </CustomButton>
+                </View>
+              </View>
+            </>
           )}
         </View>
       )}

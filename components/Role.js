@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
+
 import { COLORS } from "../constants/globalConstants";
 import { changeRoleName, toggleRoleStatus } from "../store/locationsSlice";
 import CustomTextInput from "./UI/CustomTextInput";
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     borderWidth: 1,
+    borderColor: COLORS.backgroud,
     borderRadius: 10,
     paddingRight: 5,
     paddingVertical: 6,

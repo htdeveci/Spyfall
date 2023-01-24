@@ -8,6 +8,7 @@ export default function CustomButton({
   fontSize,
   style,
   cancel = false,
+  success = false,
 }) {
   let buttonColor = COLORS.primary;
   let rippleColor = COLORS.primaryDark;
@@ -15,6 +16,11 @@ export default function CustomButton({
   if (cancel) {
     buttonColor = COLORS.error;
     rippleColor = COLORS.errorDark;
+  }
+
+  if (success) {
+    buttonColor = COLORS.success;
+    rippleColor = COLORS.successDark;
   }
 
   return (

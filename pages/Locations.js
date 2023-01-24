@@ -1,7 +1,6 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { v1 as uuidv1 } from "uuid";
 
 import Location from "../components/Location";
@@ -10,31 +9,18 @@ import {
   COLORS,
   NAVIGATION_NAME_GAME_SETUP,
 } from "../constants/globalConstants";
-import locationsDefaults from "../locations-defaults.json";
 import {
+  addNewLocationSlot,
   cancelChanges,
-  getLocations,
-  initLocations,
+  returnToDefaultSettings,
   saveLocationsToStorage,
 } from "../store/locationsSlice";
 
 const lineHeight = 50;
 
 export default function Locations({ navigation, storedLocations }) {
-  // const { locations } = useLocation();
-  // const storedLocations = useSelector((state) => state.locations);
   const [locations, setLocations] = useState(storedLocations);
   const dispatch = useDispatch();
-
-  /*   useEffect(() => {
-    const fetchLocationData = async () => {
-      const storedLocations = await getLocations();
-      // console.log(storedLocations);
-      // dispatch(initLocations({ storedLocations: storedLocations }));
-      setLocations(storedLocations);
-    };
-    fetchLocationData();
-  }, []); */
 
   const cancelHandler = () => {
     dispatch(cancelChanges());
@@ -50,10 +36,45 @@ export default function Locations({ navigation, storedLocations }) {
     let locationComponents = [];
     for (let i = 0; i < locations.length; i++) {
       locationComponents.push(
-        <Location key={uuidv1()} locationIndex={i} height={lineHeight} />
+        <Location
+          key={uuidv1()}
+          locationIndex={i}
+          height={lineHeight}
+          style={styles.addMarginBottom}
+        />
       );
     }
     return locationComponents;
+  };
+
+  const returnToDefaultSettingsHandler = () => {
+    dispatch(returnToDefaultSettings());
+    dispatch(saveLocationsToStorage());
+    navigation.goBack();
+  };
+
+  const addNewLocationHandler = () => {
+    const newLocation = {
+      locationName: "Yeni Mekan",
+      id: uuidv1(),
+      enabled: true,
+      roles: [
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+        { enabled: true, roleName: "", id: uuidv1() },
+      ],
+    };
+    setLocations((state) => [...state, newLocation]);
+    dispatch(addNewLocationSlot({ newLocation }));
   };
 
   return (
@@ -63,7 +84,12 @@ export default function Locations({ navigation, storedLocations }) {
         {locations && (
           <>
             {getLocationComponents()}
-            <View style={styles.buttonContainer}>
+            <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+              <CustomButton onPress={addNewLocationHandler} success>
+                Yeni mekan ekle
+              </CustomButton>
+            </View>
+            <View style={[styles.buttonContainer, styles.addMarginBottom]}>
               <CustomButton
                 onPress={cancelHandler}
                 cancel
@@ -76,6 +102,11 @@ export default function Locations({ navigation, storedLocations }) {
                 onPress={saveLocationsHandler}
               >
                 Kaydet
+              </CustomButton>
+            </View>
+            <View style={styles.buttonContainer}>
+              <CustomButton onPress={returnToDefaultSettingsHandler}>
+                varsayılana dön
               </CustomButton>
             </View>
           </>
@@ -97,6 +128,8 @@ const styles = StyleSheet.create({
     color: COLORS.text,
     fontSize: 30,
     textAlign: "center",
+  },
+  addMarginBottom: {
     marginBottom: 10,
   },
 });
