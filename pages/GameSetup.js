@@ -8,19 +8,74 @@ import CustomButton from "../components/UI/CustomButton";
 import PlayerItem from "../components/PlayerItem";
 import {
   COLORS,
+  LINE_HEIGHT,
+  NAVIGATION_NAME_GAMEPLAY,
   NAVIGATION_NAME_LOCATIONS,
+  STORE_ACTIVE_LOCATIONS,
   STORE_ACTIVE_PLAYERS,
 } from "../constants/globalConstants";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewPlayerSlot } from "../store/playersSlice";
+import {
+  addNewPlayerSlot,
+  initPlayers,
+  savePlayersToStorage,
+} from "../store/playersSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { initLocations } from "../store/locationsSlice";
 
 export default function GameSetup({ navigation }) {
-  const players = useSelector((store) => store.players);
   const dispatch = useDispatch();
+  const players = useSelector((store) => store.players);
   // const [players, setPlayers] = useState([]);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
   const maxSpyNumber = 3;
+  // const dispatch = useDispatch();
+
+  const [storedLocations, setStoredLocations] = useState(null);
+
+  const getLocations = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(STORE_ACTIVE_LOCATIONS);
+      return jsonValue === null ? locationsDefaults : JSON.parse(jsonValue);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* const fetchLocations = async () => {
+    const storedLocations = await getLocations();
+    dispatch(initLocations({ storedLocations }));
+    setStoredLocations(storedLocations);
+    console.log("asaf");
+  };
+  fetchLocations(); */
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      const storedLocations = await getLocations();
+      dispatch(initLocations({ storedLocations }));
+      setStoredLocations(storedLocations);
+    };
+    fetchLocations();
+  }, [navigation]);
+
+  const getPlayers = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(STORE_ACTIVE_PLAYERS);
+      return jsonValue !== null && JSON.parse(jsonValue);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      const storedPlayers = await getPlayers();
+      dispatch(initPlayers({ storedPlayers }));
+      // setLocations(storedPlayers);
+    };
+    fetchPlayers();
+  }, []);
 
   const addPlayerHandler = () => {
     dispatch(addNewPlayerSlot({ newPlayer: { playerName: "", id: uuidv1() } }));
@@ -31,7 +86,15 @@ export default function GameSetup({ navigation }) {
   };
 
   const locationsButtonHandler = () => {
-    navigation.navigate("Deneme");
+    // navigation.setParams(;
+    navigation.navigate(NAVIGATION_NAME_LOCATIONS, {
+      storedLocations: storedLocations,
+    });
+  };
+
+  const startGameHandler = () => {
+    dispatch(savePlayersToStorage());
+    navigation.navigate(NAVIGATION_NAME_GAMEPLAY, { numberOfSpy });
   };
 
   return (
@@ -85,8 +148,13 @@ export default function GameSetup({ navigation }) {
           />
         </View>
       </View>
-      <View style={styles.lineHeight}>
+      <View style={[styles.lineHeight, styles.verticalGap]}>
         <CustomButton onPress={locationsButtonHandler}>mekanlar</CustomButton>
+      </View>
+      <View style={[{ height: LINE_HEIGHT * 2 }, styles.verticalGap]}>
+        <CustomButton onPress={startGameHandler} success fontSize={30}>
+          OYUNU BAŞLAT
+        </CustomButton>
       </View>
     </>
   );
@@ -104,7 +172,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   lineHeight: {
-    height: 55,
+    height: LINE_HEIGHT,
   },
   spyCountContainer: {
     flexDirection: "row",

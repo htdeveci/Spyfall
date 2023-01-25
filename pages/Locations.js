@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { useDispatch } from "react-redux";
 import { v1 as uuidv1 } from "uuid";
@@ -7,6 +7,7 @@ import Location from "../components/Location";
 import CustomButton from "../components/UI/CustomButton";
 import {
   COLORS,
+  LINE_HEIGHT,
   NAVIGATION_NAME_GAME_SETUP,
 } from "../constants/globalConstants";
 import {
@@ -16,11 +17,14 @@ import {
   saveLocationsToStorage,
 } from "../store/locationsSlice";
 
-const lineHeight = 50;
-
-export default function Locations({ navigation, storedLocations }) {
-  const [locations, setLocations] = useState(storedLocations);
+export default function Locations({ navigation, route }) {
+  const storedLocations = route.params.storedLocations;
+  const [locations, setLocations] = useState(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setLocations(storedLocations);
+  }, []);
 
   const cancelHandler = () => {
     dispatch(cancelChanges());
@@ -39,7 +43,7 @@ export default function Locations({ navigation, storedLocations }) {
         <Location
           key={uuidv1()}
           locationId={locations[i].id}
-          height={lineHeight}
+          height={LINE_HEIGHT}
           style={styles.addMarginBottom}
         />
       );
@@ -122,7 +126,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    height: lineHeight,
+    height: LINE_HEIGHT,
   },
   locationsLabel: {
     color: COLORS.text,

@@ -9,6 +9,7 @@ export default function CustomButton({
   style,
   cancel = false,
   success = false,
+  disabled = false,
 }) {
   let buttonColor = COLORS.primary;
   let rippleColor = COLORS.primaryDark;
@@ -21,6 +22,10 @@ export default function CustomButton({
   if (success) {
     buttonColor = COLORS.success;
     rippleColor = COLORS.successDark;
+  }
+
+  if (disabled) {
+    buttonColor = COLORS.darkGray;
   }
 
   return (
@@ -38,6 +43,7 @@ export default function CustomButton({
         // height={height}
         onPress={onPress}
         android_ripple={{ color: rippleColor }}
+        disabled={disabled}
       >
         <Text style={[styles.buttonText, { fontSize }]}>
           {children.toUpperCase()}

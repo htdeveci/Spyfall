@@ -5,12 +5,24 @@ import { useDispatch } from "react-redux";
 import Locations from "./pages/Locations";
 import { initLocations } from "./store/locationsSlice";
 import locationsDefaults from "./locations-defaults.json";
-import { STORE_ACTIVE_LOCATIONS } from "./constants/globalConstants";
+import {
+  COLORS,
+  NAVIGATION_NAME_GAMEPLAY,
+  NAVIGATION_NAME_GAME_SETUP,
+  NAVIGATION_NAME_LOCATIONS,
+  STORE_ACTIVE_LOCATIONS,
+} from "./constants/globalConstants";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet } from "react-native";
+import GameSetup from "./pages/GameSetup";
+import Gameplay from "./pages/Gameplay";
 
-export default function Deneme({ navigation }) {
+export default function Deneme() {
+  const Stack = createStackNavigator();
   const dispatch = useDispatch();
 
-  const [locations, setLocations] = useState(null);
+  const [storedLocations, setStoredLocations] = useState(null);
 
   const getLocations = async () => {
     try {
@@ -25,16 +37,37 @@ export default function Deneme({ navigation }) {
     const fetchLocations = async () => {
       const storedLocations = await getLocations();
       dispatch(initLocations({ storedLocations }));
-      setLocations(storedLocations);
+      setStoredLocations(storedLocations);
     };
     fetchLocations();
   }, []);
 
   return (
-    <>
-      {locations && (
-        <Locations navigation={navigation} storedLocations={locations} />
-      )}
-    </>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          cardStyle: [styles.container, { backgroundColor: COLORS.backgroud }],
+        }}
+      >
+        <Stack.Screen name={NAVIGATION_NAME_GAME_SETUP} component={GameSetup} />
+        <Stack.Screen name={NAVIGATION_NAME_LOCATIONS} component={Locations} />
+        <Stack.Screen name={NAVIGATION_NAME_GAMEPLAY} component={Gameplay} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  outerContainer: {
+    flex: 1,
+    backgroundColor: COLORS.backgroud,
+    alignItems: "stretch",
+    justifyContent: "flex-start",
+  },
+  container: {
+    flex: 1,
+    paddingTop: 70,
+    paddingHorizontal: 25,
+  },
+});

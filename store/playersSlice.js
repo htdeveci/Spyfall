@@ -13,20 +13,20 @@ export const playerSlice = createSlice({
   name: "players",
   initialState: initialState,
   reducers: {
+    initPlayers: (state, action) => {
+      return action.payload.storedPlayers;
+    },
     changePlayerName: (state, action) => {
       const player = state.find((p) => p.id === action.payload.id);
       player.playerName = action.payload.newPlayerName;
-      savePlayers(state);
     },
     addNewPlayerSlot: (state, action) => {
       state.push(action.payload.newPlayer);
-      savePlayers(state);
     },
     deletePlayer: (state, action) => {
       const result = state.filter(
         (player) => player.id !== action.payload.playerId
       );
-      savePlayers(result);
       return result;
     },
     savePlayersToStorage: (state) => {
@@ -44,6 +44,11 @@ const savePlayers = async (state) => {
   }
 };
 
-export const { changePlayerName, addNewPlayerSlot, deletePlayer } =
-  playerSlice.actions;
+export const {
+  initPlayers,
+  changePlayerName,
+  addNewPlayerSlot,
+  deletePlayer,
+  savePlayersToStorage,
+} = playerSlice.actions;
 export default playerSlice.reducer;

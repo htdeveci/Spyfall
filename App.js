@@ -8,49 +8,20 @@ import { createStackNavigator } from "@react-navigation/stack";
 import GameSetup from "./pages/GameSetup";
 import {
   COLORS,
+  NAVIGATION_NAME_GAMEPLAY,
   NAVIGATION_NAME_GAME_SETUP,
   NAVIGATION_NAME_LOCATIONS,
 } from "./constants/globalConstants";
 import store from "./store/store";
 import Deneme from "./Deneme";
+import Gameplay from "./pages/Gameplay";
+import Locations from "./pages/Locations";
 
 export default function App() {
-  const Stack = createStackNavigator();
-
   return (
     <Provider store={store}>
       <StatusBar style="light" backgroundColor={COLORS.primaryDark} />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-            cardStyle: [
-              styles.container,
-              { backgroundColor: COLORS.backgroud },
-            ],
-          }}
-        >
-          <Stack.Screen
-            name={NAVIGATION_NAME_GAME_SETUP}
-            component={GameSetup}
-          />
-          <Stack.Screen name="Deneme" component={Deneme} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Deneme />
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  outerContainer: {
-    flex: 1,
-    backgroundColor: COLORS.backgroud,
-    alignItems: "stretch",
-    justifyContent: "flex-start",
-  },
-  container: {
-    flex: 1,
-    paddingTop: 70,
-    paddingHorizontal: 25,
-  },
-});
