@@ -9,8 +9,10 @@ import CustomTextInput from "./UI/CustomTextInput";
 export default function Role({ index, style, roleId }) {
   const role = useSelector((store) => {
     let selectedRole;
-    for (let i = 0; i < store.locations.length; i++) {
-      selectedRole = store.locations[i].roles.find((r) => r.id === roleId);
+    for (let i = 0; i < store.locations.future.length; i++) {
+      selectedRole = store.locations.future[i].roles.find(
+        (r) => r.id === roleId
+      );
       if (!!selectedRole) break;
     }
     return selectedRole;

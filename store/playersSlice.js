@@ -13,9 +13,6 @@ export const playerSlice = createSlice({
   name: "players",
   initialState: initialState,
   reducers: {
-    initPlayers: (state, action) => {
-      return action.payload.storedPlayers;
-    },
     changePlayerName: (state, action) => {
       const player = state.find((p) => p.id === action.payload.id);
       player.playerName = action.payload.newPlayerName;
@@ -29,26 +26,9 @@ export const playerSlice = createSlice({
       );
       return result;
     },
-    savePlayersToStorage: (state) => {
-      savePlayers(state);
-    },
   },
 });
 
-const savePlayers = async (state) => {
-  try {
-    const activePlayers = JSON.stringify(state);
-    await AsyncStorage.setItem(STORE_ACTIVE_PLAYERS, activePlayers);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const {
-  initPlayers,
-  changePlayerName,
-  addNewPlayerSlot,
-  deletePlayer,
-  savePlayersToStorage,
-} = playerSlice.actions;
+export const { changePlayerName, addNewPlayerSlot, deletePlayer } =
+  playerSlice.actions;
 export default playerSlice.reducer;

@@ -4,22 +4,20 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import locationsDefaults from "../locations-defaults.json";
 import { STORE_ACTIVE_LOCATIONS } from "../constants/globalConstants";
 
-let initialState = locationsDefaults;
-let currentLocations = locationsDefaults;
+let initialState = {
+  current: locationsDefaults,
+  future: locationsDefaults,
+};
 
 export const locationsSlice = createSlice({
   name: "locations",
   initialState: initialState,
   reducers: {
-    initLocations: (state, action) => {
-      currentLocations = action.payload.storedLocations;
-      console.log("init");
-      console.log(currentLocations[0].enabled);
-      // state = action.payload.storedLocations;
-      return action.payload.storedLocations;
+    initLocations: (state) => {
+      return { ...state, future: state.current };
     },
     returnToDefaultSettings: (state) => {
-      return locationsDefaults;
+      return { ...state, future: locationsDefaults };
       // state = locationsDefaults;
     },
     toggleLocationStatus: (state, action) => {
@@ -45,47 +43,38 @@ export const locationsSlice = createSlice({
       role.roleName = action.payload.roleName;
     },
     cancelChanges: (state) => {
-      console.log("cancel");
-      console.log(currentLocations[0].enabled);
-      return currentLocations;
+      return { ...state, future: state.current };
     },
     saveLocationsToStorage: (state) => {
-      console.log("save");
-      console.log(currentLocations[0].enabled);
-      currentLocations = state;
-      console.log(currentLocations === state);
-      saveLocations(state);
+      return { ...state, current: state.future };
     },
     addNewLocationSlot: (state, action) => {
-      state.push(action.payload.newLocation);
+      state.future.push(action.payload.newLocation);
     },
     deleteLocation: (state, action) => {
-      state = state.filter((loc) => loc.id === action.payload.locationId);
+      return {
+        ...state,
+        future: state.future.filter(
+          (loc) => loc.id !== action.payload.locationId
+        ),
+      };
     },
   },
 });
 
 const getLocationById = (state, action) => {
-  return state.find((loc) => loc.id === action.payload.locationId);
+  return state.future.find((loc) => loc.id === action.payload.locationId);
 };
 
 const getRoleById = (state, action) => {
   let selectedRole;
-  for (let i = 0; i < state.length; i++) {
-    selectedRole = state[i].roles.find((r) => r.id === action.payload.roleId);
+  for (let i = 0; i < state.future.length; i++) {
+    selectedRole = state.future[i].roles.find(
+      (r) => r.id === action.payload.roleId
+    );
     if (!!selectedRole) break;
   }
   return selectedRole;
-};
-
-const saveLocations = async (state) => {
-  try {
-    const activeLocations = JSON.stringify(state);
-    await AsyncStorage.setItem(STORE_ACTIVE_LOCATIONS, activeLocations);
-    // initialState = state;
-  } catch (err) {
-    console.log(err);
-  }
 };
 
 export const {

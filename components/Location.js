@@ -18,7 +18,7 @@ import CustomButton from "./UI/CustomButton";
 
 export default function Location({ locationId, height, style }) {
   const location = useSelector((store) =>
-    store.locations.find((loc) => loc.id === locationId)
+    store.locations.future.find((loc) => loc.id === locationId)
   );
   const [expandRoles, setExpandRoles] = useState(false);
   const [enableAllRoles, setEnableAllRoles] = useState("indeterminate");

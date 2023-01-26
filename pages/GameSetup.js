@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { v1 as uuidv1 } from "uuid";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
@@ -11,70 +11,17 @@ import {
   LINE_HEIGHT,
   NAVIGATION_NAME_GAMEPLAY,
   NAVIGATION_NAME_LOCATIONS,
-  STORE_ACTIVE_LOCATIONS,
-  STORE_ACTIVE_PLAYERS,
 } from "../constants/globalConstants";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addNewPlayerSlot,
-  initPlayers,
-  savePlayersToStorage,
-} from "../store/playersSlice";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { addNewPlayerSlot, savePlayersToStorage } from "../store/playersSlice";
 import { initLocations } from "../store/locationsSlice";
 import CustomFlatList from "../components/UI/CustomFlatList";
 
 export default function GameSetup({ navigation }) {
   const dispatch = useDispatch();
   const players = useSelector((store) => store.players);
-  // const [players, setPlayers] = useState([]);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
   const maxSpyNumber = 3;
-  // const dispatch = useDispatch();
-  const storedLocations = useSelector((store) => store.locations);
-  // const [storedLocations, setStoredLocations] = useState(null);
-  // const storedLocations = useSelector((store) => store.locations);
-
-  useEffect(() => {
-    const fetchLocations = async () => {
-      const storedLocations = await getLocations();
-      dispatch(initLocations({ storedLocations }));
-    };
-
-    const fetchPlayers = async () => {
-      const storedPlayers = await getPlayers();
-      dispatch(initPlayers({ storedPlayers }));
-    };
-
-    fetchLocations();
-    fetchPlayers();
-  }, []);
-
-  const getLocations = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem(STORE_ACTIVE_LOCATIONS);
-      return jsonValue === null ? locationsDefaults : JSON.parse(jsonValue);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getPlayers = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem(STORE_ACTIVE_PLAYERS);
-      return jsonValue !== null && JSON.parse(jsonValue);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  /*   useEffect(() => {
-    const fetchPlayers = async () => {
-      const storedPlayers = await getPlayers();
-      dispatch(initPlayers({ storedPlayers }));
-    };
-    fetchPlayers();
-  }, []); */
 
   const addPlayerHandler = () => {
     dispatch(addNewPlayerSlot({ newPlayer: { playerName: "", id: uuidv1() } }));
@@ -85,15 +32,17 @@ export default function GameSetup({ navigation }) {
   };
 
   const locationsButtonHandler = () => {
-    // navigation.setParams(;
-    navigation.navigate(NAVIGATION_NAME_LOCATIONS, {
-      storedLocations: storedLocations,
-    });
+    dispatch(initLocations());
+    navigation.navigate(NAVIGATION_NAME_LOCATIONS);
+  };
+
+  const isGameReady = () => {
+    return players.length > 0 && numberOfSpy <= players.length;
   };
 
   const startGameHandler = () => {
-    dispatch(savePlayersToStorage());
-    navigation.navigate(NAVIGATION_NAME_GAMEPLAY, { numberOfSpy });
+    if (isGameReady())
+      navigation.navigate(NAVIGATION_NAME_GAMEPLAY, { numberOfSpy });
   };
 
   const renderPlayers = (item) => {
@@ -152,7 +101,12 @@ export default function GameSetup({ navigation }) {
           <CustomButton onPress={locationsButtonHandler}>mekanlar</CustomButton>
         </View>
         <View style={[{ height: LINE_HEIGHT * 2 }, styles.verticalGap]}>
-          <CustomButton onPress={startGameHandler} success fontSize={30}>
+          <CustomButton
+            onPress={startGameHandler}
+            disabled={!isGameReady()}
+            success
+            fontSize={30}
+          >
             OYUNU BAŞLAT
           </CustomButton>
         </View>

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { StyleSheet, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import { v1 as uuidv1 } from "uuid";
 
 import Location from "../components/Location";
@@ -18,14 +18,9 @@ import {
   saveLocationsToStorage,
 } from "../store/locationsSlice";
 
-export default function Locations({ navigation, route }) {
-  const storedLocations = route.params.storedLocations;
-  const [locations, setLocations] = useState(null);
+export default function Locations({ navigation }) {
+  const locations = useSelector((store) => store.locations.future);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    setLocations(storedLocations);
-  }, []);
 
   const cancelHandler = () => {
     dispatch(cancelChanges());
@@ -39,8 +34,6 @@ export default function Locations({ navigation, route }) {
 
   const returnToDefaultSettingsHandler = () => {
     dispatch(returnToDefaultSettings());
-    // dispatch(saveLocationsToStorage());
-    // navigation.goBack();
   };
 
   const addNewLocationHandler = () => {
@@ -63,7 +56,6 @@ export default function Locations({ navigation, route }) {
         { enabled: true, roleName: "", id: uuidv1() },
       ],
     };
-    setLocations((state) => [...state, newLocation]);
     dispatch(addNewLocationSlot({ newLocation }));
   };
 

@@ -13,7 +13,7 @@ const gapBetweenLayers = 10;
 export default function Gameplay({ route }) {
   const { numberOfSpy } = route.params;
   const players = useSelector((store) => store.players);
-  const locations = useSelector((store) => store.locations);
+  const locations = useSelector((store) => store.locations.current);
   const [showPlayerRoleModal, setShowPlayerRoleModal] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [allPlayersWithRoles, setAllPlayersWithRoles] = useState(null);
