@@ -5,16 +5,22 @@ import locationsDefaults from "../locations-defaults.json";
 import { STORE_ACTIVE_LOCATIONS } from "../constants/globalConstants";
 
 let initialState = locationsDefaults;
+let currentLocations = locationsDefaults;
 
 export const locationsSlice = createSlice({
   name: "locations",
   initialState: initialState,
   reducers: {
     initLocations: (state, action) => {
+      currentLocations = action.payload.storedLocations;
+      console.log("init");
+      console.log(currentLocations[0].enabled);
+      // state = action.payload.storedLocations;
       return action.payload.storedLocations;
     },
     returnToDefaultSettings: (state) => {
       return locationsDefaults;
+      // state = locationsDefaults;
     },
     toggleLocationStatus: (state, action) => {
       const location = getLocationById(state, action);
@@ -39,16 +45,22 @@ export const locationsSlice = createSlice({
       role.roleName = action.payload.roleName;
     },
     cancelChanges: (state) => {
-      state = initialState;
+      console.log("cancel");
+      console.log(currentLocations[0].enabled);
+      return currentLocations;
     },
     saveLocationsToStorage: (state) => {
+      console.log("save");
+      console.log(currentLocations[0].enabled);
+      currentLocations = state;
+      console.log(currentLocations === state);
       saveLocations(state);
     },
     addNewLocationSlot: (state, action) => {
       state.push(action.payload.newLocation);
     },
     deleteLocation: (state, action) => {
-      return state.filter((loc) => loc.id !== action.payload.locationId);
+      state = state.filter((loc) => loc.id === action.payload.locationId);
     },
   },
 });
@@ -70,6 +82,7 @@ const saveLocations = async (state) => {
   try {
     const activeLocations = JSON.stringify(state);
     await AsyncStorage.setItem(STORE_ACTIVE_LOCATIONS, activeLocations);
+    // initialState = state;
   } catch (err) {
     console.log(err);
   }

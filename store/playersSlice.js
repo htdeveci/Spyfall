@@ -4,9 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { STORE_ACTIVE_PLAYERS } from "../constants/globalConstants";
 
 let initialState = [
-  { playerName: "Hasan", id: 1 },
-  { playerName: "Taha", id: 2 },
-  { playerName: "Esro", id: 3 },
+  { playerName: "1. Oyuncu", id: 1 },
+  { playerName: "2. Oyuncu", id: 2 },
+  { playerName: "3. Oyuncu", id: 3 },
 ];
 
 export const playerSlice = createSlice({

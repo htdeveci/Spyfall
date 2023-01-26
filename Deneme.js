@@ -20,11 +20,11 @@ import Gameplay from "./pages/Gameplay";
 
 export default function Deneme() {
   const Stack = createStackNavigator();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const [storedLocations, setStoredLocations] = useState(null);
+  // const [storedLocations, setStoredLocations] = useState(null);
 
-  const getLocations = async () => {
+  /*  const getLocations = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem(STORE_ACTIVE_LOCATIONS);
       return jsonValue === null ? locationsDefaults : JSON.parse(jsonValue);
@@ -33,14 +33,23 @@ export default function Deneme() {
     }
   };
 
-  useEffect(() => {
+  const fetchLocations = async () => {
+    const storedLocations = await getLocations();
+    console.log(storedLocations.length);
+    dispatch(initLocations({ storedLocations }));
+    // setStoredLocations(storedLocations);
+  };
+  fetchLocations(); */
+
+  /* useEffect(() => {
     const fetchLocations = async () => {
       const storedLocations = await getLocations();
+      console.log(storedLocations.length);
       dispatch(initLocations({ storedLocations }));
-      setStoredLocations(storedLocations);
+      // setStoredLocations(storedLocations);
     };
     fetchLocations();
-  }, []);
+  }, []); */
 
   return (
     <NavigationContainer>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, FlatList } from "react-native";
 import { useDispatch } from "react-redux";
 import { v1 as uuidv1 } from "uuid";
 
 import Location from "../components/Location";
 import CustomButton from "../components/UI/CustomButton";
+import CustomFlatList from "../components/UI/CustomFlatList";
 import {
   COLORS,
   LINE_HEIGHT,
@@ -36,25 +37,10 @@ export default function Locations({ navigation, route }) {
     navigation.navigate(NAVIGATION_NAME_GAME_SETUP);
   };
 
-  const getLocationComponents = () => {
-    let locationComponents = [];
-    for (let i = 0; i < locations.length; i++) {
-      locationComponents.push(
-        <Location
-          key={uuidv1()}
-          locationId={locations[i].id}
-          height={LINE_HEIGHT}
-          style={styles.addMarginBottom}
-        />
-      );
-    }
-    return locationComponents;
-  };
-
   const returnToDefaultSettingsHandler = () => {
     dispatch(returnToDefaultSettings());
-    dispatch(saveLocationsToStorage());
-    navigation.goBack();
+    // dispatch(saveLocationsToStorage());
+    // navigation.goBack();
   };
 
   const addNewLocationHandler = () => {
@@ -81,42 +67,55 @@ export default function Locations({ navigation, route }) {
     dispatch(addNewLocationSlot({ newLocation }));
   };
 
+  const renderLocations = (item) => {
+    return (
+      <Location
+        locationId={item.item.id}
+        height={LINE_HEIGHT}
+        style={styles.addMarginBottom}
+      />
+    );
+  };
+
+  const renderButtons = () => {
+    return (
+      <>
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton onPress={addNewLocationHandler} success>
+            YENİ MEKAN EKLE
+          </CustomButton>
+        </View>
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton
+            onPress={cancelHandler}
+            cancel
+            style={{ marginRight: 5 }}
+          >
+            İptal
+          </CustomButton>
+          <CustomButton
+            style={{ marginLeft: 5 }}
+            onPress={saveLocationsHandler}
+          >
+            Kaydet
+          </CustomButton>
+        </View>
+        <View style={styles.buttonContainer}>
+          <CustomButton onPress={returnToDefaultSettingsHandler}>
+            VARSAYILANA DÖN
+          </CustomButton>
+        </View>
+      </>
+    );
+  };
+
   return (
-    <>
-      <Text style={styles.locationsLabel}>MEKANLAR</Text>
-      <View style={styles.container}>
-        {locations && (
-          <>
-            {getLocationComponents()}
-            <View style={[styles.buttonContainer, styles.addMarginBottom]}>
-              <CustomButton onPress={addNewLocationHandler} success>
-                YENİ MEKAN EKLE
-              </CustomButton>
-            </View>
-            <View style={[styles.buttonContainer, styles.addMarginBottom]}>
-              <CustomButton
-                onPress={cancelHandler}
-                cancel
-                style={{ marginRight: 5 }}
-              >
-                İptal
-              </CustomButton>
-              <CustomButton
-                style={{ marginLeft: 5 }}
-                onPress={saveLocationsHandler}
-              >
-                Kaydet
-              </CustomButton>
-            </View>
-            <View style={styles.buttonContainer}>
-              <CustomButton onPress={returnToDefaultSettingsHandler}>
-                VARSAYILANA DÖN
-              </CustomButton>
-            </View>
-          </>
-        )}
-      </View>
-    </>
+    <CustomFlatList
+      data={locations}
+      listLabel="MEKANLAR"
+      renderItem={renderLocations}
+      FooterComponent={renderButtons}
+    />
   );
 }
 
@@ -127,11 +126,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     height: LINE_HEIGHT,
-  },
-  locationsLabel: {
-    color: COLORS.text,
-    fontSize: 30,
-    textAlign: "center",
   },
   addMarginBottom: {
     marginBottom: 10,
