@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { v1 as uuidv1 } from "uuid";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Entypo,
+  FontAwesome5,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
 import CustomButton from "../components/UI/CustomButton";
@@ -21,14 +27,11 @@ export default function GameSetup({ navigation }) {
   const dispatch = useDispatch();
   const players = useSelector((store) => store.players);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
+
   const maxSpyNumber = 3;
 
   const addPlayerHandler = () => {
     dispatch(addNewPlayerSlot({ newPlayer: { playerName: "", id: uuidv1() } }));
-  };
-
-  const numberOfSpyChangeHandler = (value) => {
-    setNumberOfSpy(value);
   };
 
   const locationsButtonHandler = () => {
@@ -54,6 +57,12 @@ export default function GameSetup({ navigation }) {
   };
 
   const renderControllers = () => {
+    const [numberOfSpyInRender, setNumberOfSpyInRender] = useState(numberOfSpy);
+
+    const numberOfSpyChangeHandler = (value) => {
+      setNumberOfSpyInRender(value);
+    };
+
     return (
       <>
         <View style={styles.lineHeight}>
@@ -66,12 +75,15 @@ export default function GameSetup({ navigation }) {
           </CustomButton>
         </View>
         <View style={[styles.spyCountContainer, styles.verticalGap]}>
-          <Text style={styles.text}>Casus Sayısı: {numberOfSpy}</Text>
+          <Text style={styles.text}>Casus Sayısı: {numberOfSpyInRender}</Text>
           <Slider
             maximumValue={maxSpyNumber}
             step={1}
-            value={numberOfSpy}
+            value={numberOfSpyInRender}
             onValueChange={numberOfSpyChangeHandler}
+            onSlidingComplete={(value) => {
+              setNumberOfSpy(value);
+            }}
             thumbTintColor={COLORS.primary}
             minimumTrackTintColor={COLORS.primaryDark}
             maximumTrackTintColor={COLORS.text}
@@ -82,17 +94,22 @@ export default function GameSetup({ navigation }) {
               borderColor: COLORS.secondary,
               borderStyle: "dashed",
               borderWidth: 2,
-              padding: 5,
-              paddingRight: 4,
+              // padding: 5,
+              // paddingRight: 4,
               borderRadius: 10,
+              // backgroundColor: "red",
+              width: LINE_HEIGHT,
+              height: LINE_HEIGHT,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <MaterialCommunityIcons
-              name="pirate"
+            <FontAwesome5
+              name="user-secret"
               size={40}
               color={COLORS.secondary}
               style={{
-                opacity: numberOfSpy / maxSpyNumber,
+                opacity: numberOfSpyInRender / maxSpyNumber,
               }}
             />
           </View>
@@ -115,12 +132,26 @@ export default function GameSetup({ navigation }) {
   };
 
   return (
-    <CustomFlatList
-      data={players}
-      listLabel={`${players.length} OYUNCU`}
-      renderItem={renderPlayers}
-      FooterComponent={renderControllers}
-    />
+    <>
+      <CustomFlatList
+        data={players}
+        listLabel={`${players.length} OYUNCU`}
+        renderItem={renderPlayers}
+        FooterComponent={renderControllers}
+      />
+
+      <View style={{ flexDirection: "row" }}>
+        <Ionicons name="compass" size={50} color={COLORS.secondary} />
+        <Entypo name="location" size={50} color={COLORS.secondary} />
+        <MaterialIcons
+          name="add-location-alt"
+          size={50}
+          color={COLORS.secondary}
+        />
+        <FontAwesome5 name="mandalorian" size={50} color={COLORS.secondary} />
+        <FontAwesome5 name="user-secret" size={50} color={COLORS.secondary} />
+      </View>
+    </>
   );
 }
 

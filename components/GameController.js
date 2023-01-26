@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
+import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import { v1 as uuidv1 } from "uuid";
+
 import { COLORS, LINE_HEIGHT } from "../constants/globalConstants";
 import CustomButton from "./UI/CustomButton";
 import CustomModal from "./UI/CustomModal";
 import CustomTextInput from "./UI/CustomTextInput";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function GameController({
   gapBetweenLayers,
   enableButtons,
   location,
   spies,
+  navigation,
 }) {
   const [isGameFinished, setIsGameFinished] = useState(false);
+
+  useEffect(() => {
+    return navigation.addListener("beforeRemove", (event) => {
+      if (isGameFinished) {
+        return;
+      }
+      event.preventDefault();
+    });
+  }, [navigation, isGameFinished]);
 
   const finishGame = () => {
     setIsGameFinished(true);
@@ -20,6 +32,7 @@ export default function GameController({
 
   const closeFinishModal = () => {
     setIsGameFinished(false);
+    navigation.goBack();
   };
 
   return (
@@ -36,23 +49,33 @@ export default function GameController({
             alignItems: "center",
           }}
         >
-          <MaterialCommunityIcons
-            name="pirate"
-            size={40}
-            color={COLORS.secondary}
-          />
-          <View style={{ marginHorizontal: gapBetweenLayers }}>
-            {spies.map((s) => (
-              <Text key={s} style={{ textAlign: "center", fontWeight: "bold" }}>
-                {s}
-              </Text>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              marginHorizontal: gapBetweenLayers,
+            }}
+          >
+            {spies.map((spy) => (
+              <View
+                key={uuidv1()}
+                style={{
+                  alignItems: "center",
+                  width: "33%",
+                }}
+              >
+                <FontAwesome5
+                  name="user-secret"
+                  size={40}
+                  color={COLORS.secondary}
+                />
+                <Text style={{ textAlign: "center", fontWeight: "bold" }}>
+                  {spy}
+                </Text>
+              </View>
             ))}
           </View>
-          <MaterialCommunityIcons
-            name="pirate"
-            size={40}
-            color={COLORS.secondary}
-          />
         </View>
       </CustomModal>
       <View>
@@ -84,7 +107,7 @@ export default function GameController({
         </View>
 
         <View style={{ height: LINE_HEIGHT }}>
-          <CustomButton cancel disabled={!enableButtons} onPress={finishGame}>
+          <CustomButton cancel onPress={finishGame}>
             Oyunu Sonlandır
           </CustomButton>
         </View>

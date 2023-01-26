@@ -10,7 +10,7 @@ import GameController from "../components/GameController";
 
 const gapBetweenLayers = 10;
 
-export default function Gameplay({ route }) {
+export default function Gameplay({ navigation, route }) {
   const { numberOfSpy } = route.params;
   const players = useSelector((store) => store.players);
   const locations = useSelector((store) => store.locations.current);
@@ -145,6 +145,7 @@ export default function Gameplay({ route }) {
             enableButtons={enableGameControllerButtons}
             location={allPlayersWithRoles[0].location.locationName}
             spies={getSpyNames()}
+            navigation={navigation}
           />
         </View>
       )}
