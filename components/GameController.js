@@ -3,13 +3,16 @@ import { Text, View } from "react-native";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import { v1 as uuidv1 } from "uuid";
 
-import { COLORS, LINE_HEIGHT } from "../constants/globalConstants";
+import {
+  COLORS,
+  GAP_BETWEEN_LAYERS,
+  LINE_HEIGHT,
+} from "../constants/globalConstants";
 import CustomButton from "./UI/CustomButton";
 import CustomModal from "./UI/CustomModal";
 import CustomTextInput from "./UI/CustomTextInput";
 
 export default function GameController({
-  gapBetweenLayers,
   enableButtons,
   location,
   spies,
@@ -54,7 +57,8 @@ export default function GameController({
               flex: 1,
               flexDirection: "row",
               justifyContent: "space-evenly",
-              marginHorizontal: gapBetweenLayers,
+              marginHorizontal: GAP_BETWEEN_LAYERS,
+              marginTop: GAP_BETWEEN_LAYERS / 2,
             }}
           >
             {spies.map((spy) => (
@@ -70,7 +74,13 @@ export default function GameController({
                   size={40}
                   color={COLORS.secondary}
                 />
-                <Text style={{ textAlign: "center", fontWeight: "bold" }}>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    marginTop: GAP_BETWEEN_LAYERS / 2,
+                  }}
+                >
                   {spy}
                 </Text>
               </View>
@@ -83,12 +93,12 @@ export default function GameController({
           style={{
             height: LINE_HEIGHT * 2,
             flexDirection: "row",
-            marginBottom: gapBetweenLayers,
+            marginBottom: GAP_BETWEEN_LAYERS,
           }}
         >
           <CustomButton
             success
-            style={{ flex: 3, marginRight: gapBetweenLayers }}
+            style={{ flex: 3, marginRight: GAP_BETWEEN_LAYERS }}
             disabled={!enableButtons}
           >
             Zamanlayıcıyı Başlat

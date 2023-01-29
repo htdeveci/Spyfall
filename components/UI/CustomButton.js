@@ -4,15 +4,24 @@ import { COLORS } from "../../constants/globalConstants";
 export default function CustomButton({
   children,
   onPress,
-  // height,
   fontSize,
   style,
+  secondary = false,
   cancel = false,
   success = false,
   disabled = false,
+  icon = false,
+  iconLabel = null,
+  iconLabelGap = 16,
+  fullWidth = true,
 }) {
   let buttonColor = COLORS.primary;
   let rippleColor = COLORS.primaryDark;
+
+  if (secondary) {
+    buttonColor = COLORS.secondary;
+    rippleColor = COLORS.secondaryDark;
+  }
 
   if (cancel) {
     buttonColor = COLORS.error;
@@ -29,7 +38,13 @@ export default function CustomButton({
   }
 
   return (
-    <View style={[styles.buttonOuterContainer, style]}>
+    <View
+      style={[
+        styles.buttonOuterContainer,
+        style,
+        { alignItems: fullWidth ? undefined : "center" },
+      ]}
+    >
       <Pressable
         style={({ pressed }) =>
           pressed
@@ -40,14 +55,23 @@ export default function CustomButton({
               ]
             : [styles.buttonInnerContainer, { backgroundColor: buttonColor }]
         }
-        // height={height}
         onPress={onPress}
         android_ripple={{ color: rippleColor }}
         disabled={disabled}
       >
-        <Text style={[styles.buttonText, { fontSize }]}>
-          {children.toUpperCase()}
-        </Text>
+        {!icon && (
+          <Text style={[styles.buttonText, { fontSize }]}>
+            {children.toUpperCase()}
+          </Text>
+        )}
+
+        {icon && iconLabel && (
+          <Text style={[styles.buttonText, { marginRight: iconLabelGap }]}>
+            {iconLabel.toUpperCase()}
+          </Text>
+        )}
+
+        {icon && children}
       </Pressable>
     </View>
   );
@@ -55,16 +79,16 @@ export default function CustomButton({
 
 const styles = StyleSheet.create({
   buttonOuterContainer: {
-    borderRadius: 10,
-    overflow: "hidden",
     flex: 1,
   },
   buttonInnerContainer: {
     flex: 1,
-    paddingVertical: 8,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 16,
     elevation: 2,
-    justifyContent: "center",
+    borderRadius: 10,
   },
   buttonText: {
     color: COLORS.text,

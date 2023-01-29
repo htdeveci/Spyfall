@@ -5,7 +5,6 @@ import {
   Entypo,
   FontAwesome5,
   Ionicons,
-  MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
@@ -14,6 +13,7 @@ import CustomButton from "../components/UI/CustomButton";
 import PlayerItem from "../components/PlayerItem";
 import {
   COLORS,
+  GAP_BETWEEN_LAYERS,
   LINE_HEIGHT,
   NAVIGATION_NAME_GAMEPLAY,
   NAVIGATION_NAME_LOCATIONS,
@@ -22,10 +22,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNewPlayerSlot, savePlayersToStorage } from "../store/playersSlice";
 import { initLocations } from "../store/locationsSlice";
 import CustomFlatList from "../components/UI/CustomFlatList";
+import Seperator from "../components/UI/Seperator";
 
 export default function GameSetup({ navigation }) {
   const dispatch = useDispatch();
   const players = useSelector((store) => store.players);
+  const locations = useSelector((store) => store.locations.current);
+  const enabledLocations = locations.filter((loc) => loc.enabled === true);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
 
   const maxSpyNumber = 3;
@@ -50,8 +53,8 @@ export default function GameSetup({ navigation }) {
 
   const renderPlayers = (item) => {
     return (
-      <View style={styles.lineHeight} key={item.item.id}>
-        <PlayerItem player={item.item} style={styles.verticalGap} />
+      <View style={styles.line} key={item.item.id}>
+        <PlayerItem player={item.item} />
       </View>
     );
   };
@@ -65,16 +68,13 @@ export default function GameSetup({ navigation }) {
 
     return (
       <>
-        <View style={styles.lineHeight}>
-          <CustomButton
-            style={styles.verticalGap}
-            onPress={addPlayerHandler}
-            fontSize={20}
-          >
+        <View style={styles.line}>
+          <CustomButton onPress={addPlayerHandler} fontSize={20}>
             Oyuncu Ekle
           </CustomButton>
         </View>
-        <View style={[styles.spyCountContainer, styles.verticalGap]}>
+
+        <View style={[styles.spyCountContainer, styles.line]}>
           <Text style={styles.text}>Casus Sayısı: {numberOfSpyInRender}</Text>
           <Slider
             maximumValue={maxSpyNumber}
@@ -94,10 +94,7 @@ export default function GameSetup({ navigation }) {
               borderColor: COLORS.secondary,
               borderStyle: "dashed",
               borderWidth: 2,
-              // padding: 5,
-              // paddingRight: 4,
               borderRadius: 10,
-              // backgroundColor: "red",
               width: LINE_HEIGHT,
               height: LINE_HEIGHT,
               justifyContent: "center",
@@ -114,10 +111,29 @@ export default function GameSetup({ navigation }) {
             />
           </View>
         </View>
-        <View style={[styles.lineHeight, styles.verticalGap]}>
-          <CustomButton onPress={locationsButtonHandler}>mekanlar</CustomButton>
+
+        <View style={[styles.line, { flexDirection: "row" }]}>
+          <CustomButton
+            onPress={locationsButtonHandler}
+            icon
+            iconLabel="Roller"
+            style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <Ionicons name="person" size={30} color={COLORS.text} />
+          </CustomButton>
+
+          <CustomButton
+            onPress={locationsButtonHandler}
+            secondary
+            icon
+            iconLabel={`Mekanlar: ${enabledLocations.length}/${locations.length}`}
+            style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <Entypo name="location" size={30} color={COLORS.text} />
+          </CustomButton>
         </View>
-        <View style={[{ height: LINE_HEIGHT * 2 }, styles.verticalGap]}>
+
+        <View style={{ height: LINE_HEIGHT * 2 }}>
           <CustomButton
             onPress={startGameHandler}
             disabled={!isGameReady()}
@@ -139,18 +155,6 @@ export default function GameSetup({ navigation }) {
         renderItem={renderPlayers}
         FooterComponent={renderControllers}
       />
-
-      <View style={{ flexDirection: "row" }}>
-        <Ionicons name="compass" size={50} color={COLORS.secondary} />
-        <Entypo name="location" size={50} color={COLORS.secondary} />
-        <MaterialIcons
-          name="add-location-alt"
-          size={50}
-          color={COLORS.secondary}
-        />
-        <FontAwesome5 name="mandalorian" size={50} color={COLORS.secondary} />
-        <FontAwesome5 name="user-secret" size={50} color={COLORS.secondary} />
-      </View>
     </>
   );
 }
@@ -160,12 +164,12 @@ const styles = StyleSheet.create({
     color: COLORS.text,
     fontSize: 20,
   },
-  lineHeight: {
+  line: {
     height: LINE_HEIGHT,
+    marginBottom: GAP_BETWEEN_LAYERS,
   },
   spyCountContainer: {
     flexDirection: "row",
     alignItems: "center",
   },
-  verticalGap: { marginVertical: 4 },
 });

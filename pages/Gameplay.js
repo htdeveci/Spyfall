@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import CustomButton from "../components/UI/CustomButton";
 import CustomModal from "../components/UI/CustomModal";
-import { COLORS, LINE_HEIGHT } from "../constants/globalConstants";
+import {
+  COLORS,
+  GAP_BETWEEN_LAYERS,
+  LINE_HEIGHT,
+} from "../constants/globalConstants";
 import GameController from "../components/GameController";
-
-const gapBetweenLayers = 10;
+import CustomFlatList from "../components/UI/CustomFlatList";
+import Seperator from "../components/UI/Seperator";
 
 export default function Gameplay({ navigation, route }) {
   const { numberOfSpy } = route.params;
@@ -79,8 +83,49 @@ export default function Gameplay({ navigation, route }) {
     return spies;
   };
 
+  const renderPlayers = (item) => {
+    return (
+      <View
+        style={{
+          height: LINE_HEIGHT,
+          marginBottom: GAP_BETWEEN_LAYERS,
+        }}
+      >
+        <CustomButton
+          onPress={playerClickHandler.bind(null, item.item.id)}
+          disabled={item.item.roleSeen}
+        >
+          {item.item.playerName}
+        </CustomButton>
+      </View>
+    );
+  };
+
+  const renderGameController = (item) => {
+    return (
+      <>
+        <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} />
+        <GameController
+          enableButtons={enableGameControllerButtons}
+          location={allPlayersWithRoles[0].location.locationName}
+          spies={getSpyNames()}
+          navigation={navigation}
+        />
+      </>
+    );
+  };
+
   return (
     <>
+      {allPlayersWithRoles && (
+        <CustomFlatList
+          data={allPlayersWithRoles}
+          listLabel="OYUNCULAR"
+          renderItem={renderPlayers}
+          FooterComponent={renderGameController}
+        />
+      )}
+
       {selectedPlayer && (
         <CustomModal
           show={showPlayerRoleModal}
@@ -94,8 +139,8 @@ export default function Gameplay({ navigation, route }) {
           </View>
 
           {selectedPlayer.isSpy && (
-            <MaterialCommunityIcons
-              name="pirate"
+            <FontAwesome5
+              name="user-secret"
               size={40}
               color={COLORS.secondary}
             />
@@ -110,45 +155,6 @@ export default function Gameplay({ navigation, route }) {
           )}
         </CustomModal>
       )}
-
-      {allPlayersWithRoles && (
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "space-between",
-            marginBottom: 50,
-          }}
-        >
-          <View>
-            {allPlayersWithRoles.map((player) => {
-              return (
-                <View
-                  key={player.id}
-                  style={{
-                    height: LINE_HEIGHT,
-                    marginBottom: gapBetweenLayers,
-                  }}
-                >
-                  <CustomButton
-                    onPress={playerClickHandler.bind(null, player.id)}
-                    disabled={player.roleSeen}
-                  >
-                    {player.playerName}
-                  </CustomButton>
-                </View>
-              );
-            })}
-          </View>
-
-          <GameController
-            gapBetweenLayers={gapBetweenLayers}
-            enableButtons={enableGameControllerButtons}
-            location={allPlayersWithRoles[0].location.locationName}
-            spies={getSpyNames()}
-            navigation={navigation}
-          />
-        </View>
-      )}
     </>
   );
 }
@@ -158,7 +164,6 @@ const styles = StyleSheet.create({
     color: COLORS.text,
   },
   playerNamePressable: {
-    // backgroundColor: "red",
     width: "100%",
     height: "100%",
     justifyContent: "center",

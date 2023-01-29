@@ -1,10 +1,14 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { Checkbox } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 
-import { COLORS } from "../constants/globalConstants";
+import {
+  COLORS,
+  GAP_BETWEEN_LAYERS,
+  LINE_HEIGHT,
+} from "../constants/globalConstants";
 import Role from "./Role";
 import CustomTextInput from "./UI/CustomTextInput";
 import Card from "./UI/Card";
@@ -16,7 +20,7 @@ import {
 } from "../store/locationsSlice";
 import CustomButton from "./UI/CustomButton";
 
-export default function Location({ locationId, height, style }) {
+export default function Location({ locationId, roleHeight, style }) {
   const location = useSelector((store) =>
     store.locations.future.find((loc) => loc.id === locationId)
   );
@@ -51,7 +55,14 @@ export default function Location({ locationId, height, style }) {
   const getRoles = () => {
     let result = [];
     for (let i = 0; i < location.roles.length; i++) {
-      result.push(<Role key={i} index={i + 1} roleId={location.roles[i].id} />);
+      result.push(
+        <Role
+          key={i}
+          index={i + 1}
+          roleId={location.roles[i].id}
+          style={{ height: roleHeight }}
+        />
+      );
     }
     return result;
   };
@@ -65,7 +76,7 @@ export default function Location({ locationId, height, style }) {
     <>
       {location && (
         <View style={style}>
-          <View style={[styles.container, { height: height }]}>
+          <View style={[styles.container, { height: LINE_HEIGHT }]}>
             <Checkbox
               status={location.enabled ? "checked" : "unchecked"}
               onPress={toggleLocationStatusHandler}
@@ -97,7 +108,7 @@ export default function Location({ locationId, height, style }) {
           {expandRoles && (
             <>
               <View style={styles.rolesContainer}>
-                <Card style={{ width: "50%", height: height }}>
+                <Card style={{ width: "50%", height: roleHeight }}>
                   <CustomTextInput
                     placeholder="Mekan Adı"
                     value={location.locationName}
@@ -109,7 +120,7 @@ export default function Location({ locationId, height, style }) {
                 <Card
                   style={{
                     width: "50%",
-                    height: height,
+                    height: roleHeight,
                     paddingVertical: 0,
                   }}
                 >
@@ -136,14 +147,23 @@ export default function Location({ locationId, height, style }) {
 
                 <View
                   style={{
-                    height: height,
+                    height: roleHeight,
                     width: "50%",
                     borderWidth: 1,
                     borderColor: COLORS.backgroud,
                   }}
                 >
-                  <CustomButton onPress={deleteLocationHandler} cancel>
-                    MEKANI SİL
+                  <CustomButton
+                    onPress={deleteLocationHandler}
+                    cancel
+                    icon
+                    iconLabel="MEKANI SİL"
+                  >
+                    <MaterialIcons
+                      name="delete-forever"
+                      size={30}
+                      color={COLORS.text}
+                    />
                   </CustomButton>
                 </View>
               </View>
@@ -183,7 +203,7 @@ const styles = StyleSheet.create({
   rolesContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    padding: 5,
+    padding: GAP_BETWEEN_LAYERS / 2,
     justifyContent: "center",
   },
   allRolesPressable: {

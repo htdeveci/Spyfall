@@ -1,7 +1,4 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createSlice } from "@reduxjs/toolkit";
-
-import { STORE_ACTIVE_PLAYERS } from "../constants/globalConstants";
 
 let initialState = [
   { playerName: "1. Oyuncu", id: 1 },

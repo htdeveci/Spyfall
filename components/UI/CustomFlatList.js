@@ -15,6 +15,8 @@ export default function CustomFlatList({
         renderItem={renderItem}
         ListFooterComponent={FooterComponent}
         style={{ marginVertical: 20 }}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
     </>
   );

@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { v1 as uuidv1 } from "uuid";
@@ -6,8 +7,10 @@ import { v1 as uuidv1 } from "uuid";
 import Location from "../components/Location";
 import CustomButton from "../components/UI/CustomButton";
 import CustomFlatList from "../components/UI/CustomFlatList";
+import Seperator from "../components/UI/Seperator";
 import {
   COLORS,
+  GAP_BETWEEN_LAYERS,
   LINE_HEIGHT,
   NAVIGATION_NAME_GAME_SETUP,
 } from "../constants/globalConstants";
@@ -20,7 +23,15 @@ import {
 
 export default function Locations({ navigation }) {
   const locations = useSelector((store) => store.locations.future);
+  const savedLocations = useSelector((store) => store.locations.current);
+  const [isChanged, setIsChanged] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (JSON.stringify(locations) !== JSON.stringify(savedLocations)) {
+      setIsChanged(true);
+    }
+  }, [locations]);
 
   const cancelHandler = () => {
     dispatch(cancelChanges());
@@ -63,7 +74,7 @@ export default function Locations({ navigation }) {
     return (
       <Location
         locationId={item.item.id}
-        height={LINE_HEIGHT}
+        roleHeight={LINE_HEIGHT - 5}
         style={styles.addMarginBottom}
       />
     );
@@ -73,28 +84,208 @@ export default function Locations({ navigation }) {
     return (
       <>
         <View style={[styles.buttonContainer, styles.addMarginBottom]}>
-          <CustomButton onPress={addNewLocationHandler} success>
-            YENİ MEKAN EKLE
+          <CustomButton
+            onPress={returnToDefaultSettingsHandler}
+            icon
+            secondary
+            iconLabel="VARSAYILAN"
+            style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <FontAwesome name="gears" size={30} color={COLORS.text} />
+          </CustomButton>
+
+          <CustomButton
+            onPress={addNewLocationHandler}
+            icon
+            iconLabel="YENİ MEKAN"
+            iconLabelGap={10}
+            style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <MaterialIcons
+              name="add-location-alt"
+              size={30}
+              color={COLORS.text}
+            />
           </CustomButton>
         </View>
+
         <View style={[styles.buttonContainer, styles.addMarginBottom]}>
           <CustomButton
             onPress={cancelHandler}
             cancel
-            style={{ marginRight: 5 }}
+            icon
+            iconLabel="İptal"
+            iconLabelGap={10}
+            style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
           >
-            İptal
+            <MaterialIcons name="cancel" size={30} color={COLORS.text} />
           </CustomButton>
+
           <CustomButton
-            style={{ marginLeft: 5 }}
             onPress={saveLocationsHandler}
+            disabled={!isChanged}
+            success
+            icon
+            iconLabel="Kaydet"
+            style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
           >
-            Kaydet
+            <Entypo name="save" size={30} color={COLORS.text} />
           </CustomButton>
         </View>
-        <View style={styles.buttonContainer}>
-          <CustomButton onPress={returnToDefaultSettingsHandler}>
-            VARSAYILANA DÖN
+
+        <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} />
+
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton
+            onPress={addNewLocationHandler}
+            icon
+            iconLabel="YENİ MEKAN"
+            iconLabelGap={10}
+          >
+            <MaterialIcons
+              name="add-location-alt"
+              size={30}
+              color={COLORS.text}
+            />
+          </CustomButton>
+        </View>
+
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton
+            onPress={returnToDefaultSettingsHandler}
+            icon
+            secondary
+            iconLabel="VARSAYILAN"
+          >
+            <FontAwesome name="gears" size={30} color={COLORS.text} />
+          </CustomButton>
+        </View>
+
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton
+            onPress={cancelHandler}
+            cancel
+            icon
+            iconLabel="İptal"
+            iconLabelGap={10}
+            style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <MaterialIcons name="cancel" size={30} color={COLORS.text} />
+          </CustomButton>
+
+          <CustomButton
+            onPress={saveLocationsHandler}
+            disabled={!isChanged}
+            success
+            icon
+            iconLabel="Kaydet"
+            style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <Entypo name="save" size={30} color={COLORS.text} />
+          </CustomButton>
+        </View>
+
+        <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} />
+
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton
+            onPress={addNewLocationHandler}
+            icon
+            iconLabel="YENİ MEKAN"
+            iconLabelGap={10}
+          >
+            <MaterialIcons
+              name="add-location-alt"
+              size={30}
+              color={COLORS.text}
+            />
+          </CustomButton>
+        </View>
+
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton
+            onPress={cancelHandler}
+            cancel
+            icon
+            iconLabel="İptal"
+            iconLabelGap={10}
+            style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <MaterialIcons name="cancel" size={30} color={COLORS.text} />
+          </CustomButton>
+
+          <CustomButton
+            onPress={saveLocationsHandler}
+            disabled={!isChanged}
+            success
+            icon
+            iconLabel="Kaydet"
+            style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <Entypo name="save" size={30} color={COLORS.text} />
+          </CustomButton>
+        </View>
+
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton
+            onPress={returnToDefaultSettingsHandler}
+            icon
+            secondary
+            iconLabel="VARSAYILAN"
+          >
+            <FontAwesome name="gears" size={30} color={COLORS.text} />
+          </CustomButton>
+        </View>
+
+        <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} />
+
+        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+          <CustomButton
+            onPress={cancelHandler}
+            cancel
+            icon
+            iconLabelGap={10}
+            style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <MaterialIcons name="cancel" size={30} color={COLORS.text} />
+          </CustomButton>
+
+          <CustomButton
+            onPress={returnToDefaultSettingsHandler}
+            icon
+            secondary
+            style={{
+              marginRight: GAP_BETWEEN_LAYERS / 2,
+              marginLeft: GAP_BETWEEN_LAYERS / 2,
+            }}
+          >
+            <FontAwesome name="gears" size={30} color={COLORS.text} />
+          </CustomButton>
+
+          <CustomButton
+            onPress={addNewLocationHandler}
+            icon
+            iconLabelGap={10}
+            style={{
+              marginLeft: GAP_BETWEEN_LAYERS / 2,
+              marginRight: GAP_BETWEEN_LAYERS / 2,
+            }}
+          >
+            <MaterialIcons
+              name="add-location-alt"
+              size={30}
+              color={COLORS.text}
+            />
+          </CustomButton>
+
+          <CustomButton
+            onPress={saveLocationsHandler}
+            disabled={!isChanged}
+            success
+            icon
+            style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
+          >
+            <Entypo name="save" size={30} color={COLORS.text} />
           </CustomButton>
         </View>
       </>
@@ -120,6 +311,6 @@ const styles = StyleSheet.create({
     height: LINE_HEIGHT,
   },
   addMarginBottom: {
-    marginBottom: 10,
+    marginBottom: GAP_BETWEEN_LAYERS,
   },
 });

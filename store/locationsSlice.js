@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import locationsDefaults from "../locations-defaults.json";
-import { STORE_ACTIVE_LOCATIONS } from "../constants/globalConstants";
 
 let initialState = {
   current: locationsDefaults,

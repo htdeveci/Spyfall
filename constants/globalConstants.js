@@ -9,6 +9,7 @@ export const COLORS = {
   primary: "#ff9100",
   primaryDark: "#cc7400",
   secondary: "#006eff",
+  secondaryDark: "#0355c0",
   success: "#4caf50",
   successDark: "#2e7d32",
   error: "#d32f2f",
@@ -22,4 +23,5 @@ export const NAVIGATION_NAME_GAMEPLAY = "Gameplay";
 export const STORE_ACTIVE_LOCATIONS = "ActiveLocations";
 export const STORE_ACTIVE_PLAYERS = "ActivePlayers";
 
-export const LINE_HEIGHT = 55;
+export const LINE_HEIGHT = 50;
+export const GAP_BETWEEN_LAYERS = 10;
