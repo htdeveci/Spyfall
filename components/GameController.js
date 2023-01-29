@@ -41,10 +41,12 @@ export default function GameController({
   return (
     <>
       <CustomModal show={isGameFinished} onClose={closeFinishModal}>
-        <View style={{ flexDirection: "row" }}>
-          <Text>Konum: </Text>
-          <Text style={{ fontWeight: "bold" }}>{location}</Text>
-        </View>
+        {location && (
+          <View style={{ flexDirection: "row" }}>
+            <Text>Konum: </Text>
+            <Text style={{ fontWeight: "bold" }}>{location}</Text>
+          </View>
+        )}
 
         <View
           style={{
@@ -61,7 +63,49 @@ export default function GameController({
               marginTop: GAP_BETWEEN_LAYERS / 2,
             }}
           >
-            {spies.map((spy) => (
+            {location && (
+              <>
+                {spies.length > 0 &&
+                  spies.map((spy) => (
+                    <View
+                      key={uuidv1()}
+                      style={{
+                        alignItems: "center",
+                        width: "33%",
+                      }}
+                    >
+                      <FontAwesome5
+                        name="user-secret"
+                        size={40}
+                        color={COLORS.secondary}
+                      />
+                      <Text
+                        style={{
+                          textAlign: "center",
+                          fontWeight: "bold",
+                          marginTop: GAP_BETWEEN_LAYERS / 2,
+                        }}
+                      >
+                        {spy}
+                      </Text>
+                    </View>
+                  ))}
+
+                {spies.length === 0 && (
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      marginTop: GAP_BETWEEN_LAYERS / 2,
+                    }}
+                  >
+                    Casus Yoktu
+                  </Text>
+                )}
+              </>
+            )}
+
+            {!location && (
               <View
                 key={uuidv1()}
                 style={{
@@ -69,11 +113,28 @@ export default function GameController({
                   width: "33%",
                 }}
               >
-                <FontAwesome5
-                  name="user-secret"
-                  size={40}
-                  color={COLORS.secondary}
-                />
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginBottom: 10,
+                  }}
+                >
+                  <FontAwesome5
+                    name="user-secret"
+                    size={40}
+                    color={COLORS.secondary}
+                  />
+                  <FontAwesome5
+                    name="user-secret"
+                    size={40}
+                    color={COLORS.secondary}
+                  />
+                  <FontAwesome5
+                    name="user-secret"
+                    size={40}
+                    color={COLORS.secondary}
+                  />
+                </View>
                 <Text
                   style={{
                     textAlign: "center",
@@ -81,10 +142,10 @@ export default function GameController({
                     marginTop: GAP_BETWEEN_LAYERS / 2,
                   }}
                 >
-                  {spy}
+                  Herkes Casustu
                 </Text>
               </View>
-            ))}
+            )}
           </View>
         </View>
       </CustomModal>

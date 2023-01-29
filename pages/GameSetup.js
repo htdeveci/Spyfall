@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Switch, Text, View } from "react-native";
 import { v1 as uuidv1 } from "uuid";
-import {
-  Entypo,
-  FontAwesome5,
-  Ionicons,
-  MaterialIcons,
-} from "@expo/vector-icons";
+import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
 import CustomButton from "../components/UI/CustomButton";
@@ -19,17 +14,22 @@ import {
   NAVIGATION_NAME_LOCATIONS,
 } from "../constants/globalConstants";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewPlayerSlot, savePlayersToStorage } from "../store/playersSlice";
-import { initLocations } from "../store/locationsSlice";
+import { addNewPlayerSlot } from "../store/playersSlice";
+import {
+  initLocations,
+  toggleGameRolesStatus,
+  toggleRoleStatus,
+} from "../store/locationsSlice";
 import CustomFlatList from "../components/UI/CustomFlatList";
-import Seperator from "../components/UI/Seperator";
 
 export default function GameSetup({ navigation }) {
   const dispatch = useDispatch();
   const players = useSelector((store) => store.players);
   const locations = useSelector((store) => store.locations.current);
+  const enableRoles = useSelector((store) => store.locations.enableRoles);
   const enabledLocations = locations.filter((loc) => loc.enabled === true);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
+  // const [enableRoles, setEnableRoles] = useState(true);
 
   const maxSpyNumber = 3;
 
@@ -51,6 +51,10 @@ export default function GameSetup({ navigation }) {
       navigation.navigate(NAVIGATION_NAME_GAMEPLAY, { numberOfSpy });
   };
 
+  const toggleRolesEnabled = () => {
+    dispatch(toggleGameRolesStatus());
+  };
+
   const renderPlayers = (item) => {
     return (
       <View style={styles.line} key={item.item.id}>
@@ -64,6 +68,21 @@ export default function GameSetup({ navigation }) {
 
     const numberOfSpyChangeHandler = (value) => {
       setNumberOfSpyInRender(value);
+    };
+
+    const getSpySliderOpacity = () => {
+      switch (numberOfSpyInRender) {
+        case 0:
+          return 0;
+        case 1:
+          return 0.5;
+        case 2:
+          return 0.75;
+        case 3:
+          return 1;
+        default:
+          return 1;
+      }
     };
 
     return (
@@ -106,7 +125,9 @@ export default function GameSetup({ navigation }) {
               size={40}
               color={COLORS.secondary}
               style={{
-                opacity: numberOfSpyInRender / maxSpyNumber,
+                // opacity: numberOfSpyInRender / maxSpyNumbe
+
+                opacity: getSpySliderOpacity(),
               }}
             />
           </View>
@@ -114,20 +135,30 @@ export default function GameSetup({ navigation }) {
 
         <View style={[styles.line, { flexDirection: "row" }]}>
           <CustomButton
-            onPress={locationsButtonHandler}
-            icon
+            onPress={toggleRolesEnabled}
+            secondary
             iconLabel="Roller"
             style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
+            useOpacity={false}
+            customChildren
           >
-            <Ionicons name="person" size={30} color={COLORS.text} />
+            <Switch
+              onValueChange={toggleRolesEnabled}
+              value={enableRoles}
+              thumbColor={enableRoles ? COLORS.primary : COLORS.darkGray}
+              trackColor={{
+                false: COLORS.lightGray,
+                true: COLORS.primaryDark,
+              }}
+            />
           </CustomButton>
 
           <CustomButton
             onPress={locationsButtonHandler}
             secondary
-            icon
             iconLabel={`Mekanlar: ${enabledLocations.length}/${locations.length}`}
             style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
+            customChildren
           >
             <Entypo name="location" size={30} color={COLORS.text} />
           </CustomButton>

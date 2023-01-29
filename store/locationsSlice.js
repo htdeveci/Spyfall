@@ -5,6 +5,7 @@ import locationsDefaults from "../locations-defaults.json";
 let initialState = {
   current: locationsDefaults,
   future: locationsDefaults,
+  enableRoles: true,
 };
 
 export const locationsSlice = createSlice({
@@ -16,7 +17,9 @@ export const locationsSlice = createSlice({
     },
     returnToDefaultSettings: (state) => {
       return { ...state, future: locationsDefaults };
-      // state = locationsDefaults;
+    },
+    toggleGameRolesStatus: (state) => {
+      state.enableRoles = !state.enableRoles;
     },
     toggleLocationStatus: (state, action) => {
       const location = getLocationById(state, action);
@@ -87,5 +90,6 @@ export const {
   returnToDefaultSettings,
   addNewLocationSlot,
   deleteLocation,
+  toggleGameRolesStatus,
 } = locationsSlice.actions;
 export default locationsSlice.reducer;

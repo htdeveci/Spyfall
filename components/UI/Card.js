@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import { COLORS } from "../../constants/globalConstants";
 
-export default function Card(props) {
-  return <View style={[styles.container, props.style]}>{props.children}</View>;
+export default function Card({ style, children }) {
+  return <View style={[styles.container, style]}>{children}</View>;
 }
 
 const styles = StyleSheet.create({

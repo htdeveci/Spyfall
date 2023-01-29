@@ -156,7 +156,7 @@ export default function Location({ locationId, roleHeight, style }) {
                   <CustomButton
                     onPress={deleteLocationHandler}
                     cancel
-                    icon
+                    customChildren
                     iconLabel="MEKANI SİL"
                   >
                     <MaterialIcons

@@ -18,6 +18,7 @@ export default function Gameplay({ navigation, route }) {
   const { numberOfSpy } = route.params;
   const players = useSelector((store) => store.players);
   const locations = useSelector((store) => store.locations.current);
+  const enableRoles = useSelector((store) => store.locations.enableRoles);
   const [showPlayerRoleModal, setShowPlayerRoleModal] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [allPlayersWithRoles, setAllPlayersWithRoles] = useState(null);
@@ -26,32 +27,59 @@ export default function Gameplay({ navigation, route }) {
 
   useEffect(() => {
     const enabledLocations = locations.filter((loc) => loc.enabled === true);
-    const locationIndex = Math.floor(Math.random() * enabledLocations.length);
-    const selectedLocation = enabledLocations[locationIndex];
-
-    let spiesIds = [];
-    let spyIndex = Math.floor(Math.random() * players.length);
-    for (let i = 0; i < numberOfSpy; i++) {
-      while (spiesIds.includes(players[spyIndex].id)) {
-        spyIndex = Math.floor(Math.random() * players.length);
-      }
-      spiesIds.push(players[spyIndex].id);
-    }
-
     let allPlayers = [];
-    players.forEach((player) => {
-      allPlayers.push({
-        ...player,
-        roleSeen: false,
-        location: {
-          locationName: selectedLocation.locationName,
-          locationId: selectedLocation.id,
-        },
-        isSpy: spiesIds.includes(player.id),
+    if (numberOfSpy >= players.length || enabledLocations.length === 0) {
+      players.forEach((player) => {
+        allPlayers.push({
+          ...player,
+          roleSeen: false,
+          location: null,
+          isSpy: true,
+        });
       });
-    });
+    } else {
+      const locationIndex = Math.floor(Math.random() * enabledLocations.length);
+      const selectedLocation = enabledLocations[locationIndex];
+
+      let spiesIds = [];
+      let spyIndex = Math.floor(Math.random() * players.length);
+      for (let i = 0; i < numberOfSpy; i++) {
+        while (spiesIds.includes(players[spyIndex].id)) {
+          spyIndex = Math.floor(Math.random() * players.length);
+        }
+        spiesIds.push(players[spyIndex].id);
+      }
+
+      let usableRoles = [];
+      if (enableRoles) {
+        usableRoles = selectedLocation.roles.filter((role) => {
+          if (role.enabled && role.roleName !== "") return role;
+        });
+      }
+
+      players.forEach((player) => {
+        allPlayers.push({
+          ...player,
+          roleSeen: false,
+          location: {
+            locationName: selectedLocation.locationName,
+            locationId: selectedLocation.id,
+          },
+          isSpy: spiesIds.includes(player.id),
+          role: getARole(usableRoles),
+        });
+      });
+    }
     setAllPlayersWithRoles(allPlayers);
   }, []);
+
+  const getARole = (usableRoles) => {
+    if (usableRoles.length > 0) {
+      return usableRoles[Math.floor(Math.random() * usableRoles.length)]
+        .roleName;
+    }
+    return "";
+  };
 
   const playerClickHandler = (id) => {
     const player = allPlayersWithRoles.find((player) => player.id === id);
@@ -93,6 +121,7 @@ export default function Gameplay({ navigation, route }) {
       >
         <CustomButton
           onPress={playerClickHandler.bind(null, item.item.id)}
+          upperCase={false}
           disabled={item.item.roleSeen}
         >
           {item.item.playerName}
@@ -107,7 +136,11 @@ export default function Gameplay({ navigation, route }) {
         <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} />
         <GameController
           enableButtons={enableGameControllerButtons}
-          location={allPlayersWithRoles[0].location.locationName}
+          location={
+            allPlayersWithRoles[0].location
+              ? allPlayersWithRoles[0].location.locationName
+              : null
+          }
           spies={getSpyNames()}
           navigation={navigation}
         />
@@ -146,12 +179,23 @@ export default function Gameplay({ navigation, route }) {
             />
           )}
           {!selectedPlayer.isSpy && (
-            <View style={{ flexDirection: "row" }}>
-              <Text>Konum: </Text>
-              <Text style={{ fontWeight: "bold" }}>
-                {selectedPlayer.location.locationName}
-              </Text>
-            </View>
+            <>
+              <View style={{ flexDirection: "row" }}>
+                <Text>Konum: </Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  {selectedPlayer.location.locationName}
+                </Text>
+              </View>
+
+              {selectedPlayer.role !== "" && (
+                <View style={{ flexDirection: "row" }}>
+                  <Text>Rol: </Text>
+                  <Text style={{ fontWeight: "bold" }}>
+                    {selectedPlayer.role}
+                  </Text>
+                </View>
+              )}
+            </>
           )}
         </CustomModal>
       )}

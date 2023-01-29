@@ -10,10 +10,13 @@ export default function CustomButton({
   cancel = false,
   success = false,
   disabled = false,
-  icon = false,
+  // icon = false,
   iconLabel = null,
   iconLabelGap = 16,
   fullWidth = true,
+  useOpacity = true,
+  customChildren = false,
+  upperCase = true,
 }) {
   let buttonColor = COLORS.primary;
   let rippleColor = COLORS.primaryDark;
@@ -46,32 +49,41 @@ export default function CustomButton({
       ]}
     >
       <Pressable
-        style={({ pressed }) =>
-          pressed
-            ? [
-                styles.buttonInnerContainer,
-                styles.pressed,
-                { backgroundColor: buttonColor },
-              ]
+        style={
+          useOpacity
+            ? ({ pressed }) =>
+                pressed
+                  ? [
+                      styles.buttonInnerContainer,
+                      styles.pressed,
+                      { backgroundColor: buttonColor },
+                    ]
+                  : [
+                      styles.buttonInnerContainer,
+                      { backgroundColor: buttonColor },
+                    ]
             : [styles.buttonInnerContainer, { backgroundColor: buttonColor }]
         }
         onPress={onPress}
         android_ripple={{ color: rippleColor }}
         disabled={disabled}
       >
-        {!icon && (
+        {!customChildren && (
           <Text style={[styles.buttonText, { fontSize }]}>
-            {children.toUpperCase()}
+            {upperCase ? children.toUpperCase() : children}
           </Text>
         )}
 
-        {icon && iconLabel && (
-          <Text style={[styles.buttonText, { marginRight: iconLabelGap }]}>
-            {iconLabel.toUpperCase()}
-          </Text>
+        {customChildren && iconLabel && (
+          <>
+            <Text style={[styles.buttonText, { marginRight: iconLabelGap }]}>
+              {upperCase ? iconLabel.toUpperCase() : iconLabel}
+            </Text>
+            {children}
+          </>
         )}
 
-        {icon && children}
+        {customChildren && !iconLabel && { children }}
       </Pressable>
     </View>
   );
@@ -80,6 +92,8 @@ export default function CustomButton({
 const styles = StyleSheet.create({
   buttonOuterContainer: {
     flex: 1,
+    borderRadius: 10,
+    overflow: "hidden",
   },
   buttonInnerContainer: {
     flex: 1,
@@ -88,7 +102,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     elevation: 2,
-    borderRadius: 10,
   },
   buttonText: {
     color: COLORS.text,
