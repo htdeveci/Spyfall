@@ -4,6 +4,7 @@ import { StyleSheet, TextInput } from "react-native";
 import { COLORS } from "../../constants/globalConstants";
 
 export default function CustomTextInput({
+  keyboardType = "default",
   style,
   placeholder,
   value,
@@ -18,6 +19,7 @@ export default function CustomTextInput({
 
   return (
     <TextInput
+      keyboardType={keyboardType}
       style={[styles.textInput, style]}
       placeholder={placeholder}
       value={inputValue}

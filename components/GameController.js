@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { v1 as uuidv1 } from "uuid";
 
 import {
@@ -11,6 +11,9 @@ import {
 import CustomButton from "./UI/CustomButton";
 import CustomModal from "./UI/CustomModal";
 import CustomTextInput from "./UI/CustomTextInput";
+import SelectDropdown from "react-native-select-dropdown";
+import CustomDropdown from "./UI/CustomDropdown";
+import Card from "./UI/Card";
 
 export default function GameController({
   enableButtons,
@@ -19,6 +22,7 @@ export default function GameController({
   navigation,
 }) {
   const [isGameFinished, setIsGameFinished] = useState(false);
+  const [selectedGameTime, setSelectedGameTime] = useState(10);
 
   useEffect(() => {
     return navigation.addListener("beforeRemove", (event) => {
@@ -36,6 +40,14 @@ export default function GameController({
   const closeFinishModal = () => {
     setIsGameFinished(false);
     navigation.goBack();
+  };
+
+  const getSelectableTimeArray = () => {
+    let result = [];
+    for (let i = 1; i <= 20; i++) {
+      result.push(i);
+    }
+    return result;
   };
 
   return (
@@ -164,17 +176,41 @@ export default function GameController({
           >
             Zamanlayıcıyı Başlat
           </CustomButton>
-          <CustomTextInput
-            style={{
-              flex: 1,
-              backgroundColor: COLORS.lightGray,
-              borderRadius: 10,
-              fontSize: 30,
-              textAlign: "center",
-            }}
-            value="10:00"
-            onChangeText={() => console.log()}
-          />
+
+          <View style={{ flex: 1, width: "100%" }}>
+            <CustomDropdown
+              data={getSelectableTimeArray()}
+              onSelect={(selectedItem, index) => {
+                setSelectedGameTime(selectedItem);
+              }}
+              defaultValue={selectedGameTime}
+              customizedButtonChild={(selectedItem, index) => {
+                return (
+                  <View
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Ionicons
+                      name="timer"
+                      size={24}
+                      color={COLORS.secondary}
+                      style={{ paddingLeft: 2 }}
+                    />
+                    <Text
+                      style={{
+                        color: COLORS.textReverse,
+                        fontSize: 24,
+                      }}
+                    >
+                      {selectedItem}
+                    </Text>
+                  </View>
+                );
+              }}
+            />
+          </View>
         </View>
 
         <View style={{ height: LINE_HEIGHT }}>
