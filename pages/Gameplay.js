@@ -13,6 +13,7 @@ import {
 import GameController from "../components/GameController";
 import CustomFlatList from "../components/UI/CustomFlatList";
 import Seperator from "../components/UI/Seperator";
+import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
 export default function Gameplay({ navigation, route }) {
   const { numberOfSpy } = route.params;
@@ -133,7 +134,7 @@ export default function Gameplay({ navigation, route }) {
   const renderGameController = (item) => {
     return (
       <>
-        <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} />
+        {/* <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} /> */}
         <GameController
           enableButtons={enableGameControllerButtons}
           location={

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { v1 as uuidv1 } from "uuid";
+import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
 import {
   COLORS,
@@ -161,63 +162,88 @@ export default function GameController({
           </View>
         </View>
       </CustomModal>
-      <View>
-        <View
-          style={{
-            height: LINE_HEIGHT * 2,
-            flexDirection: "row",
-            marginBottom: GAP_BETWEEN_LAYERS,
-          }}
-        >
-          <CustomButton
-            success
-            style={{ flex: 3, marginRight: GAP_BETWEEN_LAYERS }}
-            disabled={!enableButtons}
-          >
-            Zamanlayıcıyı Başlat
-          </CustomButton>
 
-          <View style={{ flex: 1, width: "100%" }}>
-            <CustomDropdown
-              data={getSelectableTimeArray()}
-              onSelect={(selectedItem, index) => {
-                setSelectedGameTime(selectedItem);
-              }}
-              defaultValue={selectedGameTime}
-              customizedButtonChild={(selectedItem, index) => {
-                return (
-                  <View
+      <View
+        style={{
+          flex: 1,
+          // justifyContent: "center",
+          // backgroundColor: "red",
+          alignItems: "center",
+          marginBottom: GAP_BETWEEN_LAYERS,
+        }}
+      >
+        <CountdownCircleTimer
+          isPlaying
+          duration={70}
+          colors={[COLORS.success, COLORS.success, COLORS.error]}
+          colorsTime={[70, 30, 0]}
+          trailColor={COLORS.lightGray}
+        >
+          {({ remainingTime }) => (
+            <Text style={{ color: COLORS.text, fontSize: 30 }}>
+              {`${Math.floor(remainingTime / 60) < 10 ? "0" : ""}${Math.floor(
+                remainingTime / 60
+              )}:${remainingTime % 60 < 10 ? "0" : ""}${remainingTime % 60}`}
+            </Text>
+          )}
+        </CountdownCircleTimer>
+      </View>
+
+      <View
+        style={{
+          height: LINE_HEIGHT * 2,
+          flexDirection: "row",
+          marginBottom: GAP_BETWEEN_LAYERS,
+        }}
+      >
+        <CustomButton
+          success
+          style={{ flex: 3, marginRight: GAP_BETWEEN_LAYERS }}
+          disabled={!enableButtons}
+        >
+          Zamanlayıcıyı Başlat
+        </CustomButton>
+
+        <View style={{ flex: 1, width: "100%" }}>
+          <CustomDropdown
+            data={getSelectableTimeArray()}
+            onSelect={(selectedItem, index) => {
+              setSelectedGameTime(selectedItem);
+            }}
+            defaultValue={selectedGameTime}
+            customizedButtonChild={(selectedItem, index) => {
+              return (
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Ionicons
+                    name="timer"
+                    size={24}
+                    color={COLORS.secondary}
+                    style={{ paddingLeft: 2 }}
+                  />
+                  <Text
                     style={{
-                      justifyContent: "center",
-                      alignItems: "center",
+                      color: COLORS.textReverse,
+                      fontSize: 24,
                     }}
                   >
-                    <Ionicons
-                      name="timer"
-                      size={24}
-                      color={COLORS.secondary}
-                      style={{ paddingLeft: 2 }}
-                    />
-                    <Text
-                      style={{
-                        color: COLORS.textReverse,
-                        fontSize: 24,
-                      }}
-                    >
-                      {selectedItem}
-                    </Text>
-                  </View>
-                );
-              }}
-            />
-          </View>
+                    {selectedItem}
+                  </Text>
+                </View>
+              );
+            }}
+          />
         </View>
+      </View>
 
-        <View style={{ height: LINE_HEIGHT }}>
-          <CustomButton cancel onPress={finishGame}>
-            Oyunu Sonlandır
-          </CustomButton>
-        </View>
+      <View style={{ height: LINE_HEIGHT }}>
+        <CustomButton cancel onPress={finishGame}>
+          Oyunu Sonlandır
+        </CustomButton>
       </View>
     </>
   );
