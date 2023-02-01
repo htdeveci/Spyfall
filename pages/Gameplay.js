@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -133,19 +133,16 @@ export default function Gameplay({ navigation, route }) {
 
   const renderGameController = (item) => {
     return (
-      <>
-        {/* <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} /> */}
-        <GameController
-          enableButtons={enableGameControllerButtons}
-          location={
-            allPlayersWithRoles[0].location
-              ? allPlayersWithRoles[0].location.locationName
-              : null
-          }
-          spies={getSpyNames()}
-          navigation={navigation}
-        />
-      </>
+      <GameController
+        enableButtons={enableGameControllerButtons}
+        location={
+          allPlayersWithRoles[0].location
+            ? allPlayersWithRoles[0].location.locationName
+            : null
+        }
+        spies={getSpyNames()}
+        navigation={navigation}
+      />
     );
   };
 
