@@ -14,6 +14,9 @@ import GameController from "../components/GameController";
 import CustomFlatList from "../components/UI/CustomFlatList";
 import Seperator from "../components/UI/Seperator";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
+import Card from "../components/UI/Card";
+
+let enabledLocations;
 
 export default function Gameplay({ navigation, route }) {
   const { numberOfSpy } = route.params;
@@ -25,9 +28,11 @@ export default function Gameplay({ navigation, route }) {
   const [allPlayersWithRoles, setAllPlayersWithRoles] = useState(null);
   const [enableGameControllerButtons, setEnableGameControllerButtons] =
     useState(false);
+  const [isGameStarted, setIsGameStarted] = useState(false);
+  const [selectedGameTime, setSelectedGameTime] = useState(10);
 
   useEffect(() => {
-    const enabledLocations = locations.filter((loc) => loc.enabled === true);
+    enabledLocations = locations.filter((loc) => loc.enabled === true);
     let allPlayers = [];
     if (numberOfSpy >= players.length || enabledLocations.length === 0) {
       players.forEach((player) => {
@@ -131,6 +136,25 @@ export default function Gameplay({ navigation, route }) {
     );
   };
 
+  const renderLocations = (item) => {
+    return (
+      <Card
+        style={[
+          enabledLocations.length % 2 === 0
+            ? item.index >= enabledLocations.length - 2 && {
+                marginBottom: GAP_BETWEEN_LAYERS,
+              }
+            : item.index >= enabledLocations.length - 1 && {
+                marginBottom: GAP_BETWEEN_LAYERS,
+              },
+          { width: "50%" },
+        ]}
+      >
+        <Text>{item.item.locationName}</Text>
+      </Card>
+    );
+  };
+
   const renderGameController = (item) => {
     return (
       <GameController
@@ -142,6 +166,10 @@ export default function Gameplay({ navigation, route }) {
         }
         spies={getSpyNames()}
         navigation={navigation}
+        isGameStarted={isGameStarted}
+        setIsGameStarted={setIsGameStarted}
+        selectedGameTime={selectedGameTime}
+        setSelectedGameTime={setSelectedGameTime}
       />
     );
   };
@@ -150,10 +178,11 @@ export default function Gameplay({ navigation, route }) {
     <>
       {allPlayersWithRoles && (
         <CustomFlatList
-          data={allPlayersWithRoles}
-          listLabel="OYUNCULAR"
-          renderItem={renderPlayers}
+          data={isGameStarted ? enabledLocations : allPlayersWithRoles}
+          listLabel={isGameStarted ? "MEKANLAR" : "OYUNCULAR"}
+          renderItem={isGameStarted ? renderLocations : renderPlayers}
           FooterComponent={renderGameController}
+          numColumns={isGameStarted ? 2 : 1}
         />
       )}
 

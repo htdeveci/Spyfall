@@ -22,11 +22,14 @@ export default function GameController({
   location,
   spies,
   navigation,
+  isGameStarted,
+  setIsGameStarted,
+  selectedGameTime,
+  setSelectedGameTime,
 }) {
-  const [isGameStarted, setIsGameStarted] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
-  const [playTimer, setPlayTimer] = useState(false);
-  const [selectedGameTime, setSelectedGameTime] = useState(10);
+  const [isCountdownFinished, setIsCountdownFinished] = useState(false);
+  const [playTimer, setPlayTimer] = useState(isGameStarted);
 
   useEffect(() => {
     return navigation.addListener("beforeRemove", (event) => {
@@ -57,11 +60,15 @@ export default function GameController({
 
   const startGameHandler = () => {
     setIsGameStarted(true);
-    setPlayTimer(true);
   };
 
   const toggleTimerHandler = () => {
     setPlayTimer((state) => !state);
+  };
+
+  const countdownCompleteHandler = () => {
+    setIsCountdownFinished(true);
+    setPlayTimer(false);
   };
 
   return (
@@ -189,7 +196,8 @@ export default function GameController({
               duration={selectedGameTime * 60}
               colors={[COLORS.success, COLORS.success, COLORS.error]}
               colorsTime={[selectedGameTime * 60, 30, 0]}
-              trailColor={COLORS.lightGray}
+              trailColor={isCountdownFinished ? COLORS.error : COLORS.lightGray}
+              onComplete={countdownCompleteHandler}
             >
               {({ remainingTime }) => (
                 <View
@@ -197,45 +205,64 @@ export default function GameController({
                     alignItems: "center",
                   }}
                 >
-                  <Text
-                    style={{
-                      flex: 1,
-                      textAlignVertical: "bottom",
-                      color: COLORS.lightGray,
-                      fontSize: 12,
-                    }}
-                  >
-                    Kalan
-                  </Text>
-                  <Text
-                    style={{
-                      flex: 1,
-                      textAlignVertical: "center",
-                      color: COLORS.text,
-                      fontSize: 30,
-                    }}
-                  >
-                    {`${
-                      Math.floor(remainingTime / 60) < 10 ? "0" : ""
-                    }${Math.floor(remainingTime / 60)}:${
-                      remainingTime % 60 < 10 ? "0" : ""
-                    }${remainingTime % 60}`}
-                  </Text>
-                  {playTimer && (
-                    <Ionicons
-                      style={{ flex: 1 }}
-                      name="pause"
-                      size={32}
-                      color={COLORS.secondary}
-                    />
+                  {remainingTime > 0 && (
+                    <>
+                      <Text
+                        style={{
+                          flex: 1,
+                          textAlignVertical: "bottom",
+                          color: COLORS.lightGray,
+                          fontSize: 12,
+                        }}
+                      >
+                        Kalan
+                      </Text>
+                      <Text
+                        style={{
+                          flex: 1,
+                          textAlignVertical: "center",
+                          color: COLORS.text,
+                          fontSize: 30,
+                        }}
+                      >
+                        {`${
+                          Math.floor(remainingTime / 60) < 10 ? "0" : ""
+                        }${Math.floor(remainingTime / 60)}:${
+                          remainingTime % 60 < 10 ? "0" : ""
+                        }${remainingTime % 60}`}
+                      </Text>
+
+                      {playTimer && (
+                        <Ionicons
+                          style={{ flex: 1 }}
+                          name="pause"
+                          size={32}
+                          color={COLORS.secondary}
+                        />
+                      )}
+
+                      {!playTimer && (
+                        <Ionicons
+                          style={{ flex: 1 }}
+                          name="play"
+                          size={32}
+                          color={COLORS.secondary}
+                        />
+                      )}
+                    </>
                   )}
-                  {!playTimer && (
-                    <Ionicons
-                      style={{ flex: 1 }}
-                      name="play"
-                      size={32}
-                      color={COLORS.secondary}
-                    />
+
+                  {!remainingTime > 0 && (
+                    <Text
+                      style={{
+                        flex: 1,
+                        textAlignVertical: "center",
+                        color: COLORS.text,
+                        fontSize: 18,
+                      }}
+                    >
+                      SÜRE BİTTİ
+                    </Text>
                   )}
                 </View>
               )}
