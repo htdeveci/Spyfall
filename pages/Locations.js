@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { v1 as uuidv1 } from "uuid";
 
 import Location from "../components/Location";
+import BorderedView from "../components/UI/BorderedView";
 import CustomButton from "../components/UI/CustomButton";
-import CustomFlatList from "../components/UI/CustomFlatList";
+import CustomFlatList, { goToBottom } from "../components/UI/CustomFlatList";
 import Seperator from "../components/UI/Seperator";
 import {
   COLORS,
@@ -47,7 +48,7 @@ export default function Locations({ navigation }) {
     dispatch(returnToDefaultSettings());
   };
 
-  const addNewLocationHandler = () => {
+  const addNewLocationHandler = async () => {
     const newLocation = {
       locationName: "",
       id: uuidv1(),
@@ -67,7 +68,8 @@ export default function Locations({ navigation }) {
         { enabled: true, roleName: "", id: uuidv1() },
       ],
     };
-    dispatch(addNewLocationSlot({ newLocation }));
+    await dispatch(addNewLocationSlot({ newLocation }));
+    goToBottom();
   };
 
   const renderLocations = (item) => {
@@ -75,16 +77,16 @@ export default function Locations({ navigation }) {
       <Location
         locationId={item.item.id}
         roleHeight={LINE_HEIGHT - 5}
-        style={styles.addMarginBottom}
+        style={
+          item.index + 1 !== locations.length ? styles.addMarginBottom : null
+        }
       />
     );
   };
 
   const renderButtons = () => {
     return (
-      <>
-        <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} />
-
+      <BorderedView>
         <View style={[styles.buttonContainer, styles.addMarginBottom]}>
           <CustomButton
             onPress={returnToDefaultSettingsHandler}
@@ -111,7 +113,7 @@ export default function Locations({ navigation }) {
           </CustomButton>
         </View>
 
-        <View style={[styles.buttonContainer, styles.addMarginBottom]}>
+        <View style={[styles.buttonContainer]}>
           <CustomButton
             onPress={cancelHandler}
             cancel
@@ -134,17 +136,20 @@ export default function Locations({ navigation }) {
             <Entypo name="save" size={30} color={COLORS.text} />
           </CustomButton>
         </View>
-      </>
+      </BorderedView>
     );
   };
 
   return (
-    <CustomFlatList
-      data={locations}
-      listLabel="MEKANLAR"
-      renderItem={renderLocations}
-      FooterComponent={renderButtons}
-    />
+    <>
+      <CustomFlatList
+        data={locations}
+        listLabel="MEKANLAR"
+        renderItem={renderLocations}
+        // FooterComponent={renderButtons}
+      />
+      {renderButtons()}
+    </>
   );
 }
 

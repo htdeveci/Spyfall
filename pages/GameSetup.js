@@ -20,7 +20,8 @@ import {
   toggleGameRolesStatus,
   toggleRoleStatus,
 } from "../store/locationsSlice";
-import CustomFlatList from "../components/UI/CustomFlatList";
+import CustomFlatList, { goToBottom } from "../components/UI/CustomFlatList";
+import BorderedView from "../components/UI/BorderedView";
 
 export default function GameSetup({ navigation }) {
   const dispatch = useDispatch();
@@ -33,8 +34,11 @@ export default function GameSetup({ navigation }) {
 
   const maxSpyNumber = 3;
 
-  const addPlayerHandler = () => {
-    dispatch(addNewPlayerSlot({ newPlayer: { playerName: "", id: uuidv1() } }));
+  const addPlayerHandler = async () => {
+    await dispatch(
+      addNewPlayerSlot({ newPlayer: { playerName: "", id: uuidv1() } })
+    );
+    goToBottom();
   };
 
   const locationsButtonHandler = () => {
@@ -57,7 +61,14 @@ export default function GameSetup({ navigation }) {
 
   const renderPlayers = (item) => {
     return (
-      <View style={styles.line} key={item.item.id}>
+      <View
+        style={
+          item.index + 1 !== players.length
+            ? styles.line
+            : { height: LINE_HEIGHT }
+        }
+        key={item.item.id}
+      >
         <PlayerItem player={item.item} />
       </View>
     );
@@ -86,7 +97,7 @@ export default function GameSetup({ navigation }) {
     };
 
     return (
-      <>
+      <BorderedView>
         <View style={styles.line}>
           <CustomButton onPress={addPlayerHandler} fontSize={20}>
             Oyuncu Ekle
@@ -174,7 +185,7 @@ export default function GameSetup({ navigation }) {
             OYUNU BAŞLAT
           </CustomButton>
         </View>
-      </>
+      </BorderedView>
     );
   };
 
@@ -184,8 +195,9 @@ export default function GameSetup({ navigation }) {
         data={players}
         listLabel={`${players.length} OYUNCU`}
         renderItem={renderPlayers}
-        FooterComponent={renderControllers}
+        // FooterComponent={renderControllers}
       />
+      {renderControllers()}
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, View, Pressable } from "react-native";
+import { Text, View, Pressable, StyleSheet } from "react-native";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { v1 as uuidv1 } from "uuid";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
@@ -29,7 +29,7 @@ export default function GameController({
 }) {
   const [isGameFinished, setIsGameFinished] = useState(false);
   const [isCountdownFinished, setIsCountdownFinished] = useState(false);
-  const [playTimer, setPlayTimer] = useState(isGameStarted);
+  const [playTimer, setPlayTimer] = useState(false);
 
   useEffect(() => {
     return navigation.addListener("beforeRemove", (event) => {
@@ -59,6 +59,7 @@ export default function GameController({
   };
 
   const startGameHandler = () => {
+    setPlayTimer(true);
     setIsGameStarted(true);
   };
 
@@ -183,156 +184,170 @@ export default function GameController({
         </View>
       </CustomModal>
 
-      {isGameStarted && (
-        <View
-          style={{
-            alignItems: "center",
-            marginBottom: GAP_BETWEEN_LAYERS,
-          }}
-        >
-          <Pressable onPress={toggleTimerHandler} style={{ borderRadius: 100 }}>
-            <CountdownCircleTimer
-              isPlaying={playTimer}
-              duration={selectedGameTime * 60}
-              colors={[COLORS.success, COLORS.success, COLORS.error]}
-              colorsTime={[selectedGameTime * 60, 30, 0]}
-              trailColor={isCountdownFinished ? COLORS.error : COLORS.lightGray}
-              onComplete={countdownCompleteHandler}
+      <View style={styles.container}>
+        {isGameStarted && (
+          <View
+            style={{
+              alignItems: "center",
+              marginBottom: GAP_BETWEEN_LAYERS,
+            }}
+          >
+            <Pressable
+              onPress={toggleTimerHandler}
+              style={{ borderRadius: 100 }}
             >
-              {({ remainingTime }) => (
-                <View
-                  style={{
-                    alignItems: "center",
-                  }}
-                >
-                  {remainingTime > 0 && (
-                    <>
-                      <Text
-                        style={{
-                          flex: 1,
-                          textAlignVertical: "bottom",
-                          color: COLORS.lightGray,
-                          fontSize: 12,
-                        }}
-                      >
-                        Kalan
-                      </Text>
+              <CountdownCircleTimer
+                isPlaying={playTimer}
+                duration={selectedGameTime * 60}
+                colors={[COLORS.success, COLORS.success, COLORS.error]}
+                colorsTime={[selectedGameTime * 60, 30, 0]}
+                trailColor={
+                  isCountdownFinished ? COLORS.error : COLORS.lightGray
+                }
+                onComplete={countdownCompleteHandler}
+              >
+                {({ remainingTime }) => (
+                  <View
+                    style={{
+                      alignItems: "center",
+                    }}
+                  >
+                    {remainingTime > 0 && (
+                      <>
+                        <Text
+                          style={{
+                            flex: 1,
+                            textAlignVertical: "bottom",
+                            color: COLORS.lightGray,
+                            fontSize: 12,
+                          }}
+                        >
+                          Kalan
+                        </Text>
+                        <Text
+                          style={{
+                            flex: 1,
+                            textAlignVertical: "center",
+                            color: COLORS.text,
+                            fontSize: 30,
+                          }}
+                        >
+                          {`${
+                            Math.floor(remainingTime / 60) < 10 ? "0" : ""
+                          }${Math.floor(remainingTime / 60)}:${
+                            remainingTime % 60 < 10 ? "0" : ""
+                          }${remainingTime % 60}`}
+                        </Text>
+
+                        {playTimer && (
+                          <Ionicons
+                            style={{ flex: 1 }}
+                            name="pause"
+                            size={32}
+                            color={COLORS.secondary}
+                          />
+                        )}
+
+                        {!playTimer && (
+                          <Ionicons
+                            style={{ flex: 1 }}
+                            name="play"
+                            size={32}
+                            color={COLORS.secondary}
+                          />
+                        )}
+                      </>
+                    )}
+
+                    {!remainingTime > 0 && (
                       <Text
                         style={{
                           flex: 1,
                           textAlignVertical: "center",
                           color: COLORS.text,
-                          fontSize: 30,
+                          fontSize: 18,
                         }}
                       >
-                        {`${
-                          Math.floor(remainingTime / 60) < 10 ? "0" : ""
-                        }${Math.floor(remainingTime / 60)}:${
-                          remainingTime % 60 < 10 ? "0" : ""
-                        }${remainingTime % 60}`}
+                        SÜRE BİTTİ
                       </Text>
-
-                      {playTimer && (
-                        <Ionicons
-                          style={{ flex: 1 }}
-                          name="pause"
-                          size={32}
-                          color={COLORS.secondary}
-                        />
-                      )}
-
-                      {!playTimer && (
-                        <Ionicons
-                          style={{ flex: 1 }}
-                          name="play"
-                          size={32}
-                          color={COLORS.secondary}
-                        />
-                      )}
-                    </>
-                  )}
-
-                  {!remainingTime > 0 && (
-                    <Text
-                      style={{
-                        flex: 1,
-                        textAlignVertical: "center",
-                        color: COLORS.text,
-                        fontSize: 18,
-                      }}
-                    >
-                      SÜRE BİTTİ
-                    </Text>
-                  )}
-                </View>
-              )}
-            </CountdownCircleTimer>
-          </Pressable>
-        </View>
-      )}
-
-      {!isGameStarted && (
-        <>
-          <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} />
-          <View
-            style={{
-              height: LINE_HEIGHT * 2,
-              flexDirection: "row",
-              marginBottom: GAP_BETWEEN_LAYERS,
-            }}
-          >
-            <CustomButton
-              success
-              style={{ flex: 2, marginRight: GAP_BETWEEN_LAYERS }}
-              disabled={!enableButtons}
-              onPress={startGameHandler}
-            >
-              Oyunu Başlat
-            </CustomButton>
-
-            <View style={{ flex: 1, width: "100%" }}>
-              <CustomDropdown
-                data={getSelectableTimeArray()}
-                onSelect={(selectedItem, index) => {
-                  setSelectedGameTime(selectedItem);
-                }}
-                defaultValue={selectedGameTime}
-                customizedButtonChild={(selectedItem, index) => {
-                  return (
-                    <View
-                      style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Ionicons
-                        name="timer"
-                        size={24}
-                        color={COLORS.secondary}
-                        style={{ paddingLeft: 2 }}
-                      />
-                      <Text
-                        style={{
-                          color: COLORS.textReverse,
-                          fontSize: 24,
-                        }}
-                      >
-                        {selectedItem}
-                      </Text>
-                    </View>
-                  );
-                }}
-              />
-            </View>
+                    )}
+                  </View>
+                )}
+              </CountdownCircleTimer>
+            </Pressable>
           </View>
-        </>
-      )}
+        )}
 
-      <View style={{ height: LINE_HEIGHT }}>
-        <CustomButton cancel onPress={finishGame}>
-          Oyunu Sonlandır
-        </CustomButton>
+        {!isGameStarted && (
+          <>
+            {/* <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} /> */}
+            <View
+              style={{
+                height: LINE_HEIGHT * 2,
+                flexDirection: "row",
+                marginBottom: GAP_BETWEEN_LAYERS,
+              }}
+            >
+              <CustomButton
+                success
+                style={{ flex: 2, marginRight: GAP_BETWEEN_LAYERS }}
+                disabled={!enableButtons}
+                onPress={startGameHandler}
+              >
+                Oyunu Başlat
+              </CustomButton>
+
+              <View style={{ flex: 1, width: "100%" }}>
+                <CustomDropdown
+                  data={getSelectableTimeArray()}
+                  onSelect={(selectedItem, index) => {
+                    setSelectedGameTime(selectedItem);
+                  }}
+                  defaultValue={selectedGameTime}
+                  customizedButtonChild={(selectedItem, index) => {
+                    return (
+                      <View
+                        style={{
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Ionicons
+                          name="timer"
+                          size={24}
+                          color={COLORS.secondary}
+                          style={{ paddingLeft: 2 }}
+                        />
+                        <Text
+                          style={{
+                            color: COLORS.textReverse,
+                            fontSize: 24,
+                          }}
+                        >
+                          {selectedItem}
+                        </Text>
+                      </View>
+                    );
+                  }}
+                />
+              </View>
+            </View>
+          </>
+        )}
+
+        <View style={{ height: LINE_HEIGHT }}>
+          <CustomButton cancel onPress={finishGame}>
+            Oyunu Sonlandır
+          </CustomButton>
+        </View>
       </View>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    // marginBottom: GAP_BETWEEN_LAYERS * 2,
+    // backgroundColor: "red",
+  },
+});

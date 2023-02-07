@@ -15,6 +15,7 @@ import CustomFlatList from "../components/UI/CustomFlatList";
 import Seperator from "../components/UI/Seperator";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import Card from "../components/UI/Card";
+import BorderedView from "../components/UI/BorderedView";
 
 let enabledLocations;
 
@@ -122,7 +123,10 @@ export default function Gameplay({ navigation, route }) {
       <View
         style={{
           height: LINE_HEIGHT,
-          marginBottom: GAP_BETWEEN_LAYERS,
+          marginBottom:
+            item.index + 1 === allPlayersWithRoles.length
+              ? 0
+              : GAP_BETWEEN_LAYERS,
         }}
       >
         <CustomButton
@@ -138,52 +142,57 @@ export default function Gameplay({ navigation, route }) {
 
   const renderLocations = (item) => {
     return (
-      <Card
-        style={[
-          enabledLocations.length % 2 === 0
-            ? item.index >= enabledLocations.length - 2 && {
-                marginBottom: GAP_BETWEEN_LAYERS,
-              }
-            : item.index >= enabledLocations.length - 1 && {
-                marginBottom: GAP_BETWEEN_LAYERS,
-              },
-          { width: "50%" },
-        ]}
-      >
-        <Text>{item.item.locationName}</Text>
-      </Card>
+      <>
+        <Card
+          style={{
+            paddingVertical: 0,
+            width: "50%",
+            // backgroundColor: "none",
+            // borderWidth: 0,
+            borderRadius: 6,
+          }}
+        >
+          <Text>{item.item.locationName}</Text>
+        </Card>
+      </>
     );
   };
 
-  const renderGameController = (item) => {
+  const renderGameController = () => {
     return (
-      <GameController
-        enableButtons={enableGameControllerButtons}
-        location={
-          allPlayersWithRoles[0].location
-            ? allPlayersWithRoles[0].location.locationName
-            : null
-        }
-        spies={getSpyNames()}
-        navigation={navigation}
-        isGameStarted={isGameStarted}
-        setIsGameStarted={setIsGameStarted}
-        selectedGameTime={selectedGameTime}
-        setSelectedGameTime={setSelectedGameTime}
-      />
+      <BorderedView>
+        <GameController
+          enableButtons={enableGameControllerButtons}
+          location={
+            allPlayersWithRoles[0].location
+              ? allPlayersWithRoles[0].location.locationName
+              : null
+          }
+          spies={getSpyNames()}
+          navigation={navigation}
+          isGameStarted={isGameStarted}
+          setIsGameStarted={setIsGameStarted}
+          selectedGameTime={selectedGameTime}
+          setSelectedGameTime={setSelectedGameTime}
+        />
+      </BorderedView>
     );
   };
 
   return (
     <>
       {allPlayersWithRoles && (
-        <CustomFlatList
-          data={isGameStarted ? enabledLocations : allPlayersWithRoles}
-          listLabel={isGameStarted ? "MEKANLAR" : "OYUNCULAR"}
-          renderItem={isGameStarted ? renderLocations : renderPlayers}
-          FooterComponent={renderGameController}
-          numColumns={isGameStarted ? 2 : 1}
-        />
+        <>
+          <CustomFlatList
+            data={isGameStarted ? enabledLocations : allPlayersWithRoles}
+            listLabel={isGameStarted ? "MEKANLAR" : "OYUNCULAR"}
+            renderItem={isGameStarted ? renderLocations : renderPlayers}
+            // FooterComponent={renderGameController}
+            numColumns={isGameStarted ? 2 : 1}
+          />
+
+          {renderGameController()}
+        </>
       )}
 
       {selectedPlayer && (
