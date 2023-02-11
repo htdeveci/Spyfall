@@ -17,6 +17,9 @@ export default function CustomButton({
   useOpacity = true,
   customChildren = false,
   upperCase = true,
+  buttonColorProp,
+  rippleColorProp,
+  textStyle,
 }) {
   let buttonColor = COLORS.primary;
   let rippleColor = COLORS.primaryDark;
@@ -38,6 +41,13 @@ export default function CustomButton({
 
   if (disabled) {
     buttonColor = COLORS.darkGray;
+  }
+
+  if (buttonColorProp) {
+    buttonColor = buttonColorProp;
+  }
+  if (rippleColorProp) {
+    rippleColor = rippleColorProp;
   }
 
   return (
@@ -69,14 +79,20 @@ export default function CustomButton({
         disabled={disabled}
       >
         {!customChildren && (
-          <Text style={[styles.buttonText, { fontSize }]}>
+          <Text style={[styles.buttonText, textStyle, { fontSize }]}>
             {upperCase ? children.toUpperCase() : children}
           </Text>
         )}
 
         {customChildren && iconLabel && (
           <>
-            <Text style={[styles.buttonText, { marginRight: iconLabelGap }]}>
+            <Text
+              style={[
+                styles.buttonText,
+                textStyle,
+                { marginRight: iconLabelGap },
+              ]}
+            >
               {upperCase ? iconLabel.toUpperCase() : iconLabel}
             </Text>
             {children}

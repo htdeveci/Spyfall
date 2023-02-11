@@ -23,12 +23,34 @@ import {
 import CustomFlatList, { goToBottom } from "../components/UI/CustomFlatList";
 import BorderedView from "../components/UI/BorderedView";
 
+export const getEnabledLocationsLength = (locationGroups) => {
+  let result = 0;
+  locationGroups.forEach((locGroup) => {
+    if (locGroup.enabled) {
+      locGroup.data.forEach((loc) => {
+        if (loc.enabled) {
+          result++;
+        }
+      });
+    }
+  });
+  return result;
+};
+
+export const getTotalLocationsLength = (locationGroups) => {
+  let result = 0;
+  locationGroups.forEach((locGroup) => {
+    result += locGroup.data.length;
+  });
+  return result;
+};
+
 export default function GameSetup({ navigation }) {
   const dispatch = useDispatch();
   const players = useSelector((store) => store.players);
-  const locations = useSelector((store) => store.locations.current);
+  const locationGroups = useSelector((store) => store.locations.current);
   const enableRoles = useSelector((store) => store.locations.enableRoles);
-  const enabledLocations = locations.filter((loc) => loc.enabled === true);
+  // const enabledLocations = locationGroups.filter((loc) => loc.enabled === true);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
   // const [enableRoles, setEnableRoles] = useState(true);
 
@@ -167,7 +189,9 @@ export default function GameSetup({ navigation }) {
           <CustomButton
             onPress={locationsButtonHandler}
             secondary
-            iconLabel={`Mekanlar: ${enabledLocations.length}/${locations.length}`}
+            iconLabel={`Mekanlar ${getEnabledLocationsLength(
+              locationGroups
+            )}/${getTotalLocationsLength(locationGroups)}`}
             style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
             customChildren
           >

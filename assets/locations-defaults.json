@@ -1,0 +1,111 @@
+[
+  {
+    "title": "Spyfall 1",
+    "id": 1,
+    "enabled": false,
+    "data": [
+      {
+        "locationName": "Restorant",
+        "id": 1,
+        "enabled": true,
+        "roles": [
+          { "enabled": false, "roleName": "Aşçı", "id": 11 },
+          { "enabled": true, "roleName": "Garson", "id": 12 },
+          { "enabled": true, "roleName": "Müşteri", "id": 13 },
+          { "enabled": true, "roleName": "", "id": 14 },
+          { "enabled": true, "roleName": "", "id": 15 },
+          { "enabled": true, "roleName": "", "id": 16 },
+          { "enabled": true, "roleName": "", "id": 17 },
+          { "enabled": true, "roleName": "", "id": 18 },
+          { "enabled": true, "roleName": "", "id": 19 },
+          { "enabled": true, "roleName": "", "id": 20 },
+          { "enabled": true, "roleName": "", "id": 21 },
+          { "enabled": true, "roleName": "", "id": 22 }
+        ]
+      },
+      {
+        "locationName": "Okul",
+        "id": 2,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "roleName": "Öğretmen", "id": 31 },
+          { "enabled": false, "roleName": "Öğrenci", "id": 32 },
+          { "enabled": true, "roleName": "Müdür", "id": 33 },
+          { "enabled": true, "roleName": "", "id": 34 },
+          { "enabled": true, "roleName": "", "id": 35 },
+          { "enabled": true, "roleName": "", "id": 36 },
+          { "enabled": false, "roleName": "", "id": 37 },
+          { "enabled": true, "roleName": "", "id": 38 },
+          { "enabled": true, "roleName": "", "id": 39 },
+          { "enabled": true, "roleName": "", "id": 40 },
+          { "enabled": true, "roleName": "", "id": 41 },
+          { "enabled": true, "roleName": "", "id": 42 }
+        ]
+      },
+      {
+        "locationName": "Hastane",
+        "id": 3,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "roleName": "Öğretmen", "id": 31 },
+          { "enabled": false, "roleName": "Öğrenci", "id": 32 },
+          { "enabled": true, "roleName": "Müdür", "id": 33 },
+          { "enabled": true, "roleName": "", "id": 34 },
+          { "enabled": true, "roleName": "", "id": 35 },
+          { "enabled": true, "roleName": "", "id": 36 },
+          { "enabled": false, "roleName": "", "id": 37 },
+          { "enabled": true, "roleName": "", "id": 38 },
+          { "enabled": true, "roleName": "", "id": 39 },
+          { "enabled": true, "roleName": "", "id": 40 },
+          { "enabled": true, "roleName": "", "id": 41 },
+          { "enabled": true, "roleName": "", "id": 42 }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Spyfall 2",
+    "id": 2,
+    "enabled": true,
+    "data": [
+      {
+        "locationName": "Postane",
+        "id": 4,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "roleName": "Öğretmen", "id": 31 },
+          { "enabled": false, "roleName": "Öğrenci", "id": 32 },
+          { "enabled": true, "roleName": "Müdür", "id": 33 },
+          { "enabled": true, "roleName": "", "id": 34 },
+          { "enabled": true, "roleName": "", "id": 35 },
+          { "enabled": true, "roleName": "", "id": 36 },
+          { "enabled": false, "roleName": "", "id": 37 },
+          { "enabled": true, "roleName": "", "id": 38 },
+          { "enabled": true, "roleName": "", "id": 39 },
+          { "enabled": true, "roleName": "", "id": 40 },
+          { "enabled": true, "roleName": "", "id": 41 },
+          { "enabled": true, "roleName": "", "id": 42 }
+        ]
+      },
+      {
+        "locationName": "Kütüphane",
+        "id": 5,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "roleName": "Öğretmen", "id": 31 },
+          { "enabled": false, "roleName": "Öğrenci", "id": 32 },
+          { "enabled": true, "roleName": "Müdür", "id": 33 },
+          { "enabled": true, "roleName": "", "id": 34 },
+          { "enabled": true, "roleName": "", "id": 35 },
+          { "enabled": true, "roleName": "", "id": 36 },
+          { "enabled": false, "roleName": "", "id": 37 },
+          { "enabled": true, "roleName": "", "id": 38 },
+          { "enabled": true, "roleName": "", "id": 39 },
+          { "enabled": true, "roleName": "", "id": 40 },
+          { "enabled": true, "roleName": "", "id": 41 },
+          { "enabled": true, "roleName": "", "id": 42 }
+        ]
+      }
+    ]
+  }
+]

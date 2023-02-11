@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import Locations from "../pages/Locations";
 import { initLocations } from "../store/locationsSlice";
-import locationsDefaults from "../locations-defaults.json";
+// import locationsDefaults from "../locations-defaults.json";
 import {
   COLORS,
   NAVIGATION_NAME_GAMEPLAY,

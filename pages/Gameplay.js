@@ -17,12 +17,12 @@ import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import Card from "../components/UI/Card";
 import BorderedView from "../components/UI/BorderedView";
 
-let enabledLocations;
+let enabledLocations = [];
 
 export default function Gameplay({ navigation, route }) {
   const { numberOfSpy } = route.params;
   const players = useSelector((store) => store.players);
-  const locations = useSelector((store) => store.locations.current);
+  const locationGroups = useSelector((store) => store.locations.current);
   const enableRoles = useSelector((store) => store.locations.enableRoles);
   const [showPlayerRoleModal, setShowPlayerRoleModal] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -30,10 +30,11 @@ export default function Gameplay({ navigation, route }) {
   const [enableGameControllerButtons, setEnableGameControllerButtons] =
     useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
-  const [selectedGameTime, setSelectedGameTime] = useState(10);
+  const [selectedGameTime, setSelectedGameTime] = useState(0.02);
 
   useEffect(() => {
-    enabledLocations = locations.filter((loc) => loc.enabled === true);
+    enabledLocations = getEnabledLocations();
+
     let allPlayers = [];
     if (numberOfSpy >= players.length || enabledLocations.length === 0) {
       players.forEach((player) => {
@@ -79,6 +80,20 @@ export default function Gameplay({ navigation, route }) {
     }
     setAllPlayersWithRoles(allPlayers);
   }, []);
+
+  const getEnabledLocations = () => {
+    let enabledLocations = [];
+    locationGroups.forEach((locGroup) => {
+      if (locGroup.enabled) {
+        locGroup.data.forEach((loc) => {
+          if (loc.enabled) {
+            enabledLocations.push(loc);
+          }
+        });
+      }
+    });
+    return enabledLocations;
+  };
 
   const getARole = (usableRoles) => {
     if (usableRoles.length > 0) {

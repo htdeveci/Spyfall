@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Checkbox } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -20,16 +20,24 @@ import {
 } from "../store/locationsSlice";
 import CustomButton from "./UI/CustomButton";
 
-export default function Location({ locationId, roleHeight, style }) {
-  const location = useSelector((store) =>
-    store.locations.future.find((loc) => loc.id === locationId)
-  );
+export default function Location({
+  locationGroupId,
+  locationId,
+  roleHeight,
+  style,
+}) {
+  const location = useSelector((store) => {
+    const locGroup = store.locations.future.find(
+      (locGroup) => locGroup.id === locationGroupId
+    );
+    return locGroup.data.find((loc) => loc.id === locationId);
+  });
   const [expandRoles, setExpandRoles] = useState(false);
   const [enableAllRoles, setEnableAllRoles] = useState("indeterminate");
   const dispatch = useDispatch();
 
   const toggleLocationStatusHandler = () => {
-    dispatch(toggleLocationStatus({ locationId }));
+    dispatch(toggleLocationStatus({ locationGroupId, locationId }));
   };
 
   const toggleExpandRolesHandler = () => {
@@ -37,7 +45,9 @@ export default function Location({ locationId, roleHeight, style }) {
   };
 
   const locationNameChangeHandler = (value) => {
-    dispatch(changeLocationName({ locationId, locationName: value }));
+    dispatch(
+      changeLocationName({ locationGroupId, locationId, locationName: value })
+    );
   };
 
   const toggleAllRolesStatusHandler = () => {
@@ -45,6 +55,7 @@ export default function Location({ locationId, roleHeight, style }) {
     if (enableAllRoles === "checked") enabled = "unchecked";
     dispatch(
       toggleAllRolesStatusForOneLocation({
+        locationGroupId,
         locationId,
         status: enabled === "checked",
       })
@@ -59,6 +70,8 @@ export default function Location({ locationId, roleHeight, style }) {
         <Role
           key={i}
           index={i + 1}
+          locationGroupId={locationGroupId}
+          locationId={locationId}
           roleId={location.roles[i].id}
           style={{ height: roleHeight }}
         />
@@ -68,7 +81,7 @@ export default function Location({ locationId, roleHeight, style }) {
   };
 
   const deleteLocationHandler = () => {
-    dispatch(deleteLocation({ locationId }));
+    dispatch(deleteLocation({ locationGroupId, locationId }));
     // setExpandRoles(false);
   };
 
@@ -203,7 +216,7 @@ const styles = StyleSheet.create({
   rolesContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    padding: GAP_BETWEEN_LAYERS / 2,
+    paddingHorizontal: GAP_BETWEEN_LAYERS / 2,
     justifyContent: "center",
   },
   allRolesPressable: {

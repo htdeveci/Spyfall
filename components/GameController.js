@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Text, View, Pressable, StyleSheet } from "react-native";
+import { Text, View, Pressable, StyleSheet, Vibration } from "react-native";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { v1 as uuidv1 } from "uuid";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
+import { Audio } from "expo-av";
 
 import {
   COLORS,
@@ -11,11 +12,10 @@ import {
 } from "../constants/globalConstants";
 import CustomButton from "./UI/CustomButton";
 import CustomModal from "./UI/CustomModal";
-import CustomTextInput from "./UI/CustomTextInput";
-import SelectDropdown from "react-native-select-dropdown";
 import CustomDropdown from "./UI/CustomDropdown";
-import Card from "./UI/Card";
-import Seperator from "./UI/Seperator";
+
+// const AlarmSound = require("../assets/NuclearAlarmSound.mp3");
+const AlarmSound = require("../assets/ClockAlarmSound.mp3");
 
 export default function GameController({
   enableButtons,
@@ -30,6 +30,14 @@ export default function GameController({
   const [isGameFinished, setIsGameFinished] = useState(false);
   const [isCountdownFinished, setIsCountdownFinished] = useState(false);
   const [playTimer, setPlayTimer] = useState(false);
+  const [sound, setSound] = useState(null);
+  const [isAlarmFinished, setIsAlarmFinished] = useState(false);
+
+  useEffect(() => {
+    if (isAlarmFinished) {
+      sound.unloadAsync();
+    }
+  }, [isAlarmFinished]);
 
   useEffect(() => {
     return navigation.addListener("beforeRemove", (event) => {
@@ -47,6 +55,8 @@ export default function GameController({
 
   const closeFinishModal = () => {
     setIsGameFinished(false);
+    if (sound) sound.unloadAsync();
+    Vibration.cancel();
     navigation.goBack();
   };
 
@@ -70,6 +80,28 @@ export default function GameController({
   const countdownCompleteHandler = () => {
     setIsCountdownFinished(true);
     setPlayTimer(false);
+    Vibration.vibrate([0, 800, 400, 800, 400, 800]);
+    playSound();
+  };
+
+  const playbackStatusChangeHandler = (event) => {
+    if (event.didJustFinish) {
+      setIsAlarmFinished(true);
+    }
+  };
+
+  const playSound = async () => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        AlarmSound,
+        undefined,
+        playbackStatusChangeHandler
+      );
+      setSound(sound);
+      await sound.playAsync();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -184,7 +216,7 @@ export default function GameController({
         </View>
       </CustomModal>
 
-      <View style={styles.container}>
+      <>
         {isGameStarted && (
           <View
             style={{
@@ -340,14 +372,7 @@ export default function GameController({
             Oyunu Sonlandır
           </CustomButton>
         </View>
-      </View>
+      </>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    // marginBottom: GAP_BETWEEN_LAYERS * 2,
-    // backgroundColor: "red",
-  },
-});

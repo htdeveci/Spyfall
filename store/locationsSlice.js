@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v1 as uuidv1 } from "uuid";
 
-import locationsDefaults from "../locations-defaults.json";
+import locationsDefaults from "../assets/locations-defaults.json";
 
 let initialState = {
   current: locationsDefaults,
@@ -20,6 +21,14 @@ export const locationsSlice = createSlice({
     },
     toggleGameRolesStatus: (state) => {
       state.enableRoles = !state.enableRoles;
+    },
+    toggleLocationGroupStatus: (state, action) => {
+      const locationGroup = state.future.find(
+        (locGroup) => locGroup.id === action.payload.locationGroupId
+      );
+      locationGroup.enabled = action.payload.status
+        ? action.payload.status
+        : !locationGroup.enabled;
     },
     toggleLocationStatus: (state, action) => {
       const location = getLocationById(state, action);
@@ -49,38 +58,81 @@ export const locationsSlice = createSlice({
     saveLocationsToStorage: (state) => {
       return { ...state, current: state.future };
     },
-    addNewLocationSlot: (state, action) => {
-      state.future.push(action.payload.newLocation);
+    addNewLocationSlot: (state) => {
+      let customGroup = state.future.find(
+        (locGroup) => locGroup.title === "Özel"
+      );
+
+      if (!customGroup) {
+        customGroup = {
+          title: "Özel",
+          id: uuidv1(),
+          enabled: true,
+          data: [],
+        };
+
+        state.future.push(customGroup);
+      }
+
+      customGroup.data.push({
+        locationName: "",
+        id: uuidv1(),
+        enabled: true,
+        roles: [
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, roleName: "", id: uuidv1() },
+        ],
+      });
     },
     deleteLocation: (state, action) => {
-      return {
-        ...state,
-        future: state.future.filter(
-          (loc) => loc.id !== action.payload.locationId
-        ),
-      };
+      const locationGroup = state.future.find(
+        (locGroup) => locGroup.id === action.payload.locationGroupId
+      );
+      const data = locationGroup.data.filter(
+        (loc) => loc.id !== action.payload.locationId
+      );
+      locationGroup.data = data;
+
+      if (locationGroup.data.length === 0) {
+        state.future = state.future.filter(
+          (locGroup) => locGroup.id !== locationGroup.id
+        );
+      }
     },
   },
 });
 
 const getLocationById = (state, action) => {
-  return state.future.find((loc) => loc.id === action.payload.locationId);
+  const locationGroup = state.future.find(
+    (locGroup) => locGroup.id === action.payload.locationGroupId
+  );
+  return locationGroup.data.find((loc) => loc.id === action.payload.locationId);
 };
 
 const getRoleById = (state, action) => {
-  let selectedRole;
-  for (let i = 0; i < state.future.length; i++) {
-    selectedRole = state.future[i].roles.find(
-      (r) => r.id === action.payload.roleId
-    );
-    if (!!selectedRole) break;
-  }
-  return selectedRole;
+  const locationGroup = state.future.find(
+    (locGroup) => locGroup.id === action.payload.locationGroupId
+  );
+  const location = locationGroup.data.find(
+    (loc) => loc.id === action.payload.locationId
+  );
+  return location.roles.find((r) => r.id === action.payload.roleId);
 };
 
 export const {
   toggleLocationStatus,
   changeLocationName,
+  toggleLocationGroupStatus,
   toggleAllRolesStatusForOneLocation,
   toggleRoleStatus,
   changeRoleName,
