@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Button } from "react-native";
+import { Button, KeyboardAvoidingView } from "react-native";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { COLORS, GAP_BETWEEN_LAYERS } from "../../constants/globalConstants";
 import Seperator from "./Seperator";
@@ -16,6 +16,7 @@ export default function CustomFlatList({
   renderItem,
   FooterComponent,
   numColumns = 1,
+  // initialScrollIndex,
 }) {
   listRef = useRef();
 
@@ -33,6 +34,8 @@ export default function CustomFlatList({
         showsVerticalScrollIndicator={false}
         numColumns={numColumns}
         columnWrapperStyle={numColumns > 1 && { justifyContent: "center" }}
+        keyboardDismissMode="on-drag"
+        // initialScrollIndex={initialScrollIndex}
       />
     </>
   );

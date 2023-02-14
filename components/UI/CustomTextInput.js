@@ -17,6 +17,10 @@ export default function CustomTextInput({
     onChangeText(changedText);
   };
 
+  const blurHandler = () => {
+    setInputValue((state) => state.trim());
+  };
+
   return (
     <TextInput
       keyboardType={keyboardType}
@@ -26,6 +30,8 @@ export default function CustomTextInput({
       selectionColor={COLORS.secondary}
       cursorColor={COLORS.primary}
       onChangeText={textChangeHandler}
+      autoCapitalize="words"
+      onBlur={blurHandler}
     />
   );
 }

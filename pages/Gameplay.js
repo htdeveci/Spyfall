@@ -202,10 +202,8 @@ export default function Gameplay({ navigation, route }) {
             data={isGameStarted ? enabledLocations : allPlayersWithRoles}
             listLabel={isGameStarted ? "MEKANLAR" : "OYUNCULAR"}
             renderItem={isGameStarted ? renderLocations : renderPlayers}
-            // FooterComponent={renderGameController}
             numColumns={isGameStarted ? 2 : 1}
           />
-
           {renderGameController()}
         </>
       )}

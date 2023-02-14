@@ -1,7 +1,7 @@
+import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { COLORS } from "../../constants/globalConstants";
-
-export default function CustomButton({
+/* {
   children,
   onPress,
   fontSize,
@@ -20,7 +20,29 @@ export default function CustomButton({
   buttonColorProp,
   rippleColorProp,
   textStyle,
-}) {
+} */
+const CustomButton = React.forwardRef((props, ref) => {
+  const {
+    children,
+    onPress,
+    fontSize,
+    style,
+    secondary = false,
+    cancel = false,
+    success = false,
+    disabled = false,
+    // icon = false,
+    iconLabel = null,
+    iconLabelGap = 16,
+    fullWidth = true,
+    useOpacity = true,
+    customChildren = false,
+    upperCase = true,
+    buttonColorProp,
+    rippleColorProp,
+    textStyle,
+  } = props;
+
   let buttonColor = COLORS.primary;
   let rippleColor = COLORS.primaryDark;
 
@@ -59,6 +81,7 @@ export default function CustomButton({
       ]}
     >
       <Pressable
+        ref={ref}
         style={
           useOpacity
             ? ({ pressed }) =>
@@ -103,7 +126,9 @@ export default function CustomButton({
       </Pressable>
     </View>
   );
-}
+});
+
+export default CustomButton;
 
 const styles = StyleSheet.create({
   buttonOuterContainer: {

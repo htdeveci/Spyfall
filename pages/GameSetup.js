@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { StyleSheet, Switch, Text, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from "react-native";
 import { v1 as uuidv1 } from "uuid";
 import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
@@ -157,11 +163,7 @@ export default function GameSetup({ navigation }) {
               name="user-secret"
               size={40}
               color={COLORS.secondary}
-              style={{
-                // opacity: numberOfSpyInRender / maxSpyNumbe
-
-                opacity: getSpySliderOpacity(),
-              }}
+              style={{ opacity: getSpySliderOpacity() }}
             />
           </View>
         </View>
@@ -219,7 +221,6 @@ export default function GameSetup({ navigation }) {
         data={players}
         listLabel={`${players.length} OYUNCU`}
         renderItem={renderPlayers}
-        // FooterComponent={renderControllers}
       />
       {renderControllers()}
     </>

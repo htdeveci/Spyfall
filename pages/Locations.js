@@ -29,8 +29,11 @@ export default function Locations({ navigation }) {
   const locationGroups = useSelector((store) => store.locations.future);
   const savedLocationGroups = useSelector((store) => store.locations.current);
   const [isChanged, setIsChanged] = useState(false);
+  const [addNewLocationButtonDisabled, setAddNewLocationButtonDisabled] =
+    useState(false);
   const dispatch = useDispatch();
   const scrollRef = useRef();
+  const addNewLocationButtonRef = useRef();
 
   useEffect(() => {
     if (
@@ -55,22 +58,26 @@ export default function Locations({ navigation }) {
   };
 
   const addNewLocationHandler = async () => {
-    dispatch(addNewLocationSlot());
-    const customLocationGroup = locationGroups.find(
-      (locGroup) => locGroup.title === "Özel"
-    );
-    if (customLocationGroup) {
-      dispatch(
-        toggleLocationGroupStatus({
-          locationGroupId: customLocationGroup.id,
-          status: true,
-        })
+    try {
+      await dispatch(addNewLocationSlot());
+      const customLocationGroup = locationGroups.find(
+        (locGroup) => locGroup.title === "Özel"
       );
+      if (customLocationGroup) {
+        dispatch(
+          toggleLocationGroupStatus({
+            locationGroupId: customLocationGroup.id,
+            status: true,
+          })
+        );
+      }
+      scrollRef.current.scrollToLocation({
+        sectionIndex: locationGroups.length - 1,
+        itemIndex: locationGroups[locationGroups.length - 1].data.length - 1,
+      });
+    } catch (err) {
+      console.log(err);
     }
-    scrollRef.current.scrollToLocation({
-      sectionIndex: locationGroups.length - 1,
-      itemIndex: locationGroups[locationGroups.length - 1].data.length - 1,
-    });
   };
 
   const renderLocations = (item) => {
@@ -111,6 +118,7 @@ export default function Locations({ navigation }) {
             secondary
             iconLabel="VARSAYILAN"
             style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
+            ref={addNewLocationButtonRef}
           >
             <FontAwesome name="gears" size={30} color={COLORS.text} />
           </CustomButton>
@@ -121,6 +129,7 @@ export default function Locations({ navigation }) {
             iconLabel="YENİ MEKAN"
             iconLabelGap={10}
             style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
+            disabled={addNewLocationButtonDisabled}
           >
             <MaterialIcons
               name="add-location-alt"
@@ -176,13 +185,6 @@ export default function Locations({ navigation }) {
         customChildren
         textStyle={{ flex: 1 }}
       >
-        {/* <Checkbox
-            color={COLORS.secondaryDark}
-            status={enabled ? "checked" : "unchecked"}
-            onPress={toggleLocationGroupStatusHandler.bind(...arguments, id)}
-            uncheckedColor={COLORS.secondaryDarker}
-          /> */}
-
         <Switch
           value={enabled}
           onChange={toggleLocationGroupStatusHandler.bind(...arguments, id)}
@@ -215,6 +217,9 @@ export default function Locations({ navigation }) {
         renderSectionHeader={({ section: { title, enabled, id } }) =>
           renderHeader(title, enabled, id)
         }
+        keyboardDismissMode="on-drag"
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
 
       {renderButtons()}
