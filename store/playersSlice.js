@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v1 as uuidv1 } from "uuid";
 
 let initialState = [
-  { playerName: "1. Oyuncu", id: 1 },
-  { playerName: "2. Oyuncu", id: 2 },
-  { playerName: "3. Oyuncu", id: 3 },
+  { playerName: "1. Oyuncu", id: uuidv1() },
+  { playerName: "2. Oyuncu", id: uuidv1() },
+  { playerName: "3. Oyuncu", id: uuidv1() },
 ];
 
 export const playerSlice = createSlice({
@@ -14,8 +15,8 @@ export const playerSlice = createSlice({
       const player = state.find((p) => p.id === action.payload.id);
       player.playerName = action.payload.newPlayerName;
     },
-    addNewPlayerSlot: (state, action) => {
-      state.push(action.payload.newPlayer);
+    addNewPlayerSlot: (state) => {
+      state.push({ playerName: "", id: uuidv1() });
     },
     deletePlayer: (state, action) => {
       const result = state.filter(

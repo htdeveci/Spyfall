@@ -6,7 +6,6 @@ import {
   Text,
   View,
 } from "react-native";
-import { v1 as uuidv1 } from "uuid";
 import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
@@ -63,9 +62,7 @@ export default function GameSetup({ navigation }) {
   const maxSpyNumber = 3;
 
   const addPlayerHandler = async () => {
-    await dispatch(
-      addNewPlayerSlot({ newPlayer: { playerName: "", id: uuidv1() } })
-    );
+    await dispatch(addNewPlayerSlot());
     goToBottom();
   };
 

@@ -162,8 +162,6 @@ export default function Gameplay({ navigation, route }) {
           style={{
             paddingVertical: 0,
             width: "50%",
-            // backgroundColor: "none",
-            // borderWidth: 0,
             borderRadius: 6,
           }}
         >
