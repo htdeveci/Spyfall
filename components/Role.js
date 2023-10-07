@@ -36,13 +36,17 @@ export default function Role({
   };
 
   const roleNameChangeHandler = (newRoleName) => {
-    dispatch(
-      changeRoleName({
-        locationGroupId,
-        locationId,
-        roleId,
-        roleName: newRoleName,
-      })
+    setTimeout(
+      () =>
+        dispatch(
+          changeRoleName({
+            locationGroupId,
+            locationId,
+            roleId,
+            roleName: newRoleName,
+          })
+        ),
+      0
     );
   };
 

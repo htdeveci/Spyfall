@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useState } from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { Keyboard, StyleSheet, TextInput } from "react-native";
 
 import { COLORS } from "../../constants/globalConstants";
 
@@ -12,13 +13,29 @@ export default function CustomTextInput({
 }) {
   const [inputValue, setInputValue] = useState(value);
 
+  useEffect(() => {
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        blurHandler();
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
   const textChangeHandler = (changedText) => {
     setInputValue(changedText);
-    onChangeText(changedText);
   };
 
   const blurHandler = () => {
-    setInputValue((state) => state.trim());
+    setInputValue((state) => {
+      const trimmedInput = state.trim();
+      onChangeText(trimmedInput);
+      return trimmedInput;
+    });
   };
 
   return (
@@ -31,7 +48,6 @@ export default function CustomTextInput({
       cursorColor={COLORS.primary}
       onChangeText={textChangeHandler}
       autoCapitalize="words"
-      onBlur={blurHandler}
     />
   );
 }

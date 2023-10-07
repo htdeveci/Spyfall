@@ -45,8 +45,16 @@ export default function Location({
   };
 
   const locationNameChangeHandler = (value) => {
-    dispatch(
-      changeLocationName({ locationGroupId, locationId, locationName: value })
+    setTimeout(
+      () =>
+        dispatch(
+          changeLocationName({
+            locationGroupId,
+            locationId,
+            locationName: value,
+          })
+        ),
+      0
     );
   };
 
