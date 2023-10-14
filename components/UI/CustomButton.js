@@ -35,7 +35,7 @@ const CustomButton = React.forwardRef((props, ref) => {
     iconLabel = null,
     iconLabelGap = 16,
     fullWidth = true,
-    useOpacity = true,
+    // useOpacity = true,
     customChildren = false,
     upperCase = true,
     buttonColorProp,
@@ -76,27 +76,13 @@ const CustomButton = React.forwardRef((props, ref) => {
     <View
       style={[
         styles.buttonOuterContainer,
+        fullWidth && styles.fullWidth,
         style,
-        { alignItems: fullWidth ? undefined : "center" },
       ]}
     >
       <Pressable
         ref={ref}
-        style={
-          useOpacity
-            ? ({ pressed }) =>
-                pressed
-                  ? [
-                      styles.buttonInnerContainer,
-                      styles.pressed,
-                      { backgroundColor: buttonColor },
-                    ]
-                  : [
-                      styles.buttonInnerContainer,
-                      { backgroundColor: buttonColor },
-                    ]
-            : [styles.buttonInnerContainer, { backgroundColor: buttonColor }]
-        }
+        style={[styles.buttonInnerContainer, { backgroundColor: buttonColor }]}
         onPress={onPress}
         android_ripple={{ color: rippleColor }}
         disabled={disabled}
@@ -132,23 +118,22 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   buttonOuterContainer: {
-    flex: 1,
     borderRadius: 10,
     overflow: "hidden",
+    elevation: 4,
   },
   buttonInnerContainer: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 16,
-    elevation: 2,
+    paddingHorizontal: 20,
   },
   buttonText: {
     color: COLORS.text,
     textAlign: "center",
   },
-  pressed: {
-    opacity: 0.75,
+  fullWidth: {
+    flex: 1,
   },
 });

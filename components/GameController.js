@@ -13,6 +13,7 @@ import {
 import CustomButton from "./UI/CustomButton";
 import CustomModal from "./UI/CustomModal";
 import CustomDropdown from "./UI/CustomDropdown";
+import CustomDialog from "./UI/CustomDialog";
 
 // const AlarmSound = require("../assets/NuclearAlarmSound.mp3");
 const AlarmSound = require("../assets/ClockAlarmSound.mp3");
@@ -32,6 +33,9 @@ export default function GameController({
   const [playTimer, setPlayTimer] = useState(false);
   const [sound, setSound] = useState(null);
   const [isAlarmFinished, setIsAlarmFinished] = useState(false);
+  // const [showFinishGameDialog, setShowFinishGameDialog] = useState(false);
+  const [showFinishGameCheckDialog, setShowFinishGameCheckDialog] =
+    useState(false);
 
   useEffect(() => {
     if (isAlarmFinished) {
@@ -48,7 +52,16 @@ export default function GameController({
     });
   }, [navigation, isGameFinished]);
 
+  const finishGameButtonHandler = () => {
+    setShowFinishGameCheckDialog(true);
+  };
+
+  const cancelFinishGameHandler = () => {
+    setShowFinishGameCheckDialog(false);
+  };
+
   const finishGame = () => {
+    setShowFinishGameCheckDialog(false);
     setPlayTimer(false);
     setIsGameFinished(true);
   };
@@ -216,6 +229,14 @@ export default function GameController({
         </View>
       </CustomModal>
 
+      <CustomDialog
+        show={showFinishGameCheckDialog}
+        onClose={cancelFinishGameHandler}
+        onSubmit={finishGame}
+      >
+        Oyunu sonlandırmak istediğinize emin misiniz?
+      </CustomDialog>
+
       <>
         {isGameStarted && (
           <View
@@ -368,7 +389,7 @@ export default function GameController({
         )}
 
         <View style={{ height: LINE_HEIGHT }}>
-          <CustomButton cancel onPress={finishGame}>
+          <CustomButton cancel onPress={finishGameButtonHandler}>
             Oyunu Sonlandır
           </CustomButton>
         </View>

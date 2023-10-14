@@ -61,8 +61,8 @@ export default function GameSetup({ navigation }) {
 
   const maxSpyNumber = 3;
 
-  const addPlayerHandler = async () => {
-    await dispatch(addNewPlayerSlot());
+  const addPlayerHandler = () => {
+    dispatch(addNewPlayerSlot());
     goToBottom();
   };
 
