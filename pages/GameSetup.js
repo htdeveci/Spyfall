@@ -62,8 +62,12 @@ export default function GameSetup({ navigation }) {
   const maxSpyNumber = 3;
 
   const addPlayerHandler = () => {
-    dispatch(addNewPlayerSlot());
-    goToBottom();
+    try {
+      dispatch(addNewPlayerSlot());
+      goToBottom();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const locationsButtonHandler = () => {

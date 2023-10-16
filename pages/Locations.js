@@ -24,16 +24,17 @@ import {
   getEnabledLocationsLength,
   getTotalLocationsLength,
 } from "./GameSetup";
+import CustomDialog from "../components/UI/CustomDialog";
 
 export default function Locations({ navigation }) {
   const locationGroups = useSelector((store) => store.locations.future);
   const savedLocationGroups = useSelector((store) => store.locations.current);
   const [isChanged, setIsChanged] = useState(false);
-  const [addNewLocationButtonDisabled, setAddNewLocationButtonDisabled] =
+  const [showDefaultLocationsDialog, setShowDefaultLocationsDialog] =
     useState(false);
+  const [showSaveChangesDialog, setShowSaveChangesDialog] = useState(false);
   const dispatch = useDispatch();
   const scrollRef = useRef();
-  const addNewLocationButtonRef = useRef();
 
   useEffect(() => {
     if (
@@ -49,17 +50,35 @@ export default function Locations({ navigation }) {
   };
 
   const saveLocationsHandler = () => {
+    setShowSaveChangesDialog(false);
     dispatch(saveLocationsToStorage());
     navigation.navigate(NAVIGATION_NAME_GAME_SETUP);
   };
 
+  const openSaveChangesDialogHandler = () => {
+    setShowSaveChangesDialog(true);
+  };
+
+  const closeSaveChangesDialogHandler = () => {
+    setShowSaveChangesDialog(false);
+  };
+
+  const openDefaultLocationsDialogHandler = () => {
+    setShowDefaultLocationsDialog(true);
+  };
+
+  const closeDefaultLocationsDialogHandler = () => {
+    setShowDefaultLocationsDialog(false);
+  };
+
   const returnToDefaultSettingsHandler = () => {
+    setShowDefaultLocationsDialog(false);
     dispatch(returnToDefaultSettings());
   };
 
-  const addNewLocationHandler = async () => {
+  const addNewLocationHandler = () => {
     try {
-      await dispatch(addNewLocationSlot());
+      dispatch(addNewLocationSlot());
       const customLocationGroup = locationGroups.find(
         (locGroup) => locGroup.title === "Özel"
       );
@@ -113,12 +132,11 @@ export default function Locations({ navigation }) {
           style={[styles.buttonContainer, { marginBottom: GAP_BETWEEN_LAYERS }]}
         >
           <CustomButton
-            onPress={returnToDefaultSettingsHandler}
+            onPress={openDefaultLocationsDialogHandler}
             customChildren
             secondary
             iconLabel="VARSAYILAN"
             style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
-            ref={addNewLocationButtonRef}
           >
             <FontAwesome name="gears" size={30} color={COLORS.text} />
           </CustomButton>
@@ -129,7 +147,6 @@ export default function Locations({ navigation }) {
             iconLabel="YENİ MEKAN"
             iconLabelGap={10}
             style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
-            disabled={addNewLocationButtonDisabled}
           >
             <MaterialIcons
               name="add-location-alt"
@@ -152,7 +169,7 @@ export default function Locations({ navigation }) {
           </CustomButton>
 
           <CustomButton
-            onPress={saveLocationsHandler}
+            onPress={openSaveChangesDialogHandler}
             disabled={!isChanged}
             success
             customChildren
@@ -204,11 +221,32 @@ export default function Locations({ navigation }) {
 
   return (
     <>
+      <CustomDialog
+        show={showDefaultLocationsDialog}
+        onClose={closeDefaultLocationsDialogHandler}
+        onSubmit={returnToDefaultSettingsHandler}
+      >
+        Varsayılan mekanlara dönmek istediğinize emin misiniz?{"\n\n"}
+        <Text style={{ color: COLORS.errorDark, fontSize: 12 }}>
+          Dikkat! Eklediğiniz özel mekanlar ve yaptığınız değişiklikler
+          silinecektir.
+        </Text>
+      </CustomDialog>
+
+      <CustomDialog
+        show={showSaveChangesDialog}
+        onClose={closeSaveChangesDialogHandler}
+        onSubmit={saveLocationsHandler}
+      >
+        Değişiklikleri kaydetmek istediğinize emin misiniz?
+      </CustomDialog>
+
       <Text
         style={styles.locationsLabel}
       >{`MEKANLAR ${getEnabledLocationsLength(
         locationGroups
       )}/${getTotalLocationsLength(locationGroups)}`}</Text>
+
       <SectionList
         ref={scrollRef}
         sections={locationGroups}

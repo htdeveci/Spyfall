@@ -19,6 +19,8 @@ import {
   toggleLocationStatus,
 } from "../store/locationsSlice";
 import CustomButton from "./UI/CustomButton";
+import CustomDialog from "./UI/CustomDialog";
+import React from "react";
 
 export default function Location({
   locationGroupId,
@@ -33,6 +35,8 @@ export default function Location({
     return locGroup.data.find((loc) => loc.id === locationId);
   });
   const [expandRoles, setExpandRoles] = useState(false);
+  const [showDeleteLocationDialog, setShowDeleteLocationDialog] =
+    useState(false);
   const [enableAllRoles, setEnableAllRoles] = useState("indeterminate");
   const dispatch = useDispatch();
 
@@ -89,12 +93,30 @@ export default function Location({
   };
 
   const deleteLocationHandler = () => {
-    dispatch(deleteLocation({ locationGroupId, locationId }));
     // setExpandRoles(false);
+    setShowDeleteLocationDialog(false);
+    dispatch(deleteLocation({ locationGroupId, locationId }));
+  };
+
+  const openDeleteLocationDialogHandler = () => {
+    setShowDeleteLocationDialog(true);
+  };
+
+  const closeDeleteLocationDialogHandler = () => {
+    setShowDeleteLocationDialog(false);
   };
 
   return (
     <>
+      <CustomDialog
+        show={showDeleteLocationDialog}
+        onClose={closeDeleteLocationDialogHandler}
+        onSubmit={deleteLocationHandler}
+      >
+        <Text style={{ fontWeight: "bold" }}>{location.locationName}</Text> adlı
+        mekanı silmek istediğinize emin misiniz?
+      </CustomDialog>
+
       {location && (
         <View style={style}>
           <View style={[styles.container, { height: LINE_HEIGHT }]}>
@@ -175,7 +197,7 @@ export default function Location({
                   }}
                 >
                   <CustomButton
-                    onPress={deleteLocationHandler}
+                    onPress={openDeleteLocationDialogHandler}
                     cancel
                     customChildren
                     iconLabel="MEKANI SİL"
@@ -195,6 +217,8 @@ export default function Location({
     </>
   );
 }
+
+// export default React.memo(Location);
 
 const styles = StyleSheet.create({
   container: {

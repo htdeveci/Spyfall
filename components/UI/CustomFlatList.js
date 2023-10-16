@@ -7,7 +7,7 @@ import { COLORS, GAP_BETWEEN_LAYERS } from "../../constants/globalConstants";
 let listRef;
 
 export const goToBottom = () => {
-  listRef.current.scrollToEnd();
+  if (listRef && listRef.current) listRef.current.scrollToEnd();
 };
 
 export default function CustomFlatList({
