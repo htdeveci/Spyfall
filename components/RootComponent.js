@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useDispatch } from "react-redux";
-
 import Locations from "../pages/Locations";
-import { initLocations } from "../store/locationsSlice";
-// import locationsDefaults from "../locations-defaults.json";
 import {
   COLORS,
   NAVIGATION_NAME_GAMEPLAY,
   NAVIGATION_NAME_GAME_SETUP,
   NAVIGATION_NAME_LOCATIONS,
-  STORE_ACTIVE_LOCATIONS,
 } from "../constants/globalConstants";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";

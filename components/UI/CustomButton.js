@@ -1,7 +1,9 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+
 import { COLORS } from "../../constants/globalConstants";
-/* {
+
+export default function CustomButton({
   children,
   onPress,
   fontSize,
@@ -10,39 +12,15 @@ import { COLORS } from "../../constants/globalConstants";
   cancel = false,
   success = false,
   disabled = false,
-  // icon = false,
   iconLabel = null,
   iconLabelGap = 16,
   fullWidth = true,
-  useOpacity = true,
   customChildren = false,
   upperCase = true,
   buttonColorProp,
   rippleColorProp,
   textStyle,
-} */
-const CustomButton = React.forwardRef((props, ref) => {
-  const {
-    children,
-    onPress,
-    fontSize,
-    style,
-    secondary = false,
-    cancel = false,
-    success = false,
-    disabled = false,
-    // icon = false,
-    iconLabel = null,
-    iconLabelGap = 16,
-    fullWidth = true,
-    // useOpacity = true,
-    customChildren = false,
-    upperCase = true,
-    buttonColorProp,
-    rippleColorProp,
-    textStyle,
-  } = props;
-
+}) {
   let buttonColor = COLORS.primary;
   let rippleColor = COLORS.primaryDark;
 
@@ -81,7 +59,6 @@ const CustomButton = React.forwardRef((props, ref) => {
       ]}
     >
       <Pressable
-        ref={ref}
         style={[styles.buttonInnerContainer, { backgroundColor: buttonColor }]}
         onPress={onPress}
         android_ripple={{ color: rippleColor }}
@@ -112,9 +89,7 @@ const CustomButton = React.forwardRef((props, ref) => {
       </Pressable>
     </View>
   );
-});
-
-export default CustomButton;
+}
 
 const styles = StyleSheet.create({
   buttonOuterContainer: {

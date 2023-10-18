@@ -1,11 +1,6 @@
-import {
-  FontAwesome5,
-  MaterialCommunityIcons,
-  AntDesign,
-  Ionicons,
-} from "@expo/vector-icons";
-import { Text, View } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 import SelectDropdown from "react-native-select-dropdown";
+
 import { COLORS } from "../../constants/globalConstants";
 
 export default function CustomDropdown({

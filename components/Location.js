@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Checkbox } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -93,7 +93,6 @@ export default function Location({
   };
 
   const deleteLocationHandler = () => {
-    // setExpandRoles(false);
     setShowDeleteLocationDialog(false);
     dispatch(deleteLocation({ locationGroupId, locationId }));
   };
@@ -217,8 +216,6 @@ export default function Location({
     </>
   );
 }
-
-// export default React.memo(Location);
 
 const styles = StyleSheet.create({
   container: {

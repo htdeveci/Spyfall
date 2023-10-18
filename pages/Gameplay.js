@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { useEffect, useState } from "react";
+import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
-import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import CustomButton from "../components/UI/CustomButton";
 import CustomModal from "../components/UI/CustomModal";
@@ -12,8 +12,6 @@ import {
 } from "../constants/globalConstants";
 import GameController from "../components/GameController";
 import CustomFlatList from "../components/UI/CustomFlatList";
-import Seperator from "../components/UI/Seperator";
-import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import Card from "../components/UI/Card";
 import BorderedView from "../components/UI/BorderedView";
 
@@ -30,7 +28,7 @@ export default function Gameplay({ navigation, route }) {
   const [enableGameControllerButtons, setEnableGameControllerButtons] =
     useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
-  const [selectedGameTime, setSelectedGameTime] = useState(0.02);
+  const [selectedGameTime, setSelectedGameTime] = useState(10);
 
   useEffect(() => {
     enabledLocations = getEnabledLocations();
@@ -249,15 +247,3 @@ export default function Gameplay({ navigation, route }) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  playerNameText: {
-    color: COLORS.text,
-  },
-  playerNamePressable: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

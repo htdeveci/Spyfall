@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  KeyboardAvoidingView,
-  StyleSheet,
-  Switch,
-  Text,
-  View,
-} from "react-native";
+import { StyleSheet, Switch, Text, View } from "react-native";
 import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
@@ -20,11 +14,7 @@ import {
 } from "../constants/globalConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewPlayerSlot } from "../store/playersSlice";
-import {
-  initLocations,
-  toggleGameRolesStatus,
-  toggleRoleStatus,
-} from "../store/locationsSlice";
+import { initLocations, toggleGameRolesStatus } from "../store/locationsSlice";
 import CustomFlatList, { goToBottom } from "../components/UI/CustomFlatList";
 import BorderedView from "../components/UI/BorderedView";
 
@@ -55,10 +45,7 @@ export default function GameSetup({ navigation }) {
   const players = useSelector((store) => store.players);
   const locationGroups = useSelector((store) => store.locations.current);
   const enableRoles = useSelector((store) => store.locations.enableRoles);
-  // const enabledLocations = locationGroups.filter((loc) => loc.enabled === true);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
-  // const [enableRoles, setEnableRoles] = useState(true);
-
   const maxSpyNumber = 3;
 
   const addPlayerHandler = () => {

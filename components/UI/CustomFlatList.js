@@ -37,7 +37,6 @@ export default function CustomFlatList({
         showsVerticalScrollIndicator={false}
         numColumns={numColumns}
         columnWrapperStyle={numColumns > 1 && { justifyContent: "center" }}
-        // keyboardDismissMode="on-drag"
       />
     </>
   );

@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, View } from "react-native";
+
 import { COLORS } from "../../constants/globalConstants";
 
 export default function Card({ style, children, onPress = null }) {

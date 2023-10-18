@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native";
+
 import { COLORS, GAP_BETWEEN_LAYERS } from "../../constants/globalConstants";
 
 export default function BorderedView({ style, children }) {
@@ -7,8 +8,6 @@ export default function BorderedView({ style, children }) {
 
 const styles = StyleSheet.create({
   seperator: {
-    // flex: 1,
-    // flexDirection: "row",
     borderWidth: 0.5,
     borderStyle: "dashed",
     borderColor: COLORS.border,

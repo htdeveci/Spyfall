@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, View, Pressable, StyleSheet, Vibration } from "react-native";
+import { Text, View, Pressable, Vibration } from "react-native";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { v1 as uuidv1 } from "uuid";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
@@ -15,7 +15,6 @@ import CustomModal from "./UI/CustomModal";
 import CustomDropdown from "./UI/CustomDropdown";
 import CustomDialog from "./UI/CustomDialog";
 
-// const AlarmSound = require("../assets/NuclearAlarmSound.mp3");
 const AlarmSound = require("../assets/ClockAlarmSound.mp3");
 
 export default function GameController({
@@ -33,7 +32,6 @@ export default function GameController({
   const [playTimer, setPlayTimer] = useState(false);
   const [sound, setSound] = useState(null);
   const [isAlarmFinished, setIsAlarmFinished] = useState(false);
-  // const [showFinishGameDialog, setShowFinishGameDialog] = useState(false);
   const [showFinishGameCheckDialog, setShowFinishGameCheckDialog] =
     useState(false);
 
@@ -53,10 +51,12 @@ export default function GameController({
   }, [navigation, isGameFinished]);
 
   const finishGameButtonHandler = () => {
+    setPlayTimer(false);
     setShowFinishGameCheckDialog(true);
   };
 
   const cancelFinishGameHandler = () => {
+    setPlayTimer(true);
     setShowFinishGameCheckDialog(false);
   };
 
@@ -333,7 +333,6 @@ export default function GameController({
 
         {!isGameStarted && (
           <>
-            {/* <Seperator style={{ marginBottom: GAP_BETWEEN_LAYERS }} /> */}
             <View
               style={{
                 height: LINE_HEIGHT * 2,

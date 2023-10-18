@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 
-import { COLORS, LINE_HEIGHT } from "../constants/globalConstants";
+import { COLORS } from "../constants/globalConstants";
 import { changeRoleName, toggleRoleStatus } from "../store/locationsSlice";
 import CustomTextInput from "./UI/CustomTextInput";
 
@@ -19,15 +19,6 @@ export default function Role({
     );
     const location = locGroup.data.find((loc) => loc.id === locationId);
     return location.roles.find((r) => r.id === roleId);
-
-    /*  let selectedRole;
-    for (let i = 0; i < store.locations.future.length; i++) {
-      selectedRole = store.locations.future[i].roles.find(
-        (r) => r.id === roleId
-      );
-      if (!!selectedRole) break;
-    }
-    return selectedRole; */
   });
   const dispatch = useDispatch();
 

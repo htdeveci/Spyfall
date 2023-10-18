@@ -1,4 +1,4 @@
-import { Modal, StyleSheet, Text, View } from "react-native";
+import { Modal, StyleSheet, View } from "react-native";
 import { COLORS, LINE_HEIGHT } from "../../constants/globalConstants";
 
 import CustomButton from "./CustomButton";

@@ -1,4 +1,5 @@
 import { StyleSheet, Text } from "react-native";
+
 import CustomModal from "./CustomModal";
 import { COLORS } from "../../constants/globalConstants";
 
