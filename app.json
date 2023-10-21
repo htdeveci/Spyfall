@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/f99ee14c-4cd9-4ff6-9ab0-64dccab6705c"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -35,6 +36,21 @@
       "eas": {
         "projectId": "f99ee14c-4cd9-4ff6-9ab0-64dccab6705c"
       }
-    }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 33,
+            "targetSdkVersion": 33,
+            "buildToolsVersion": "33.0.0"
+          }
+        }
+      ]
+    ]
   }
 }
