@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import { COLORS } from "../constants/globalConstants";
 import { changeRoleName, toggleRoleStatus } from "../store/locationsSlice";
@@ -21,6 +22,7 @@ export default function Role({
     return location.roles.find((r) => r.id === roleId);
   });
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const toggleRoleStatusHandler = () => {
     dispatch(toggleRoleStatus({ locationGroupId, locationId, roleId }));
@@ -53,7 +55,7 @@ export default function Role({
 
           <CustomTextInput
             value={role.roleName}
-            placeholder={`${index}. Rol`}
+            placeholder={`${index}. ${t("Role.text.roleNamePlaceHolder")}`}
             onChangeText={roleNameChangeHandler}
           />
         </View>

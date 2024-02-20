@@ -1,0 +1,109 @@
+{
+  "GameSetup": {
+    "button": {
+      "startGame": "Oyunu Başlat",
+      "addPlayer": "Oyuncu Ekle",
+      "locations": "Mekanlar"
+    },
+    "text": {
+      "numberOfSpy": "Casus Sayısı",
+      "numberOfPlayers": "Oyuncu"
+    }
+  },
+  "Gameplay": {
+    "text": {
+      "locations": "Mekanlar",
+      "players": "Oyuncular"
+    },
+    "dialog": {
+      "playerIdentity": {
+        "player": "Oyuncu: ",
+        "location": "Konum: ",
+        "role": "Rol: "
+      }
+    }
+  },
+  "GameController": {
+    "button": {
+      "startGame": "Oyunu Başlat",
+      "endGame": "Oyunu Sonlandır"
+    },
+    "text": {
+      "remainingTime": "Kalan",
+      "timesUp": "Süre Bitti"
+    },
+    "dialog": {
+      "endGameCheck": {
+        "text": "Oyunu sonlandırmak istediğinize emin misiniz?"
+      },
+      "revealTruthAfterGameEnds": {
+        "location": "Konum: ",
+        "everyoneWasSpy": "Herkes Casustu",
+        "thereWasNoSpy": "Casus Yoktu"
+      }
+    }
+  },
+  "PlayerItem": {
+    "text": {
+      "playerNamePlaceholder": "Oyuncu Adı"
+    }
+  },
+  "Locations": {
+    "button": {
+      "default": "Varsayılan",
+      "newLocation": "YENİ MEKAN",
+      "cancel": "İptal",
+      "save": "Kaydet"
+    },
+    "text": {
+      "locations": "Mekanlar"
+    },
+    "dialog": {
+      "defaultCheck": {
+        "text": "Varsayılan mekanlara dönmek istediğinize emin misiniz?",
+        "warning": "Dikkat! Eklediğiniz özel mekanlar ve yaptığınız değişiklikler silinecektir."
+      },
+      "saveCheck": {
+        "text": "Değişiklikleri kaydetmek istediğinize emin misiniz?"
+      }
+    }
+  },
+  "Location": {
+    "button": {
+      "allRoles": "BÜTÜN ROLLER",
+      "deleteLocation": "MEKANI SİL"
+    },
+    "text": {
+      "locationName": "Mekan Adı"
+    },
+    "dialog": {
+      "deleteLocationCheck": {
+        "text": "<0><0>{{locationName}}</0></0> adlı mekanı silmek istediğinize emin misiniz?"
+      }
+    }
+  },
+  "Role": {
+    "text": {
+      "roleNamePlaceHolder": "Rol"
+    }
+  },
+  "CustomModal": {
+    "button": {
+      "submit": "Evet",
+      "close": "Kapat"
+    }
+  },
+  "CustomDialog": {
+    "button": {
+      "close": "Hayır"
+    }
+  },
+  "Settings": {
+    "button": {
+      "return": "GERİ DÖN",
+      "enableRoles": "Rolleri Dahil Et",
+      "language": "Dil",
+      "makeEveryoneSpy": "Herkes Casus Olsun"
+    }
+  }
+}

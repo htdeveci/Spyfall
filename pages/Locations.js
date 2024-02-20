@@ -25,6 +25,7 @@ import {
   getTotalLocationsLength,
 } from "./GameSetup";
 import CustomDialog from "../components/UI/CustomDialog";
+import { useTranslation } from "react-i18next";
 
 export default function Locations({ navigation }) {
   const locationGroups = useSelector((store) => store.locations.future);
@@ -35,6 +36,7 @@ export default function Locations({ navigation }) {
   const [showSaveChangesDialog, setShowSaveChangesDialog] = useState(false);
   const dispatch = useDispatch();
   const scrollRef = useRef();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (
@@ -135,7 +137,7 @@ export default function Locations({ navigation }) {
             onPress={openDefaultLocationsDialogHandler}
             customChildren
             secondary
-            iconLabel="VARSAYILAN"
+            iconLabel={t("Locations.button.default")}
             style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
           >
             <FontAwesome name="gears" size={30} color={COLORS.text} />
@@ -144,7 +146,7 @@ export default function Locations({ navigation }) {
           <CustomButton
             onPress={addNewLocationHandler}
             customChildren
-            iconLabel="YENİ MEKAN"
+            iconLabel={t("Locations.button.newLocation")}
             iconLabelGap={10}
             style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
           >
@@ -161,7 +163,7 @@ export default function Locations({ navigation }) {
             onPress={cancelHandler}
             cancel
             customChildren
-            iconLabel="İptal"
+            iconLabel={t("Locations.button.cancel")}
             iconLabelGap={10}
             style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
           >
@@ -173,7 +175,7 @@ export default function Locations({ navigation }) {
             disabled={!isChanged}
             success
             customChildren
-            iconLabel="Kaydet"
+            iconLabel={t("Locations.button.save")}
             style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
           >
             <Entypo name="save" size={30} color={COLORS.text} />
@@ -226,10 +228,10 @@ export default function Locations({ navigation }) {
         onClose={closeDefaultLocationsDialogHandler}
         onSubmit={returnToDefaultSettingsHandler}
       >
-        Varsayılan mekanlara dönmek istediğinize emin misiniz?{"\n\n"}
+        {t("Locations.dialog.defaultCheck.text")}
+        {"\n\n"}
         <Text style={{ color: COLORS.errorDark, fontSize: 12 }}>
-          Dikkat! Eklediğiniz özel mekanlar ve yaptığınız değişiklikler
-          silinecektir.
+          {t("Locations.dialog.defaultCheck.warning")}
         </Text>
       </CustomDialog>
 
@@ -238,14 +240,14 @@ export default function Locations({ navigation }) {
         onClose={closeSaveChangesDialogHandler}
         onSubmit={saveLocationsHandler}
       >
-        Değişiklikleri kaydetmek istediğinize emin misiniz?
+        {t("Locations.dialog.saveCheck.text")}
       </CustomDialog>
 
-      <Text
-        style={styles.locationsLabel}
-      >{`MEKANLAR ${getEnabledLocationsLength(
+      <Text style={styles.locationsLabel}>{`${t(
+        "Locations.text.locations"
+      )} ${getEnabledLocationsLength(locationGroups)}/${getTotalLocationsLength(
         locationGroups
-      )}/${getTotalLocationsLength(locationGroups)}`}</Text>
+      )}`}</Text>
 
       <SectionList
         ref={scrollRef}

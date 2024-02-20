@@ -4,9 +4,11 @@ import { COLORS } from "../constants/globalConstants";
 import CustomTextInput from "./UI/CustomTextInput";
 import { useDispatch } from "react-redux";
 import { changePlayerName, deletePlayer } from "../store/playersSlice";
+import { useTranslation } from "react-i18next";
 
 export default function PlayerItem({ style, player }) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const playerNameChangeHandler = (newPlayerName) => {
     dispatch(changePlayerName({ id: player.id, newPlayerName }));
@@ -19,7 +21,7 @@ export default function PlayerItem({ style, player }) {
   return (
     <View style={[styles.container, style]}>
       <CustomTextInput
-        placeholder="Oyuncu Adı"
+        placeholder={t("PlayerItem.text.playerNamePlaceholder")}
         onChangeText={playerNameChangeHandler}
         value={player.playerName}
       />

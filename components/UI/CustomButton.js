@@ -8,6 +8,7 @@ export default function CustomButton({
   onPress,
   fontSize,
   style,
+  innerStyle,
   secondary = false,
   cancel = false,
   success = false,
@@ -59,7 +60,11 @@ export default function CustomButton({
       ]}
     >
       <Pressable
-        style={[styles.buttonInnerContainer, { backgroundColor: buttonColor }]}
+        style={[
+          styles.buttonInnerContainer,
+          innerStyle,
+          { backgroundColor: buttonColor },
+        ]}
         onPress={onPress}
         android_ripple={{ color: rippleColor }}
         disabled={disabled}
@@ -85,7 +90,7 @@ export default function CustomButton({
           </>
         )}
 
-        {customChildren && !iconLabel && { children }}
+        {customChildren && !iconLabel && children}
       </Pressable>
     </View>
   );

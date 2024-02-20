@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 
 import CustomButton from "../components/UI/CustomButton";
 import CustomModal from "../components/UI/CustomModal";
@@ -29,6 +30,7 @@ export default function Gameplay({ navigation, route }) {
     useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [selectedGameTime, setSelectedGameTime] = useState(10);
+  const { t } = useTranslation();
 
   useEffect(() => {
     enabledLocations = getEnabledLocations();
@@ -196,7 +198,10 @@ export default function Gameplay({ navigation, route }) {
         <>
           <CustomFlatList
             data={isGameStarted ? enabledLocations : allPlayersWithRoles}
-            listLabel={isGameStarted ? "MEKANLAR" : "OYUNCULAR"}
+            listLabel={(isGameStarted
+              ? t("Gameplay.text.locations")
+              : t("Gameplay.text.players")
+            ).toUpperCase()}
             renderItem={isGameStarted ? renderLocations : renderPlayers}
             numColumns={isGameStarted ? 2 : 1}
           />
@@ -210,7 +215,7 @@ export default function Gameplay({ navigation, route }) {
           onClose={closePlayerRoleModalHandler}
         >
           <View style={{ flexDirection: "row" }}>
-            <Text>Oyuncu: </Text>
+            <Text>{t("Gameplay.dialog.playerIdentity.player")}</Text>
             <Text style={{ fontWeight: "bold" }}>
               {selectedPlayer.playerName}
             </Text>
@@ -226,7 +231,7 @@ export default function Gameplay({ navigation, route }) {
           {!selectedPlayer.isSpy && (
             <>
               <View style={{ flexDirection: "row" }}>
-                <Text>Konum: </Text>
+                <Text>{t("Gameplay.dialog.playerIdentity.location")}</Text>
                 <Text style={{ fontWeight: "bold" }}>
                   {selectedPlayer.location.locationName}
                 </Text>
@@ -234,7 +239,7 @@ export default function Gameplay({ navigation, route }) {
 
               {selectedPlayer.role !== "" && (
                 <View style={{ flexDirection: "row" }}>
-                  <Text>Rol: </Text>
+                  <Text>{t("Gameplay.dialog.playerIdentity.role")}</Text>
                   <Text style={{ fontWeight: "bold" }}>
                     {selectedPlayer.role}
                   </Text>

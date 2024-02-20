@@ -1,0 +1,109 @@
+{
+  "GameSetup": {
+    "button": {
+      "startGame": "Start Game",
+      "addPlayer": "Add Player",
+      "locations": "Locations"
+    },
+    "text": {
+      "numberOfSpy": "Number of Spy",
+      "numberOfPlayers": "Players"
+    }
+  },
+  "Gameplay": {
+    "text": {
+      "locations": "Locations",
+      "players": "Players"
+    },
+    "dialog": {
+      "playerIdentity": {
+        "player": "Player: ",
+        "location": "Location: ",
+        "role": "Role: "
+      }
+    }
+  },
+  "GameController": {
+    "button": {
+      "startGame": "Start Game",
+      "endGame": "End Game"
+    },
+    "text": {
+      "remainingTime": "Remaining",
+      "timesUp": "Times Up"
+    },
+    "dialog": {
+      "endGameCheck": {
+        "text": "Are you sure you want to end the game?"
+      },
+      "revealTruthAfterGameEnds": {
+        "location": "Location: ",
+        "everyoneWasSpy": "Everyone was a Spy",
+        "thereWasNoSpy": "There was No Spy"
+      }
+    }
+  },
+  "PlayerItem": {
+    "text": {
+      "playerNamePlaceholder": "Player Name"
+    }
+  },
+  "Locations": {
+    "button": {
+      "default": "Default",
+      "newLocation": "New Location",
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "text": {
+      "locations": "Locations"
+    },
+    "dialog": {
+      "defaultCheck": {
+        "text": "Are you sure you want to return to default locations?",
+        "warning": "Attention! The special locations you added and the changes you made will be deleted."
+      },
+      "saveCheck": {
+        "text": "Are you sure you want to save the changes?"
+      }
+    }
+  },
+  "Location": {
+    "button": {
+      "allRoles": "All Roles",
+      "deleteLocation": "Delete Location"
+    },
+    "text": {
+      "locationName": "Location Name"
+    },
+    "dialog": {
+      "deleteLocationCheck": {
+        "text": "Are you sure you want to delete the location which named as <0><0>{{locationName}}</0></0>?"
+      }
+    }
+  },
+  "Role": {
+    "text": {
+      "roleNamePlaceHolder": "Role"
+    }
+  },
+  "CustomModal": {
+    "button": {
+      "submit": "Yes",
+      "close": "Close"
+    }
+  },
+  "CustomDialog": {
+    "button": {
+      "close": "No"
+    }
+  },
+  "Settings": {
+    "button": {
+      "return": "Return",
+      "enableRoles": "Enable Roles",
+      "language": "Language",
+      "makeEveryoneSpy": "Make Everyone Spy"
+    }
+  }
+}

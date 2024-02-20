@@ -4,12 +4,14 @@ import {
   NAVIGATION_NAME_GAMEPLAY,
   NAVIGATION_NAME_GAME_SETUP,
   NAVIGATION_NAME_LOCATIONS,
+  NAVIGATION_NAME_SETTINGS,
 } from "../constants/globalConstants";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
 import GameSetup from "../pages/GameSetup";
 import Gameplay from "../pages/Gameplay";
+import Settings from "../pages/Settings";
 
 export default function RootComponent() {
   const Stack = createStackNavigator();
@@ -25,6 +27,7 @@ export default function RootComponent() {
         <Stack.Screen name={NAVIGATION_NAME_GAME_SETUP} component={GameSetup} />
         <Stack.Screen name={NAVIGATION_NAME_LOCATIONS} component={Locations} />
         <Stack.Screen name={NAVIGATION_NAME_GAMEPLAY} component={Gameplay} />
+        <Stack.Screen name={NAVIGATION_NAME_SETTINGS} component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );

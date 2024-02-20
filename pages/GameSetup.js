@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { StyleSheet, Switch, Text, View } from "react-native";
-import { Entypo, FontAwesome5 } from "@expo/vector-icons";
+import { StyleSheet, Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
+import { Entypo, FontAwesome5, Ionicons } from "@expo/vector-icons";
 import Slider from "@react-native-community/slider";
 
 import CustomButton from "../components/UI/CustomButton";
@@ -11,6 +12,7 @@ import {
   LINE_HEIGHT,
   NAVIGATION_NAME_GAMEPLAY,
   NAVIGATION_NAME_LOCATIONS,
+  NAVIGATION_NAME_SETTINGS,
 } from "../constants/globalConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewPlayerSlot } from "../store/playersSlice";
@@ -44,9 +46,9 @@ export default function GameSetup({ navigation }) {
   const dispatch = useDispatch();
   const players = useSelector((store) => store.players);
   const locationGroups = useSelector((store) => store.locations.current);
-  const enableRoles = useSelector((store) => store.locations.enableRoles);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
   const maxSpyNumber = 3;
+  const { t } = useTranslation();
 
   const addPlayerHandler = () => {
     try {
@@ -69,10 +71,6 @@ export default function GameSetup({ navigation }) {
   const startGameHandler = () => {
     if (isGameReady())
       navigation.navigate(NAVIGATION_NAME_GAMEPLAY, { numberOfSpy });
-  };
-
-  const toggleRolesEnabled = () => {
-    dispatch(toggleGameRolesStatus());
   };
 
   const renderPlayers = (item) => {
@@ -112,16 +110,22 @@ export default function GameSetup({ navigation }) {
       }
     };
 
+    const settingsButtonHandler = () => {
+      navigation.navigate(NAVIGATION_NAME_SETTINGS);
+    };
+
     return (
       <BorderedView>
         <View style={styles.line}>
           <CustomButton onPress={addPlayerHandler} fontSize={20}>
-            Oyuncu Ekle
+            {t("GameSetup.button.addPlayer")}
           </CustomButton>
         </View>
 
         <View style={[styles.spyCountContainer, styles.line]}>
-          <Text style={styles.text}>Casus Sayısı: {numberOfSpyInRender}</Text>
+          <Text style={styles.text}>
+            {`${t("GameSetup.text.numberOfSpy")}: ${numberOfSpyInRender}`}
+          </Text>
           <Slider
             maximumValue={maxSpyNumber}
             step={1}
@@ -158,31 +162,23 @@ export default function GameSetup({ navigation }) {
 
         <View style={[styles.line, { flexDirection: "row" }]}>
           <CustomButton
-            onPress={toggleRolesEnabled}
+            onPress={settingsButtonHandler}
             secondary
-            iconLabel="Roller"
-            style={{ marginRight: GAP_BETWEEN_LAYERS / 2 }}
-            useOpacity={false}
             customChildren
+            style={{ flex: 1 }}
           >
-            <Switch
-              onValueChange={toggleRolesEnabled}
-              value={enableRoles}
-              thumbColor={enableRoles ? COLORS.primary : COLORS.darkGray}
-              trackColor={{
-                false: COLORS.lightGray,
-                true: COLORS.primaryDark,
-              }}
-            />
+            <Ionicons name="settings" size={24} color="white" />
           </CustomButton>
 
           <CustomButton
             onPress={locationsButtonHandler}
             secondary
-            iconLabel={`Mekanlar ${getEnabledLocationsLength(
+            iconLabel={`${t(
+              "GameSetup.button.locations"
+            )} ${getEnabledLocationsLength(
               locationGroups
             )}/${getTotalLocationsLength(locationGroups)}`}
-            style={{ marginLeft: GAP_BETWEEN_LAYERS / 2 }}
+            style={{ marginLeft: GAP_BETWEEN_LAYERS / 2, flex: 2 }}
             customChildren
           >
             <Entypo name="location" size={30} color={COLORS.text} />
@@ -196,7 +192,7 @@ export default function GameSetup({ navigation }) {
             success
             fontSize={30}
           >
-            OYUNU BAŞLAT
+            {t("GameSetup.button.startGame")}
           </CustomButton>
         </View>
       </BorderedView>
@@ -207,7 +203,7 @@ export default function GameSetup({ navigation }) {
     <>
       <CustomFlatList
         data={players}
-        listLabel={`${players.length} OYUNCU`}
+        listLabel={`${players.length} ${t("GameSetup.text.numberOfPlayers")}`}
         renderItem={renderPlayers}
       />
       {renderControllers()}

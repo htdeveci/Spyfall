@@ -14,6 +14,7 @@ import CustomButton from "./UI/CustomButton";
 import CustomModal from "./UI/CustomModal";
 import CustomDropdown from "./UI/CustomDropdown";
 import CustomDialog from "./UI/CustomDialog";
+import { useTranslation } from "react-i18next";
 
 const AlarmSound = require("../assets/ClockAlarmSound.mp3");
 
@@ -34,6 +35,7 @@ export default function GameController({
   const [isAlarmFinished, setIsAlarmFinished] = useState(false);
   const [showFinishGameCheckDialog, setShowFinishGameCheckDialog] =
     useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isAlarmFinished) {
@@ -122,7 +124,9 @@ export default function GameController({
       <CustomModal show={isGameFinished} onClose={closeFinishModal}>
         {location && (
           <View style={{ flexDirection: "row" }}>
-            <Text>Konum: </Text>
+            <Text>
+              {t("GameController.dialog.revealTruthAfterGameEnds.location")}
+            </Text>
             <Text style={{ fontWeight: "bold" }}>{location}</Text>
           </View>
         )}
@@ -178,7 +182,9 @@ export default function GameController({
                       marginTop: GAP_BETWEEN_LAYERS / 2,
                     }}
                   >
-                    Casus Yoktu
+                    {t(
+                      "GameController.dialog.revealTruthAfterGameEnds.thereWasNoSpy"
+                    )}
                   </Text>
                 )}
               </>
@@ -221,7 +227,9 @@ export default function GameController({
                     marginTop: GAP_BETWEEN_LAYERS / 2,
                   }}
                 >
-                  Herkes Casustu
+                  {t(
+                    "GameController.dialog.revealTruthAfterGameEnds.everyoneWasSpy"
+                  )}
                 </Text>
               </View>
             )}
@@ -234,7 +242,7 @@ export default function GameController({
         onClose={cancelFinishGameHandler}
         onSubmit={finishGame}
       >
-        Oyunu sonlandırmak istediğinize emin misiniz?
+        {t("GameController.dialog.endGameCheck.text")}
       </CustomDialog>
 
       <>
@@ -275,7 +283,7 @@ export default function GameController({
                             fontSize: 12,
                           }}
                         >
-                          Kalan
+                          {t("GameController.text.remainingTime")}
                         </Text>
                         <Text
                           style={{
@@ -321,7 +329,7 @@ export default function GameController({
                           fontSize: 18,
                         }}
                       >
-                        SÜRE BİTTİ
+                        {t("GameController.text.timesUp").toUpperCase()}
                       </Text>
                     )}
                   </View>
@@ -346,7 +354,7 @@ export default function GameController({
                 disabled={!enableButtons}
                 onPress={startGameHandler}
               >
-                Oyunu Başlat
+                {t("GameController.button.startGame")}
               </CustomButton>
 
               <View style={{ flex: 1, width: "100%" }}>
@@ -389,7 +397,7 @@ export default function GameController({
 
         <View style={{ height: LINE_HEIGHT }}>
           <CustomButton cancel onPress={finishGameButtonHandler}>
-            Oyunu Sonlandır
+            {t("GameController.button.endGame")}
           </CustomButton>
         </View>
       </>

@@ -1,16 +1,19 @@
 import { Modal, StyleSheet, View } from "react-native";
-import { COLORS, LINE_HEIGHT } from "../../constants/globalConstants";
+import { useTranslation } from "react-i18next";
 
 import CustomButton from "./CustomButton";
+import { COLORS, LINE_HEIGHT } from "../../constants/globalConstants";
 
 export default function CustomModal({
   show,
-  closeButtonText = "Kapat",
-  submitButtonText = "Evet",
+  closeButtonText,
+  submitButtonText,
   onClose,
   onSubmit = null,
   children,
 }) {
+  const { t } = useTranslation();
+
   return (
     <Modal visible={show} transparent={true} animationType="fade">
       <View style={styles.modalOuterContainer}>
@@ -19,12 +22,16 @@ export default function CustomModal({
 
           <View style={styles.buttonContainer}>
             <CustomButton onPress={onClose} cancel fullWidth={false}>
-              {closeButtonText}
+              {closeButtonText
+                ? closeButtonText
+                : t("CustomModal.button.close")}
             </CustomButton>
 
             {onSubmit && (
               <CustomButton onPress={onSubmit} success fullWidth={false}>
-                {submitButtonText}
+                {submitButtonText
+                  ? submitButtonText
+                  : t("CustomModal.button.submit")}
               </CustomButton>
             )}
           </View>

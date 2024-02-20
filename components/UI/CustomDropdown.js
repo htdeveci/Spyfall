@@ -1,16 +1,22 @@
+import { forwardRef } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import SelectDropdown from "react-native-select-dropdown";
 
 import { COLORS } from "../../constants/globalConstants";
 
-export default function CustomDropdown({
-  data,
-  onSelect,
-  defaultValue = null,
-  customizedButtonChild = null,
-}) {
+export default forwardRef(function CustomDropdown(
+  {
+    data,
+    onSelect,
+    defaultValue = null,
+    customizedButtonChild = null,
+    customizedRowChild = null,
+  },
+  ref
+) {
   return (
     <SelectDropdown
+      ref={ref}
       data={data}
       onSelect={onSelect}
       buttonTextAfterSelection={(selectedItem, index) => {
@@ -31,6 +37,7 @@ export default function CustomDropdown({
           );
       }}
       renderCustomizedButtonChild={customizedButtonChild}
+      renderCustomizedRowChild={customizedRowChild}
       buttonStyle={{
         flex: 1,
         width: "100%",
@@ -47,4 +54,4 @@ export default function CustomDropdown({
       selectedRowTextStyle={{ color: COLORS.text }}
     />
   );
-}
+});

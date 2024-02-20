@@ -3,6 +3,7 @@ export const COLORS = {
   modalBackgroud: "rgba(43, 43, 43, 0.6)",
   border: "#aaaaaa",
   lightGray: "#d3d3d3",
+  gray: "#a7a7a7",
   darkGray: "#747474",
   text: "#fff5e8",
   textReverse: "#33312e",
@@ -21,6 +22,7 @@ export const COLORS = {
 export const NAVIGATION_NAME_GAME_SETUP = "GameSetup";
 export const NAVIGATION_NAME_LOCATIONS = "Locations";
 export const NAVIGATION_NAME_GAMEPLAY = "Gameplay";
+export const NAVIGATION_NAME_SETTINGS = "Settings";
 
 export const STORE_ACTIVE_LOCATIONS = "ActiveLocations";
 export const STORE_ACTIVE_PLAYERS = "ActivePlayers";

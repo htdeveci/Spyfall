@@ -1,3 +1,5 @@
+import React from "react";
+import { Trans, useTranslation } from "react-i18next";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
@@ -20,7 +22,6 @@ import {
 } from "../store/locationsSlice";
 import CustomButton from "./UI/CustomButton";
 import CustomDialog from "./UI/CustomDialog";
-import React from "react";
 
 export default function Location({
   locationGroupId,
@@ -39,6 +40,7 @@ export default function Location({
     useState(false);
   const [enableAllRoles, setEnableAllRoles] = useState("indeterminate");
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const toggleLocationStatusHandler = () => {
     dispatch(toggleLocationStatus({ locationGroupId, locationId }));
@@ -112,8 +114,9 @@ export default function Location({
         onClose={closeDeleteLocationDialogHandler}
         onSubmit={deleteLocationHandler}
       >
-        <Text style={{ fontWeight: "bold" }}>{location.locationName}</Text> adlı
-        mekanı silmek istediğinize emin misiniz?
+        <Trans i18nKey={"Location.dialog.deleteLocationCheck.text"}>
+          <Text style={{ fontWeight: "bold" }}>{location.locationName}</Text>
+        </Trans>
       </CustomDialog>
 
       {location && (
@@ -130,7 +133,9 @@ export default function Location({
               onPress={toggleLocationStatusHandler}
             >
               <Text style={styles.locationSwitchText}>
-                {location.locationName ? location.locationName : "Mekan Adı"}
+                {location.locationName
+                  ? location.locationName
+                  : t("Location.text.locationName")}
               </Text>
             </Pressable>
 
@@ -152,7 +157,7 @@ export default function Location({
               <View style={styles.rolesContainer}>
                 <Card style={{ width: "50%", height: roleHeight }}>
                   <CustomTextInput
-                    placeholder="Mekan Adı"
+                    placeholder={t("Location.text.locationName")}
                     value={location.locationName}
                     onChangeText={locationNameChangeHandler}
                     style={{ textAlign: "center" }}
@@ -175,7 +180,7 @@ export default function Location({
                         color: COLORS.textReverse,
                       }}
                     >
-                      Bütün Roller
+                      {t("Location.button.allRoles")}
                     </Text>
                     <Checkbox
                       status={enableAllRoles}
@@ -199,7 +204,7 @@ export default function Location({
                     onPress={openDeleteLocationDialogHandler}
                     cancel
                     customChildren
-                    iconLabel="MEKANI SİL"
+                    iconLabel={t("Location.button.deleteLocation")}
                   >
                     <MaterialIcons
                       name="delete-forever"
