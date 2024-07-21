@@ -1,0 +1,2476 @@
+[
+  {
+    "title": "Spyfall 1",
+    "id": 1,
+    "enabled": true,
+    "data": [
+      {
+        "changed": false,
+        "locationName": "Uçak",
+        "id": 1,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Birinci Sınıf Yolcusu",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Özel Uçuş Polisi",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Teknik Personel",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ekonomi Sınıfı Yolcusu",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Hostes", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yardımcı Pilot",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kaptan Pilot",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Banka",
+        "id": 2,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Zırhlı Araç Sürücüsü",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Banka Müdürü",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Danışman",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Müşteri", "id": 4 },
+          { "enabled": true, "changed": false, "roleName": "Hırsız", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik Görevlisi",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Veznedar",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Kumsal",
+        "id": 3,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Garson", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Sörfçü", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cankurtaran",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Hırsız", "id": 4 },
+          { "enabled": true, "changed": false, "roleName": "Tatilci", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Fotoğrafçı",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "roleName": "Dondurma Kamyonu Sürücüsü",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Tiyatro",
+        "id": 4,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Vestiyer",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Suflör", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Kasiyer", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İzleyici",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yönetmen",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Aktör", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sahne Görevlisi",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Kumarhane",
+        "id": 5,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Barmen", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik Yöneticisi",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Fedai", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yönetici",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yankesici",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Krupiyer",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kumarbaz",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Katedral",
+        "id": 6,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Rahip", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Dilenci", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Günahkar",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cemaat Üyesi",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Sponsor", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Koro Şarkıcısı",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Sirk Çadırı",
+        "id": 7,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Akrobat", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hayvan Eğiticisi",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sihirbaz",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İzleyici",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ateş Yutucu",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Palyaço", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hokkabaz",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "İş Partisi",
+        "id": 8,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Animatör",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yönetici",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İstenmeyen Misafir",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ev Sahibi",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sekreter",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Muhasebeci",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Kurye", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Haçlı Ordusu",
+        "id": 9,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Keşiş", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hapsedilmiş Arap",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hizmetçi",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Piskopos",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Toprak Sahibi",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Okçu", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Şövalye", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Spa",
+        "id": 10,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Müşteri", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Stilist", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Masör", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Manikürcü",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Makyajcı",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Dermatolog",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güzellik Uzmanı",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Büyükelçilik",
+        "id": 11,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik Görevlisi",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sekreter",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Büyükelçi",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hükümet Görevlisi",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Mülteci", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Diplomat",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Hastane",
+        "id": 12,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Hemşire", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Doktor", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Anestezi Uzmanı",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Stajyer", "id": 4 },
+          { "enabled": true, "changed": false, "roleName": "Hasta", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Terapist",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Cerrah", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Otel",
+        "id": 13,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Giriş Görevlisi",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik Görevlisi",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Müdür", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Temizlikçi",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Müşteri", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Barmen", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Valiz Taşıyıcı",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Askeri Üs",
+        "id": 14,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Asker Kaçağı",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Albay", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Doktor", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Asker", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Keskin Nişancı",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Memur", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tank Mühendisi",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Film Stüdyosu",
+        "id": 15,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Dublör", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ses Mühendisi",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kameraman",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yönetmen",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kostüm Sorumlusu",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Aktör", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Yapımcı", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Yolcu Gemisi",
+        "id": 16,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Zengin Yolcu",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Aşçı", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Kaptan", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Barmen", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Müzisyen",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Garson", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Teknik Personel",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Yolcu Treni",
+        "id": 17,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Teknik Personel",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gümrük Memuru",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Hostes", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Yolcu", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Restoran Şefi",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mühendis",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Kömürcü", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Korsan Gemisi",
+        "id": 18,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Aşçı", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Denizci", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Köle", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Topçu", "id": 4 },
+          { "enabled": true, "changed": false, "roleName": "Tutsak", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Miço", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Kaptan", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Kutup Araştırma Merkezi",
+        "id": 19,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Doktor", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Jeolog", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Keşif Heyeti Lider",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Biyolog", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Radyo Operatörü",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Su Araştırma Uzmanı",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Metoroloji Uzmanı",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Polis Merkezi",
+        "id": 20,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Dedektif",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Avukat", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gazeteci",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kriminal Uzman",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Arşiv Sorumlusu",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Devriye Memuru",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Suçlu", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Restoran",
+        "id": 21,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Müzisyen",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Müşteri", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Giriş Sorumlusu",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Kasiyer", "id": 4 },
+          { "enabled": true, "changed": false, "roleName": "Şef", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Gurme", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Garson", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Okul",
+        "id": 22,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Beden Eğitimi Öğretmeni",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Öğrenci", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Müdür", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik Görevlisi",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Hademe", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yemekhane Sorumlusu",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Tamirci", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Araba Tamircisi",
+        "id": 23,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yönetici",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Lastikçi",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Motor Sürücüsü",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Araba Sahibi",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Araba Yıkama Operatörü",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Elektrikçi",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Oto Tamircisi",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Uzay İstasyonu",
+        "id": 24,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mühendis",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Uzaylı", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Uzay Turisti",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Astronot",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ekip Lideri",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bilim İnsanı",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Doktor", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Denizaltı",
+        "id": 25,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Aşçı", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Komutan", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sonar Uzmanı",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Elektronik Teknikeri",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Denizci", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Radyo Operatörü",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Rotacı", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Süpermarket",
+        "id": 26,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Müşteri", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Kasiyer", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Kasap", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Temizlikçi",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik Görevlisi",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tadımlık Stand Görevlisi",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Raf Düzenleyicisi",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Üniversite",
+        "id": 27,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mezun Öğrenci",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Profesör",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Dekan", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Psikolog",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Fotokopici",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Öğrenci", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bina Sorumlusu",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Spyfall 2",
+    "id": 2,
+    "enabled": true,
+    "data": [
+      {
+        "changed": false,
+        "locationName": "Lunapark",
+        "id": 1,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Makine Operatörü",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Ebeveyn", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yemek Satıcısı",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Biletçi", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mutlu Çocuk",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sinir Bozucu Çocuk",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Ergen", "id": 7 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Temizlikçi",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ebeveyn",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Sanat Müzesi",
+        "id": 2,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Biletçi", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Öğrenci", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ziyaretçi",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Öğretmen",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Ressam", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Koleksiyoncu",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Eleştirmen",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Fotoğrafçı",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Şeker Fabrikası",
+        "id": 3,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çılgın Rehber",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Pasta Şefi",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ziyaretçi",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Gurme", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çikolata Yapan",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gurme",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tedarikçi",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Umpa Lumpa",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Müfettiş",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Makine Operatörü",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Kedi Şovu",
+        "id": 4,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Jüri", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kedi Tutan",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Veteriner",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kedi Eğitmeni",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kedi Manyağı Kadın",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hayvansever",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kedi Sahibi",
+            "id": 8
+          },
+          { "enabled": true, "changed": false, "roleName": "Kedi", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "Kedi", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Mezarlık",
+        "id": 5,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Rahip", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ürkütücü Kız",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mezar Hırsızı",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Şair", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ağıt Yakan",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kapı Gardiyanı",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ölmüş Kişi",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Akraba", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çiçek Satan",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mezar Kazıcı",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Kömür Madeni",
+        "id": 6,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik Denetmeni",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Madenci", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Denetmen",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çöp Kamyonu Sürücüsü",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Matkap Kullanan",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Koordinatör",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Patlayıcı Mühendisi",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Madenci", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Katı Atık Mühendisi",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "İşçi", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "İnşaat Alanı",
+        "id": 7,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Firari Bebek",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Müteahhit",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Vinç Sürücüsü",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kaçak Giren",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik Şefi",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Elektrikçi",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mühendis",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Mimar", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İnşaat İşçisi",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İnşaat İşçisi",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Oyun Fuarı",
+        "id": 8,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Blog Muhabiri",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cosplayci",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Oyuncu", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Katılımcı",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Koleksiyoncu",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Çocuk", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Koruma", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "İnek", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "Utangaç", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "Ünlü", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Benzin İstasyonu",
+        "id": 9,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Araba Meraklısı",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Görevli", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Market Sahibi",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Müşteri", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Araba Yıkayıcı",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Kasiyer", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Müşteri", "id": 7 },
+          {
+            "enabled": true,
+            "roleName": "İklim Değişikliği Protestocusu",
+            "id": 8
+          },
+          { "enabled": true, "changed": false, "roleName": "Görevli", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "Müdür", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Liman",
+        "id": 10,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yükleyici",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kızgın Yaşlı Korsan",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Kaptan", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Denizci", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yükleyici",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Balıkçı", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İhracatçı",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kargo Takipçisi",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kargo Müfettişi",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kaçakçı",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Buz Hokeyi Stadı",
+        "id": 11,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hokey Fanı",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Doktor", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Oyuncu", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yemek Satıcısı",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Güvenlik",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Kaleci", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Koç", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "Hakem", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İzleyici",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hokey Oyuncusu",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Hapishane",
+        "id": 12,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yanlış Suçlanmış Kişi",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mobese Kamera Denetmeni",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gardiyan",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ziyaretçi",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Avukat", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Temizlikçi",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hapishane Bekçisi",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Suçlu", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ceza Memuru",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "Manyak", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Caz Kulübü",
+        "id": 13,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Koruma", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Davulcu", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Piyanist",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Saksofoncu",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Şarkıcı", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Caz Hayranı",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Dansör", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "Barmen", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "VIP Üye", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "Garson", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Kütüphane",
+        "id": 14,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yaşlı Adam",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gazeteci",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Yazar", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Gönüllü", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çokbilmiş",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Öğrenci", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kütüphaneci",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çok Konuşan",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kitap Kurdu",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "İnek", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Gece Kulübü",
+        "id": 15,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Normal Kişi",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Barmen", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Koruma", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Dansör", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Dostcanlısı",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Parti Kızı",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Manken", "id": 7 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kaslı Adam",
+            "id": 8
+          },
+          { "enabled": true, "changed": false, "roleName": "Sarhoş", "id": 9 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Utangaç Kişi",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Yarış Pisti",
+        "id": 16,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Takım Başkanı",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sürücü",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mühendis",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İzleyici",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hakem",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Tamirci", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Seyyar Yemek Satıcısı",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yorumcu",
+            "id": 8
+          },
+          { "enabled": true, "changed": false, "roleName": "Bahisçi", "id": 9 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İzleyici",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Huzurevi",
+        "id": 17,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Akraba", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İskambil Oynayan",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yaşlı Kişi",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Hemşire", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Temizlikçi",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Aşçı", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kör Kişi",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Psikolog",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yaşlı Kişi",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hemşire",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Rock Konseri",
+        "id": 18,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Dansör", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Şarkıcı", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Hayran", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gitarist",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Baterici",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Eşya Taşıyan",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sahne Çalışanı",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Koruma", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "Bassist", "id": 9 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Teknik Destek",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Gezi Otobüsü",
+        "id": 19,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yaşlı Adam",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yalnız Turist",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Sürücü", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sinir Bozucu Çocuk",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tur Rehberi",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Fotoğrafçı",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kaybolmuş Kişi",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Stadyum",
+        "id": 20,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Şifacı", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çekiç Atıcı",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Atlet", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Yorumcu", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İzleyici",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Koruma", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Hakem", "id": 7 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yemek Satıcısı",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yüksek Atlayışçı",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "Koşucu", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Metro",
+        "id": 21,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Metro Operatörü",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bilet Kontrolcüsü",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hamile Bayan",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cep Hırsızı",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Temizlikçi",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İş Adamı",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bilet Satıcısı",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yaşlı Bayan",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kör Adam",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Birleşmiş Milletler",
+        "id": 22,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Diplomat",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yorumlayıcı",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çığırtkan",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Uyuyan Delege",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gazeteci",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Eyalet Sekreteri",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Konuşmacı",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Genel Sekreter",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "Lobici", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Üzüm Bağı",
+        "id": 23,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bahçıvan",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gurme Rehberi",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Şarap İmalatçısı",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İhracatçı",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Kahya", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Şarap Tadımcısı",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Şarap Ustası",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Zengin Lord",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bağ Yöneticisi",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Şarap Üreticisi",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Düğün",
+        "id": 24,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yüzük Taşıyıcı",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Damat", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Gelin", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "İmam", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Fotoğrafçı",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Çiçekçi Kız",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gelinin Babası",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Düğün Bozan",
+            "id": 8
+          },
+          { "enabled": true, "changed": false, "roleName": "Sağdıç", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "Akraba", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Hayvanat Bahçesi",
+        "id": 25,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hayvan Bakıcı",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ziyaretçi",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Fotoğrafçı",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Çocuk", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Veteriner",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Turist", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Yemek Satıcısı",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Biletçi", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hayvan Bakıcı",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Araştırmacı",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Ekstra",
+    "id": 3,
+    "enabled": true,
+    "data": [
+      {
+        "changed": false,
+        "locationName": "Orta Dünya",
+        "id": 1,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Hobit", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Elf", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "İnsan", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Cüce", "id": 4 },
+          { "enabled": true, "changed": false, "roleName": "Gandalf", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Frodo", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Sam", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "Gollum", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "Legolas", "id": 9 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Aragorn",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "Sauron", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "Ork", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Halısaha",
+        "id": 2,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Oyuncu", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Forvet", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Defans", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Orta Saha",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Seyirci", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "İşletme Sahibi",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Temizlikçi",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Anlatıcı",
+            "id": 8
+          },
+          { "enabled": true, "changed": false, "roleName": "Kaleci", "id": 9 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "En Skorer Oyuncu",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      }
+    ]
+  }
+]

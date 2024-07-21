@@ -29,11 +29,11 @@ export default forwardRef(function CustomDropdown(
       renderDropdownIcon={(status) => {
         if (status)
           return (
-            <AntDesign name="caretup" size={24} color={COLORS.secondary} />
+            <AntDesign name="caretup" size={22} color={COLORS.secondary} />
           );
         else
           return (
-            <AntDesign name="caretdown" size={24} color={COLORS.secondary} />
+            <AntDesign name="caretdown" size={22} color={COLORS.secondary} />
           );
       }}
       renderCustomizedButtonChild={customizedButtonChild}

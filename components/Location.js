@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
@@ -15,6 +15,7 @@ import Role from "./Role";
 import CustomTextInput from "./UI/CustomTextInput";
 import Card from "./UI/Card";
 import {
+  changeCanRolesExpandable,
   changeLocationName,
   deleteLocation,
   toggleAllRolesStatusForOneLocation,
@@ -22,6 +23,8 @@ import {
 } from "../store/locationsSlice";
 import CustomButton from "./UI/CustomButton";
 import CustomDialog from "./UI/CustomDialog";
+
+let i = 0;
 
 export default function Location({
   locationGroupId,
@@ -35,6 +38,9 @@ export default function Location({
     );
     return locGroup.data.find((loc) => loc.id === locationId);
   });
+  const canRolesExpandable = useSelector(
+    (store) => store.locations.canRolesExpandable
+  );
   const [expandRoles, setExpandRoles] = useState(false);
   const [showDeleteLocationDialog, setShowDeleteLocationDialog] =
     useState(false);
@@ -46,8 +52,12 @@ export default function Location({
     dispatch(toggleLocationStatus({ locationGroupId, locationId }));
   };
 
+  useEffect(() => {
+    if (!canRolesExpandable) setExpandRoles(false);
+  }, [canRolesExpandable]);
+
   const toggleExpandRolesHandler = () => {
-    setExpandRoles((state) => !state);
+    setExpandRoles((state) => (state || canRolesExpandable ? !state : state));
   };
 
   const locationNameChangeHandler = (value) => {
@@ -94,9 +104,15 @@ export default function Location({
     return result;
   };
 
-  const deleteLocationHandler = () => {
+  const deleteLocationHandler = async () => {
+    dispatch(changeCanRolesExpandable({ canRolesExpandable: false }));
     setShowDeleteLocationDialog(false);
-    dispatch(deleteLocation({ locationGroupId, locationId }));
+    await dispatch(deleteLocation({ locationGroupId, locationId }));
+    dispatch(changeCanRolesExpandable({ canRolesExpandable: true }));
+
+    /* setExpandRoles(false);
+    setShowDeleteLocationDialog(false);
+    dispatch(deleteLocation({ locationGroupId, locationId })); */
   };
 
   const openDeleteLocationDialogHandler = () => {
@@ -115,7 +131,16 @@ export default function Location({
         onSubmit={deleteLocationHandler}
       >
         <Trans i18nKey={"Location.dialog.deleteLocationCheck.text"}>
-          <Text style={{ fontWeight: "bold" }}>{location.locationName}</Text>
+          <Text
+            style={[
+              { fontWeight: "bold" },
+              !location.locationName && { fontStyle: "italic" },
+            ]}
+          >
+            {location.locationName
+              ? location.locationName
+              : t("Location.dialog.deleteLocationCheck.unnamedLocation")}
+          </Text>
         </Trans>
       </CustomDialog>
 

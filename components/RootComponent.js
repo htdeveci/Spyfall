@@ -8,7 +8,7 @@ import {
 } from "../constants/globalConstants";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet } from "react-native";
+import { PermissionsAndroid, StyleSheet } from "react-native";
 import GameSetup from "../pages/GameSetup";
 import Gameplay from "../pages/Gameplay";
 import Settings from "../pages/Settings";

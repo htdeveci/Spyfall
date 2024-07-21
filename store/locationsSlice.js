@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v1 as uuidv1 } from "uuid";
 
-import locationsDefaults from "../assets/locations-defaults.json";
+import locationsDefaultsTR from "../assets/locations-defaults-tr.json";
+import locationsDefaultsEN from "../assets/locations-defaults-en.json";
 
 let initialState = {
-  current: locationsDefaults,
-  future: locationsDefaults,
+  current: locationsDefaultsTR,
+  future: locationsDefaultsTR,
   enableRoles: true,
+  canRolesExpandable: true,
 };
 
 export const locationsSlice = createSlice({
@@ -16,8 +18,16 @@ export const locationsSlice = createSlice({
     initLocations: (state) => {
       return { ...state, future: state.current };
     },
-    returnToDefaultSettings: (state) => {
-      return { ...state, future: locationsDefaults };
+    returnToDefaultLocations: (state, action) => {
+      const customGroup = state.current.find((locGroup) => locGroup.custom);
+      const defaults = getDefaultsFileByLanguage(
+        action.payload.currentLanguage
+      );
+
+      return {
+        ...state,
+        future: customGroup ? [...defaults, customGroup] : defaults,
+      };
     },
     toggleGameRolesStatus: (state) => {
       state.enableRoles = !state.enableRoles;
@@ -31,25 +41,29 @@ export const locationsSlice = createSlice({
         : !locationGroup.enabled;
     },
     toggleLocationStatus: (state, action) => {
-      const location = getLocationById(state, action);
+      const location = getLocationById(state.future, action);
       location.enabled = !location.enabled;
     },
     changeLocationName: (state, action) => {
-      const location = getLocationById(state, action);
+      const location = getLocationById(state.future, action);
+      location.changed =
+        location.locationName !== action.payload.locationName ||
+        location.changed;
       location.locationName = action.payload.locationName;
     },
     toggleAllRolesStatusForOneLocation: (state, action) => {
-      const location = getLocationById(state, action);
+      const location = getLocationById(state.future, action);
       location.roles.forEach((role) => {
         role.enabled = action.payload.status;
       });
     },
     toggleRoleStatus: (state, action) => {
-      const role = getRoleById(state, action);
+      const role = getRoleById(state.future, action);
       role.enabled = !role.enabled;
     },
     changeRoleName: (state, action) => {
-      const role = getRoleById(state, action);
+      const role = getRoleById(state.future, action);
+      role.changed = role.roleName !== action.payload.roleName || role.changed;
       role.roleName = action.payload.roleName;
     },
     cancelChanges: (state) => {
@@ -58,15 +72,16 @@ export const locationsSlice = createSlice({
     saveLocationsToStorage: (state) => {
       return { ...state, current: state.future };
     },
-    addNewLocationSlot: (state) => {
+    addNewLocationSlot: (state, action) => {
       let customGroup = state.future.find(
-        (locGroup) => locGroup.title === "Özel"
+        (locGroup) => locGroup.title === action.payload.customGroupTitle
       );
 
       if (!customGroup) {
         customGroup = {
-          title: "Özel",
+          title: action.payload.customGroupTitle,
           id: uuidv1(),
+          custom: true,
           enabled: true,
           data: [],
         };
@@ -75,22 +90,23 @@ export const locationsSlice = createSlice({
       }
 
       customGroup.data.push({
+        changed: true,
         locationName: "",
         id: uuidv1(),
         enabled: true,
         roles: [
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
-          { enabled: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
+          { enabled: true, changed: true, roleName: "", id: uuidv1() },
         ],
       });
     },
@@ -109,25 +125,115 @@ export const locationsSlice = createSlice({
         );
       }
     },
+    translateAllLocationsAndRolesNames: (state, action) => {
+      const translatedLocsAndRoles = [...state.current];
+
+      try {
+        translatedLocsAndRoles.forEach((locationGroup) => {
+          if (locationGroup.custom) {
+            locationGroup.title = action.payload.customGroupTitle;
+          } else {
+            locationGroup.title = getLocationGroupById(
+              getDefaultsFileByLanguage(action.payload.languageCode),
+              locationGroup.id
+            ).title;
+          }
+
+          locationGroup.data.forEach((location) => {
+            if (!location.changed) {
+              location.locationName = getLocationById(
+                getDefaultsFileByLanguage(action.payload.languageCode),
+                {
+                  payload: {
+                    locationGroupId: locationGroup.id,
+                    locationId: location.id,
+                  },
+                }
+              ).locationName;
+            }
+
+            location.roles.forEach((role) => {
+              if (!role.changed) {
+                role.roleName = getRoleById(
+                  getDefaultsFileByLanguage(action.payload.languageCode),
+                  {
+                    payload: {
+                      locationGroupId: locationGroup.id,
+                      locationId: location.id,
+                      roleId: role.id,
+                    },
+                  }
+                ).roleName;
+              }
+            });
+          });
+        });
+      } catch (error) {
+        throw error;
+      }
+    },
+    changeCanRolesExpandable: (state, action) => {
+      return {
+        ...state,
+        canRolesExpandable: action.payload.canRolesExpandable,
+      };
+    },
   },
 });
 
-const getLocationById = (state, action) => {
-  const locationGroup = state.future.find(
-    (locGroup) => locGroup.id === action.payload.locationGroupId
+const getDefaultsFileByLanguage = (currentLanguage) => {
+  switch (currentLanguage) {
+    case "tr":
+      return locationsDefaultsTR;
+    default:
+      return locationsDefaultsEN;
+  }
+};
+
+/* const getTranslatedLocationGroupById = (locationGroupId, selectedLanguage) => {
+  const locationGroup = getLocationGroupById(
+    getDefaultsFileByLanguage(selectedLanguage),
+    locationGroupId
+  );
+  return locationGroup;
+}; */
+
+const getLocationGroupById = (locations, locationGroupId) => {
+  return locations.find((locGroup) => locGroup.id === locationGroupId);
+};
+
+const getLocationById = (locations, action) => {
+  const locationGroup = getLocationGroupById(
+    locations,
+    action.payload.locationGroupId
   );
   return locationGroup.data.find((loc) => loc.id === action.payload.locationId);
 };
 
-const getRoleById = (state, action) => {
-  const locationGroup = state.future.find(
-    (locGroup) => locGroup.id === action.payload.locationGroupId
+const getRoleById = (locations, action) => {
+  const locationGroup = getLocationGroupById(
+    locations,
+    action.payload.locationGroupId
   );
   const location = locationGroup.data.find(
     (loc) => loc.id === action.payload.locationId
   );
   return location.roles.find((r) => r.id === action.payload.roleId);
 };
+
+/* const getLocationDefaultByLanguage = (
+  selectedLanguage,
+  locationGroupId,
+  locationId
+) => {
+  const locationDefaultFile = getDefaultsFileByLanguage(selectedLanguage);
+
+  const action = {
+    payload: { locationGroupId, locationId },
+  };
+
+  return getLocationById(locationDefaultFile, action);
+}; */
 
 export const {
   toggleLocationStatus,
@@ -139,9 +245,11 @@ export const {
   cancelChanges,
   saveLocationsToStorage,
   initLocations,
-  returnToDefaultSettings,
+  returnToDefaultLocations,
   addNewLocationSlot,
   deleteLocation,
   toggleGameRolesStatus,
+  translateAllLocationsAndRolesNames,
+  changeCanRolesExpandable,
 } = locationsSlice.actions;
 export default locationsSlice.reducer;

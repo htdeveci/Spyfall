@@ -1,0 +1,157 @@
+{
+  "title": "Ekstra",
+  "id": 3,
+  "enabled": true,
+  "data": [
+    {
+      "changed": false,
+      "locationName": "Orta Dünya",
+      "id": 1,
+      "enabled": true,
+      "roles": [
+        { "enabled": true, "changed": false, "roleName": "Hobit", "id": 1 },
+        { "enabled": true, "changed": false, "roleName": "Elf", "id": 2 },
+        { "enabled": true, "changed": false, "roleName": "İnsan", "id": 3 },
+        { "enabled": true, "changed": false, "roleName": "Cüce", "id": 4 },
+        { "enabled": true, "changed": false, "roleName": "Gandalf", "id": 5 },
+        { "enabled": true, "changed": false, "roleName": "Frodo", "id": 6 },
+        { "enabled": true, "changed": false, "roleName": "Sam", "id": 7 },
+        { "enabled": true, "changed": false, "roleName": "Gollum", "id": 8 },
+        { "enabled": true, "changed": false, "roleName": "Legolas", "id": 9 },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Aragorn",
+          "id": 10
+        },
+        { "enabled": true, "changed": false, "roleName": "Sauron", "id": 11 },
+        { "enabled": true, "changed": false, "roleName": "Ork", "id": 12 }
+      ]
+    },
+    {
+      "changed": false,
+      "locationName": "T.B.M.M.",
+      "id": 2,
+      "enabled": true,
+      "roles": [
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Recep Tayyip Erdoğan",
+          "id": 1
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Kemal Kılıçdaroğlu",
+          "id": 2
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Meral Akşener",
+          "id": 3
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Ümit Özdağ",
+          "id": 4
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Muharrem İnce",
+          "id": 5
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Ahmet Davutoğlu",
+          "id": 6
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Ali Babacan",
+          "id": 7
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Temel Karamollaoğlu",
+          "id": 8
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Gültekin Uysal",
+          "id": 9
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Erkan Baş",
+          "id": 10
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Doğu Perinçek",
+          "id": 11
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Devlet Bahçeli",
+          "id": 12
+        }
+      ]
+    },
+    {
+      "changed": false,
+      "locationName": "Halısaha",
+      "id": 3,
+      "enabled": true,
+      "roles": [
+        { "enabled": true, "changed": false, "roleName": "Oyuncu", "id": 1 },
+        { "enabled": true, "changed": false, "roleName": "Forvet", "id": 2 },
+        { "enabled": true, "changed": false, "roleName": "Defans", "id": 3 },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Orta Saha",
+          "id": 4
+        },
+        { "enabled": true, "changed": false, "roleName": "Seyirci", "id": 5 },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "İşletme Sahibi",
+          "id": 6
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Temizlikçi",
+          "id": 7
+        },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "Anlatıcı",
+          "id": 8
+        },
+        { "enabled": true, "changed": false, "roleName": "Kaleci", "id": 9 },
+        {
+          "enabled": true,
+          "changed": false,
+          "roleName": "En Skorer Oyuncu",
+          "id": 10
+        },
+        { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+        { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+      ]
+    }
+  ]
+}

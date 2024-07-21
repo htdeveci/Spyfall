@@ -1,8 +1,9 @@
 import { useRef } from "react";
-import { FlatList, StyleSheet, Text } from "react-native";
+import { FlatList } from "react-native";
 import { v1 as uuidv1 } from "uuid";
 
-import { COLORS, GAP_BETWEEN_LAYERS } from "../../constants/globalConstants";
+import { GAP_BETWEEN_LAYERS } from "../../constants/globalConstants";
+import CustomPageTitle from "./CustomPageTitle";
 
 let listRef;
 
@@ -21,7 +22,7 @@ export default function CustomFlatList({
 
   return (
     <>
-      <Text style={styles.listLabel}>{listLabel}</Text>
+      <CustomPageTitle title={listLabel} />
 
       <FlatList
         ref={listRef}
@@ -41,11 +42,3 @@ export default function CustomFlatList({
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  listLabel: {
-    color: COLORS.text,
-    fontSize: 30,
-    textAlign: "center",
-  },
-});

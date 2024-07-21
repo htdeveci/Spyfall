@@ -61,7 +61,7 @@
     "dialog": {
       "defaultCheck": {
         "text": "Varsayılan mekanlara dönmek istediğinize emin misiniz?",
-        "warning": "Dikkat! Eklediğiniz özel mekanlar ve yaptığınız değişiklikler silinecektir."
+        "warning": "Dikkat! Yaptığınız değişiklikler silinecektir."
       },
       "saveCheck": {
         "text": "Değişiklikleri kaydetmek istediğinize emin misiniz?"
@@ -78,7 +78,8 @@
     },
     "dialog": {
       "deleteLocationCheck": {
-        "text": "<0><0>{{locationName}}</0></0> adlı mekanı silmek istediğinize emin misiniz?"
+        "text": "<0><0>{{locationName}}</0></0> adlı mekanı silmek istediğinize emin misiniz?",
+        "unnamedLocation": "İsimsiz Mekan"
       }
     }
   },
@@ -99,11 +100,20 @@
     }
   },
   "Settings": {
+    "text": {
+      "settings": "Ayarlar"
+    },
     "button": {
       "return": "GERİ DÖN",
       "enableRoles": "Rolleri Dahil Et",
       "language": "Dil",
       "makeEveryoneSpy": "Herkes Casus Olsun"
     }
+  },
+  "PlayerSlice": {
+    "playerLocalName": "Oyuncu"
+  },
+  "LocationsSlice": {
+    "customGroupTitle": "Özel"
   }
 }

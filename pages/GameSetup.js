@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { Entypo, FontAwesome5, Ionicons } from "@expo/vector-icons";
@@ -15,8 +15,17 @@ import {
   NAVIGATION_NAME_SETTINGS,
 } from "../constants/globalConstants";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewPlayerSlot } from "../store/playersSlice";
-import { initLocations, toggleGameRolesStatus } from "../store/locationsSlice";
+import {
+  addNewPlayerSlot,
+  translateAllPlayersName,
+} from "../store/playersSlice";
+import {
+  initLocations,
+  returnToDefaultLocations,
+  saveLocationsToStorage,
+  toggleGameRolesStatus,
+  translateAllLocationsAndRolesNames,
+} from "../store/locationsSlice";
 import CustomFlatList, { goToBottom } from "../components/UI/CustomFlatList";
 import BorderedView from "../components/UI/BorderedView";
 
@@ -48,7 +57,34 @@ export default function GameSetup({ navigation }) {
   const locationGroups = useSelector((store) => store.locations.current);
   const [numberOfSpy, setNumberOfSpy] = useState(1);
   const maxSpyNumber = 3;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    dispatch(
+      translateAllPlayersName({
+        playerLocalName: t("PlayerSlice.playerLocalName"),
+      })
+    );
+
+    try {
+      dispatch(
+        translateAllLocationsAndRolesNames({
+          languageCode: i18n.language,
+          customGroupTitle: t("LocationsSlice.customGroupTitle"),
+        })
+      );
+    } catch (error) {
+      console.log(error);
+      returnDefaultLocations();
+    }
+  }, []);
+
+  const returnDefaultLocations = async () => {
+    await dispatch(
+      returnToDefaultLocations({ currentLanguage: i18n.language })
+    );
+    await dispatch(saveLocationsToStorage());
+  };
 
   const addPlayerHandler = () => {
     try {

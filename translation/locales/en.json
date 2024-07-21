@@ -61,7 +61,7 @@
     "dialog": {
       "defaultCheck": {
         "text": "Are you sure you want to return to default locations?",
-        "warning": "Attention! The special locations you added and the changes you made will be deleted."
+        "warning": "Attention! The changes you made will be deleted."
       },
       "saveCheck": {
         "text": "Are you sure you want to save the changes?"
@@ -78,7 +78,8 @@
     },
     "dialog": {
       "deleteLocationCheck": {
-        "text": "Are you sure you want to delete the location which named as <0><0>{{locationName}}</0></0>?"
+        "text": "Are you sure you want to delete the location which named as <0><0>{{locationName}}</0></0>?",
+        "unnamedLocation": "Unnamed Location"
       }
     }
   },
@@ -99,11 +100,20 @@
     }
   },
   "Settings": {
+    "text": {
+      "settings": "Settings"
+    },
     "button": {
       "return": "Return",
       "enableRoles": "Enable Roles",
       "language": "Language",
       "makeEveryoneSpy": "Make Everyone Spy"
     }
+  },
+  "PlayerSlice": {
+    "playerLocalName": "Player"
+  },
+  "LocationsSlice": {
+    "customGroupTitle": "Special"
   }
 }

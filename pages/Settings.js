@@ -13,8 +13,13 @@ import {
 import CustomDropdown from "../components/UI/CustomDropdown";
 import { languageResources } from "../translation/i18n";
 import languageList from "../translation/languagesList.json";
-import { toggleGameRolesStatus } from "../store/locationsSlice";
+import {
+  toggleGameRolesStatus,
+  translateAllLocationsAndRolesNames,
+} from "../store/locationsSlice";
 import BorderedView from "../components/UI/BorderedView";
+import { translateAllPlayersName } from "../store/playersSlice";
+import CustomPageTitle from "../components/UI/CustomPageTitle";
 
 export default function Settings({ navigation }) {
   const dispatch = useDispatch();
@@ -33,6 +38,19 @@ export default function Settings({ navigation }) {
 
   const changeLanguageHandler = (selectedLanguage) => {
     i18n.changeLanguage(selectedLanguage);
+
+    dispatch(
+      translateAllPlayersName({
+        playerLocalName: t("PlayerSlice.playerLocalName"),
+      })
+    );
+
+    dispatch(
+      translateAllLocationsAndRolesNames({
+        languageCode: selectedLanguage,
+        customGroupTitle: t("LocationsSlice.customGroupTitle"),
+      })
+    );
   };
 
   const toggleMakeEveryoneSpy = () => {
@@ -43,6 +61,10 @@ export default function Settings({ navigation }) {
     <>
       <View style={styles.container}>
         <View>
+          <View style={{ height: LINE_HEIGHT }}>
+            <CustomPageTitle title={t("Settings.text.settings")} />
+          </View>
+
           <View style={styles.line}>
             <CustomButton
               onPress={() => {
@@ -77,7 +99,7 @@ export default function Settings({ navigation }) {
                           <Text
                             style={{
                               color: COLORS.secondaryDark,
-                              fontSize: 20,
+                              fontSize: 18,
                             }}
                           >
                             {languageList[selectedItem].nativeName}

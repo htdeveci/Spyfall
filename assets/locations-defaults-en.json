@@ -1,0 +1,2811 @@
+[
+  {
+    "title": "Spyfall 1",
+    "id": 1,
+    "enabled": true,
+    "data": [
+      {
+        "changed": false,
+        "locationName": "Airplane",
+        "id": 1,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "First Class Passenger",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Air Marshall",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mechanic",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Economy Class Passenger",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Stewardess",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Co-Pilot",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Captain",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Bank",
+        "id": 2,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Armored Car Driver",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Manager",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Consultant",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Customer",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Robber", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Teller",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Beach",
+        "id": 3,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Beach Waitress",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Kite Surfer",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Lifeguard",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Thief", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Beach Goer",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Beach Photographer",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "roleName": "Ice Cream Truck Driver",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Theater",
+        "id": 4,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Coat Check Lady",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Prompter",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Cashier", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Visitor",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Director",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Actor", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Crewman",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Casino",
+        "id": 5,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bartender",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Head Security Guard",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Bouncer", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Manager",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hustler",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Dealer",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gambler",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Cathedral",
+        "id": 6,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Priest", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Beggar", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sinner",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Parishioner",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Tourist", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Sponsor", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Choir Singer",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Circus Tent",
+        "id": 7,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Acrobat", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Animal Trainer",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Magician",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Visitor",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Fire Eater",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Clown", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Juggler",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Corporate Party",
+        "id": 8,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Entertainer",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Manager",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Unwelcomed Guest",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Owner",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Secretary",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Accountant",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Delivery Boy",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Crusader Army",
+        "id": 9,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Monk", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Imprisoned Arab",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Servant",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bishop",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Squire",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Archer", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Knight", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Day Spa",
+        "id": 10,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Customer",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Stylist", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Masseuse",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Manicurist",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Makeup Artist",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Dermatologist",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Beautician",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Embassy",
+        "id": 11,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Secretary",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ambassador",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Government Official",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Tourist", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Refugee", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Diplomat",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Hospital",
+        "id": 12,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Nurse", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Doctor", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Anesthesiologist",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Intern", "id": 4 },
+          { "enabled": true, "changed": false, "roleName": "Patient", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Therapist",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Surgeon", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Hotel",
+        "id": 13,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Doorman",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Manager", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Housekeeper",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Customer",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bartender",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bellman",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Military Base",
+        "id": 14,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Deserter",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Colonel", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Medic", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Soldier", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sniper",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Officer", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tank Engineer",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Movie Studio",
+        "id": 15,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Stuntman",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sound Engineer",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cameraman",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Director",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Costume Artist",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Actor", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Producer",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Ocean Liner",
+        "id": 16,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Rich Passenger",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Cook", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Captain", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bartender",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Musician",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Waiter", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mechanic",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Passenger Train",
+        "id": 17,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mechanic",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Border Patrol",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Train Attendant",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Passenger",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Restaurant Chef",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Engineer",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Stoker", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Pirate Ship",
+        "id": 18,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Cook", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Sailor", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Slave", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cannoneer",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bound Prisoner",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cabin Boy",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Brave Captain",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Polar Station",
+        "id": 19,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Medic", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Geologist",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Expedition Leader",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Biologist",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Radioman",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hydrologist",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Meteorologist",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Police Station",
+        "id": 20,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Detective",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Lawyer", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Journalist",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Criminalist",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Archivist",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Patrol Officer",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Criminal",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Restaurant",
+        "id": 21,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Musician",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Customer",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bouncer",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Hostess", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Head Chef",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Food Critic",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Waiter", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "School",
+        "id": 22,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gym Teacher",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Student", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Principal",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Janitor", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Lunch Lady",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Maintenance Man",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Service Station",
+        "id": 23,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Manager",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tire Specialist",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Biker",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Car Owner",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Car Wash Operator",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Electrician",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Auto Mechanic",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Space Station",
+        "id": 24,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Engineer",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Alien", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Space Tourist",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Pilot",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Commander",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Scientist",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Doctor", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Submarine",
+        "id": 25,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Cook", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Commander",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sonar Technician",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Electronics Technician",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Sailor", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Radioman",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Navigator",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Supermarket",
+        "id": 26,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Customer",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Cashier", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Butcher", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Janitor",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Food Sample Demonstrator",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Shelf Stocker",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "University",
+        "id": 27,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Graduate Student",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Professor",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Dean", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Psychologist",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Maintenance Man",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Student", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Janitor",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Spyfall 2",
+    "id": 2,
+    "enabled": true,
+    "data": [
+      {
+        "changed": false,
+        "locationName": "Amusement Park",
+        "id": 1,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ride Operator",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Parent", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Food Vendor",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Cashier", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Happy Child",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Annoying Child",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Teenager",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Janitor",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Parent",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Art Museum",
+        "id": 2,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ticket Seller",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Student", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Visitor",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Teacher",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Painter", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Art Collector",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Art Critic",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Photographer",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tourist",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Candy Factory",
+        "id": 3,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Madcap Redhead",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Pastry Chef",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Visitor",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Taster", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Truffle Maker",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Taster",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Supply Worker",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Oompa Loompa",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Inspector",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Machine Operator",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Cat Show",
+        "id": 4,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Judge", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cat-Handler",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Veterinarian",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cat Trainer",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Crazy Cat Lady",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Animal Lover",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cat Owner",
+            "id": 8
+          },
+          { "enabled": true, "changed": false, "roleName": "Cat", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "Cat", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Cemetery",
+        "id": 5,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Priest", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gothic Girl",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Grave Robber",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Poet", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mourning Person",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gatekeeper",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Dead Person",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Relative",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Flower Seller",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Grave Digger",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Coal Mine",
+        "id": 6,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Safety Inspector",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Miner", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Overseer",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Dump Truck Operator",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Driller",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Coordinator",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Blasting Engineer",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Miner", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Solid Waste Engineer",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "Worker", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Construction Site",
+        "id": 7,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Free-Roaming Toddler",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Contractor",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Crane Driver",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Trespasser",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Safety Officer",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Electrician",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Engineer",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Architect",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Construction Worker",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Construction Worker",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Gaming Convention",
+        "id": 8,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Blogger",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cosplayer",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Gamer", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Exhibitor",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Collector",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Child", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Geek", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Shy Person",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Famous Person",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Gas Station",
+        "id": 9,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Car Enthusiast",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Service Attendant",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Shopkeeper",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Customer",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Car Washer",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Cashier", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Customer",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "roleName": "Climate Change Activist",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Service Attendant",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Manager",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Harbor Docks",
+        "id": 10,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Loader",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Salty Old Pirate",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Captain", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Sailor", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Loader",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Fisherman",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Exporter",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cargo Overseer",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cargo Inspector",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Smuggler",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Ice Hockey Stadium",
+        "id": 11,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hockey Fan",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Medic", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hockey Player",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Food Vendor",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Goaltender",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Coach", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "Referee", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Spectator",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hockey Player",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Jail",
+        "id": 12,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Wrongly Accused Man",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "CCTV Operator",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Guard",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Visitor",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Lawyer", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Janitor",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Jailkeeper",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Criminal",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Correctional Officer",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "Maniac", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Jazz Club",
+        "id": 13,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Bouncer", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Drummer", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Pianist",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Saxophonist",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Singer", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Jazz Fanatic",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Dancer", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "Barman", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "VIP", "id": 9 },
+          { "enabled": true, "changed": false, "roleName": "Waiter", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Library",
+        "id": 14,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Old Man",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Journalist",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Author", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Volunteer",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Know-It-All",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Student", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Librarian",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Loudmouth",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Book Fanatic",
+            "id": 9
+          },
+          { "enabled": true, "changed": false, "roleName": "Nerd", "id": 10 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Night Club",
+        "id": 15,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Regular",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bartender",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Dancer", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Pick-Up Artist",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Party Girl",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Model", "id": 7 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Muscly Guy",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Drunk Person",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Shy Person",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Race Track",
+        "id": 16,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Team Owner",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Driver",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Engineer",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Spectator",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Referee",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Mechanic",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Food Vendor",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Commentator",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Bookmaker",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Spectator",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Retirement Home",
+        "id": 17,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Relative",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cribbage Player",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Old Person",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Nurse", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Janitor",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Cook", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Blind Person",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Psychologist",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Old Person",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Nurse",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Rock Concert",
+        "id": 18,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Dancer", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Singer", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Fan", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Guitarist",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Drummer",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Roadie",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Stage Diver",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 8
+          },
+          { "enabled": true, "changed": false, "roleName": "Bassist", "id": 9 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Technical Support",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Sightseeing Bus",
+        "id": 19,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Old Man",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Lone Tourist",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Driver", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Annoying Child",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Tourist", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tour Guide",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Photographer",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Tourist", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Lost Person",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Tourist",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Stadium",
+        "id": 20,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Medic", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Hammer Thrower",
+            "id": 2
+          },
+          { "enabled": true, "changed": false, "roleName": "Athlete", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Commentator",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Spectator",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Security Guard",
+            "id": 6
+          },
+          { "enabled": true, "changed": false, "roleName": "Referee", "id": 7 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Food Vendor",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "High Jumper",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sprinter",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Subway",
+        "id": 21,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Tourist", "id": 1 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Subway Operator",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ticket Inspector",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Pregnant Lady",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Pickpocket",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Cleaner",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Businessman",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ticket Seller",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Old Lady",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Blind Man",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "The United Nations",
+        "id": 22,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Diplomat",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Interpreter",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Blowhard",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Tourist", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Napping Delegate",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Journalist",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Secretary of State",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Speaker",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Secretary-General",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Lobbyist",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Vineyard",
+        "id": 23,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gardener",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Gourmet Guide",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Winemaker",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Exporter",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Butler", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Wine Taster",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Sommelier",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Rich Lord",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Vineyard Manager",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Enologist",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Wedding",
+        "id": 24,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Ring Bearer",
+            "id": 1
+          },
+          { "enabled": true, "changed": false, "roleName": "Groom", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Bride", "id": 3 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Officiant",
+            "id": 4
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Photographer",
+            "id": 5
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Flower Girl",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Father of the Bride",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Wedding Crasher",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Best Man",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Relative",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Zoo",
+        "id": 25,
+        "enabled": true,
+        "roles": [
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Zookeeper",
+            "id": 1
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Visitor",
+            "id": 2
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Photographer",
+            "id": 3
+          },
+          { "enabled": true, "changed": false, "roleName": "Child", "id": 4 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Veterinarian",
+            "id": 5
+          },
+          { "enabled": true, "changed": false, "roleName": "Tourist", "id": 6 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Food Vendor",
+            "id": 7
+          },
+          { "enabled": true, "changed": false, "roleName": "Cashier", "id": 8 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Zookeeper",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Researcher",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Extra",
+    "id": 3,
+    "enabled": true,
+    "data": [
+      {
+        "changed": false,
+        "locationName": "Middle Earth",
+        "id": 1,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Hobbit", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Elf", "id": 2 },
+          { "enabled": true, "changed": false, "roleName": "Human", "id": 3 },
+          { "enabled": true, "changed": false, "roleName": "Dwarf", "id": 4 },
+          { "enabled": true, "changed": false, "roleName": "Gandalf", "id": 5 },
+          { "enabled": true, "changed": false, "roleName": "Frodo", "id": 6 },
+          { "enabled": true, "changed": false, "roleName": "Sam", "id": 7 },
+          { "enabled": true, "changed": false, "roleName": "Gollum", "id": 8 },
+          { "enabled": true, "changed": false, "roleName": "Legolas", "id": 9 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Aragorn",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "Sauron", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "Orc", "id": 12 }
+        ]
+      },
+      {
+        "changed": false,
+        "locationName": "Football Pitch",
+        "id": 2,
+        "enabled": true,
+        "roles": [
+          { "enabled": true, "changed": false, "roleName": "Player", "id": 1 },
+          { "enabled": true, "changed": false, "roleName": "Striker", "id": 2 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Defender",
+            "id": 3
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Midfielder",
+            "id": 4
+          },
+          { "enabled": true, "changed": false, "roleName": "Fan", "id": 5 },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Owner",
+            "id": 6
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Janitor",
+            "id": 7
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Commentator",
+            "id": 8
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Goalkeeper",
+            "id": 9
+          },
+          {
+            "enabled": true,
+            "changed": false,
+            "roleName": "Top Scorer",
+            "id": 10
+          },
+          { "enabled": true, "changed": false, "roleName": "", "id": 11 },
+          { "enabled": true, "changed": false, "roleName": "", "id": 12 }
+        ]
+      }
+    ]
+  }
+]

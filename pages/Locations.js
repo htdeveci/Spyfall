@@ -1,5 +1,5 @@
 import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
-import { useEffect, useRef, useState } from "react";
+import { PureComponent, useEffect, useRef, useState } from "react";
 import { Switch, Text } from "react-native";
 import { SectionList, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +16,8 @@ import {
 import {
   addNewLocationSlot,
   cancelChanges,
-  returnToDefaultSettings,
+  changeCanRolesExpandable,
+  returnToDefaultLocations,
   saveLocationsToStorage,
   toggleLocationGroupStatus,
 } from "../store/locationsSlice";
@@ -27,6 +28,63 @@ import {
 import CustomDialog from "../components/UI/CustomDialog";
 import { useTranslation } from "react-i18next";
 
+class RenderLocations extends PureComponent {
+  render() {
+    const { locationGroups, item, section } = this.props;
+
+    const locationGroupId = section.id;
+    const locationGroupEnabled = section.enabled;
+
+    return (
+      <>
+        {locationGroupEnabled && (
+          <Location
+            locationGroupId={locationGroupId}
+            locationId={item.id}
+            roleHeight={LINE_HEIGHT - 5}
+            style={[
+              locationGroups.findIndex((loc) => loc.id === locationGroupId) +
+                1 ===
+                locationGroups.length &&
+              item.index + 1 ===
+                locationGroups[locationGroups.length - 1].data.length
+                ? { marginBottom: GAP_BETWEEN_LAYERS }
+                : styles.addMarginBottom,
+              { paddingHorizontal: GAP_BETWEEN_LAYERS / 2 },
+            ]}
+          />
+        )}
+      </>
+    );
+  }
+}
+
+/* const renderLocations = (item) => {
+  const locationGroupId = item.section.id;
+  const locationGroupEnabled = item.section.enabled;
+  return (
+    <>
+      {locationGroupEnabled && (
+        <Location
+          locationGroupId={locationGroupId}
+          locationId={item.item.id}
+          roleHeight={LINE_HEIGHT - 5}
+          style={[
+            locationGroups.findIndex((loc) => loc.id === locationGroupId) +
+              1 ===
+              locationGroups.length &&
+            item.index + 1 ===
+              locationGroups[locationGroups.length - 1].data.length
+              ? { marginBottom: GAP_BETWEEN_LAYERS }
+              : styles.addMarginBottom,
+            { paddingHorizontal: GAP_BETWEEN_LAYERS / 2 },
+          ]}
+        />
+      )}
+    </>
+  );
+}; */
+
 export default function Locations({ navigation }) {
   const locationGroups = useSelector((store) => store.locations.future);
   const savedLocationGroups = useSelector((store) => store.locations.current);
@@ -36,7 +94,7 @@ export default function Locations({ navigation }) {
   const [showSaveChangesDialog, setShowSaveChangesDialog] = useState(false);
   const dispatch = useDispatch();
   const scrollRef = useRef();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     if (
@@ -73,17 +131,27 @@ export default function Locations({ navigation }) {
     setShowDefaultLocationsDialog(false);
   };
 
-  const returnToDefaultSettingsHandler = () => {
+  const returnToDefaultSettingsHandler = async () => {
+    dispatch(changeCanRolesExpandable({ canRolesExpandable: false }));
     setShowDefaultLocationsDialog(false);
-    dispatch(returnToDefaultSettings());
+    await dispatch(
+      returnToDefaultLocations({ currentLanguage: i18n.language })
+    );
+    dispatch(changeCanRolesExpandable({ canRolesExpandable: true }));
   };
 
-  const addNewLocationHandler = () => {
+  const addNewLocationHandler = async () => {
     try {
-      dispatch(addNewLocationSlot());
-      const customLocationGroup = locationGroups.find(
-        (locGroup) => locGroup.title === "Özel"
+      dispatch(
+        addNewLocationSlot({
+          customGroupTitle: t("LocationsSlice.customGroupTitle"),
+        })
       );
+
+      const customLocationGroup = locationGroups.find(
+        (locGroup) => locGroup.title === t("LocationsSlice.customGroupTitle")
+      );
+
       if (customLocationGroup) {
         dispatch(
           toggleLocationGroupStatus({
@@ -92,6 +160,7 @@ export default function Locations({ navigation }) {
           })
         );
       }
+
       scrollRef.current.scrollToLocation({
         sectionIndex: locationGroups.length - 1,
         itemIndex: locationGroups[locationGroups.length - 1].data.length - 1,
@@ -99,32 +168,6 @@ export default function Locations({ navigation }) {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const renderLocations = (item) => {
-    const locationGroupId = item.section.id;
-    const locationGroupEnabled = item.section.enabled;
-    return (
-      <>
-        {locationGroupEnabled && (
-          <Location
-            locationGroupId={locationGroupId}
-            locationId={item.item.id}
-            roleHeight={LINE_HEIGHT - 5}
-            style={[
-              locationGroups.findIndex((loc) => loc.id === locationGroupId) +
-                1 ===
-                locationGroups.length &&
-              item.index + 1 ===
-                locationGroups[locationGroups.length - 1].data.length
-                ? { marginBottom: GAP_BETWEEN_LAYERS }
-                : styles.addMarginBottom,
-              { paddingHorizontal: GAP_BETWEEN_LAYERS / 2 },
-            ]}
-          />
-        )}
-      </>
-    );
   };
 
   const renderButtons = () => {
@@ -253,13 +296,29 @@ export default function Locations({ navigation }) {
         ref={scrollRef}
         sections={locationGroups}
         keyExtractor={(item, index) => item + index}
-        renderItem={renderLocations}
+        renderItem={({ item, index, section }) => (
+          <RenderLocations
+            key={index}
+            locationGroups={locationGroups}
+            item={item}
+            section={section}
+          />
+        )}
         renderSectionHeader={({ section: { title, enabled, id } }) =>
           renderHeader(title, enabled, id)
         }
         keyboardDismissMode="on-drag"
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        onScrollToIndexFailed={(info) => {
+          const wait = new Promise((resolve) => setTimeout(resolve, 500));
+          wait.then(() => {
+            scrollRef.current?.scrollToIndex({
+              index: info.index,
+              animated: true,
+            });
+          });
+        }}
       />
 
       {renderButtons()}
