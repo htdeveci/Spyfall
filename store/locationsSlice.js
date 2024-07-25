@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { v1 as uuidv1 } from "uuid";
 
 import locationsDefaultsTR from "../assets/locations-defaults-tr.json";
@@ -126,12 +126,23 @@ export const locationsSlice = createSlice({
       }
     },
     translateAllLocationsAndRolesNames: (state, action) => {
+      // this if state written for older versions of app updated succesfully, can be deleted later on
+      if (state.canRolesExpandable === undefined) {
+        state.canRolesExpandable = true;
+      }
+
       const translatedLocsAndRoles = [...state.current];
 
       try {
         translatedLocsAndRoles.forEach((locationGroup) => {
+          // this if state written for older versions of app updated succesfully, can be deleted later on
+          if (locationGroup.title.toLowerCase() === "özel") {
+            locationGroup.custom = true;
+          }
+
           if (locationGroup.custom) {
             locationGroup.title = action.payload.customGroupTitle;
+            return;
           } else {
             locationGroup.title = getLocationGroupById(
               getDefaultsFileByLanguage(action.payload.languageCode),
@@ -140,6 +151,11 @@ export const locationsSlice = createSlice({
           }
 
           locationGroup.data.forEach((location) => {
+            // this if state written for older versions of app updated succesfully, can be deleted later on
+            if (location.changed === undefined) {
+              location.changed = false;
+            }
+
             if (!location.changed) {
               location.locationName = getLocationById(
                 getDefaultsFileByLanguage(action.payload.languageCode),
@@ -153,6 +169,11 @@ export const locationsSlice = createSlice({
             }
 
             location.roles.forEach((role) => {
+              // this if state written for older versions of app updated succesfully, can be deleted later on
+              if (role.changed === undefined) {
+                role.changed = false;
+              }
+
               if (!role.changed) {
                 role.roleName = getRoleById(
                   getDefaultsFileByLanguage(action.payload.languageCode),

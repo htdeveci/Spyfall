@@ -217,7 +217,9 @@ export default function Gameplay({ navigation, route }) {
           <View style={{ flexDirection: "row" }}>
             <Text>{t("Gameplay.dialog.playerIdentity.player")}</Text>
             <Text style={{ fontWeight: "bold" }}>
-              {selectedPlayer.playerName}
+              {selectedPlayer.playerName === ""
+                ? t("Gameplay.dialog.playerIdentity.unnamedPlayer")
+                : selectedPlayer.playerName}
             </Text>
           </View>
 

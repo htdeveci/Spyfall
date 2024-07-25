@@ -18,6 +18,7 @@
     "dialog": {
       "playerIdentity": {
         "player": "Player: ",
+        "unnamedPlayer": "Unnamed Player",
         "location": "Location: ",
         "role": "Role: "
       }
@@ -38,6 +39,7 @@
       },
       "revealTruthAfterGameEnds": {
         "location": "Location: ",
+        "unnamedSpy": "Unnamed Player",
         "everyoneWasSpy": "Everyone was a Spy",
         "thereWasNoSpy": "There was No Spy"
       }

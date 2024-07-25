@@ -18,6 +18,7 @@
     "dialog": {
       "playerIdentity": {
         "player": "Oyuncu: ",
+        "unnamedPlayer": "İsimsiz Oyuncu",
         "location": "Konum: ",
         "role": "Rol: "
       }
@@ -38,6 +39,7 @@
       },
       "revealTruthAfterGameEnds": {
         "location": "Konum: ",
+        "unnamedSpy": "İsimsiz Oyuncu",
         "everyoneWasSpy": "Herkes Casustu",
         "thereWasNoSpy": "Casus Yoktu"
       }

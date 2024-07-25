@@ -59,32 +59,6 @@ class RenderLocations extends PureComponent {
   }
 }
 
-/* const renderLocations = (item) => {
-  const locationGroupId = item.section.id;
-  const locationGroupEnabled = item.section.enabled;
-  return (
-    <>
-      {locationGroupEnabled && (
-        <Location
-          locationGroupId={locationGroupId}
-          locationId={item.item.id}
-          roleHeight={LINE_HEIGHT - 5}
-          style={[
-            locationGroups.findIndex((loc) => loc.id === locationGroupId) +
-              1 ===
-              locationGroups.length &&
-            item.index + 1 ===
-              locationGroups[locationGroups.length - 1].data.length
-              ? { marginBottom: GAP_BETWEEN_LAYERS }
-              : styles.addMarginBottom,
-            { paddingHorizontal: GAP_BETWEEN_LAYERS / 2 },
-          ]}
-        />
-      )}
-    </>
-  );
-}; */
-
 export default function Locations({ navigation }) {
   const locationGroups = useSelector((store) => store.locations.future);
   const savedLocationGroups = useSelector((store) => store.locations.current);
@@ -343,3 +317,29 @@ const styles = StyleSheet.create({
     marginBottom: GAP_BETWEEN_LAYERS / 2,
   },
 });
+
+/* const renderLocations = (item) => {
+  const locationGroupId = item.section.id;
+  const locationGroupEnabled = item.section.enabled;
+  return (
+    <>
+      {locationGroupEnabled && (
+        <Location
+          locationGroupId={locationGroupId}
+          locationId={item.item.id}
+          roleHeight={LINE_HEIGHT - 5}
+          style={[
+            locationGroups.findIndex((loc) => loc.id === locationGroupId) +
+              1 ===
+              locationGroups.length &&
+            item.index + 1 ===
+              locationGroups[locationGroups.length - 1].data.length
+              ? { marginBottom: GAP_BETWEEN_LAYERS }
+              : styles.addMarginBottom,
+            { paddingHorizontal: GAP_BETWEEN_LAYERS / 2 },
+          ]}
+        />
+      )}
+    </>
+  );
+}; */

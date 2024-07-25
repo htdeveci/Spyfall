@@ -28,6 +28,12 @@ export const playerSlice = createSlice({
     },
     translateAllPlayersName: (state, action) => {
       state.forEach((player) => {
+        if (player.changed === undefined) {
+          player.changed = !initialState.find(
+            (obj) => obj.playerName === player.playerName
+          );
+        }
+
         if (!player.changed) {
           player.playerName = `${player.playerName.split(" ")[0]} ${
             action.payload.playerLocalName

@@ -11,6 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
   // AsyncStorage.clear();
+
   return (
     <Provider store={store}>
       <StatusBar style="light" backgroundColor={COLORS.primaryDark} />

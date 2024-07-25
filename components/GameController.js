@@ -169,7 +169,11 @@ export default function GameController({
                           marginTop: GAP_BETWEEN_LAYERS / 2,
                         }}
                       >
-                        {spy}
+                        {spy === ""
+                          ? t(
+                              "GameController.dialog.revealTruthAfterGameEnds.unnamedSpy"
+                            )
+                          : spy}
                       </Text>
                     </View>
                   ))}

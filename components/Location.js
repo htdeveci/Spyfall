@@ -57,7 +57,7 @@ export default function Location({
   }, [canRolesExpandable]);
 
   const toggleExpandRolesHandler = () => {
-    setExpandRoles((state) => (state || canRolesExpandable ? !state : state));
+    setExpandRoles((prev) => (prev || canRolesExpandable ? !prev : prev));
   };
 
   const locationNameChangeHandler = (value) => {

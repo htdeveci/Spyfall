@@ -23,7 +23,6 @@ import {
   initLocations,
   returnToDefaultLocations,
   saveLocationsToStorage,
-  toggleGameRolesStatus,
   translateAllLocationsAndRolesNames,
 } from "../store/locationsSlice";
 import CustomFlatList, { goToBottom } from "../components/UI/CustomFlatList";
