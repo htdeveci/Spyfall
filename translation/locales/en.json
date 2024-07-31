@@ -69,6 +69,11 @@
       "saveCheck": {
         "text": "Are you sure you want to save the changes?"
       }
+    },
+    "modal": {
+      "emptyLocationCheck": {
+        "text": "You should select at least one location."
+      }
     }
   },
   "Location": {

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let initialState = { enableRoles: true };
+let initialState = { enableRoles: true, makeEveryoneSpy: false };
 
 export const settingsSlice = createSlice({
   name: "settings",
@@ -12,9 +12,15 @@ export const settingsSlice = createSlice({
     changeLanguage: (state, action) => {
       state.language = action.payload.language;
     },
+    toggleMakeEveryoneSpy: (state) => {
+      state.makeEveryoneSpy = !state.makeEveryoneSpy;
+    },
   },
 });
 
-export const { toggleEnableRolesStatus, changeLanguage } =
-  settingsSlice.actions;
+export const {
+  toggleEnableRolesStatus,
+  changeLanguage,
+  toggleMakeEveryoneSpy,
+} = settingsSlice.actions;
 export default settingsSlice.reducer;

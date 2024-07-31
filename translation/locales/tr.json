@@ -69,6 +69,11 @@
       "saveCheck": {
         "text": "Değişiklikleri kaydetmek istediğinize emin misiniz?"
       }
+    },
+    "modal": {
+      "emptyLocationCheck": {
+        "text": "En az bir mekan seçmeniz gerekmektedir."
+      }
     }
   },
   "Location": {

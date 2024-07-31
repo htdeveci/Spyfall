@@ -28,6 +28,8 @@ import {
 import CustomDialog from "../components/UI/CustomDialog";
 import { useTranslation } from "react-i18next";
 import { Checkbox } from "react-native-paper";
+import Toast from "react-native-toast-message";
+import CustomModal from "../components/UI/CustomModal";
 
 class RenderLocations extends PureComponent {
   render() {
@@ -68,6 +70,10 @@ export default function Locations({ navigation }) {
   const [showDefaultLocationsDialog, setShowDefaultLocationsDialog] =
     useState(false);
   const [showSaveChangesDialog, setShowSaveChangesDialog] = useState(false);
+  const [
+    showNotSelectedLocationErrorDialog,
+    setShowNotSelectedLocationErrorDialog,
+  ] = useState(false);
   const dispatch = useDispatch();
   const scrollRef = useRef();
   const { t, i18n } = useTranslation();
@@ -80,6 +86,30 @@ export default function Locations({ navigation }) {
     }
   }, [locationGroups]);
 
+  useEffect(() => {
+    return navigation.addListener("beforeRemove", (event) => {
+      if (isThereAnyLocationSelected()) {
+        return;
+      }
+
+      event.preventDefault();
+    });
+  }, [navigation, isThereAnyLocationSelected]);
+
+  const isThereAnyLocationSelected = () => {
+    for (let i = 0; i < locationGroups.length; i++) {
+      if (locationGroups[i].enabled) {
+        for (let j = 0; j < locationGroups[i].data.length; j++) {
+          if (locationGroups[i].data[j].enabled) {
+            return true;
+          }
+        }
+      }
+    }
+
+    return false;
+  };
+
   const cancelHandler = () => {
     dispatch(cancelChanges());
     navigation.goBack();
@@ -91,8 +121,17 @@ export default function Locations({ navigation }) {
     navigation.navigate(NAVIGATION_NAME_GAME_SETUP);
   };
 
+  const closeNotSelectedLocationErrorDialog = () => {
+    setShowNotSelectedLocationErrorDialog(false);
+    dispatch(cancelChanges());
+  };
+
   const openSaveChangesDialogHandler = () => {
-    setShowSaveChangesDialog(true);
+    if (isThereAnyLocationSelected()) {
+      setShowSaveChangesDialog(true);
+    } else {
+      setShowNotSelectedLocationErrorDialog(true);
+    }
   };
 
   const closeSaveChangesDialogHandler = () => {
@@ -274,29 +313,6 @@ export default function Locations({ navigation }) {
         <Text style={{ color: COLORS.errorDark, fontSize: 12 }}>
           {t("Locations.dialog.defaultCheck.warning")}
         </Text>
-
-        {/* <CustomButton
-          onPress={toggleDeleteCustomGroupSelection}
-          innerStyle={{ justifyContent: "space-between" }}
-          buttonColorProp={COLORS.lightGray}
-          textStyle={{ color: COLORS.textReverse }}
-          upperCase={false}
-          rippleColorProp={"#ffffff00"}
-          iconLabel={t("Settings.button.enableRoles")}
-          useOpacity={false}
-          customChildren
-        >
-          <Chec
-          <Switch
-            onValueChange={toggleDeleteCustomGroupSelection}
-            value={deleteCustomGroup}
-            thumbColor={deleteCustomGroup ? COLORS.secondary : COLORS.darkGray}
-            trackColor={{
-              false: COLORS.gray,
-              true: COLORS.secondaryDarker,
-            }}
-          />
-        </CustomButton> */}
       </CustomDialog>
 
       <CustomDialog
@@ -306,6 +322,15 @@ export default function Locations({ navigation }) {
       >
         {t("Locations.dialog.saveCheck.text")}
       </CustomDialog>
+
+      <CustomModal
+        show={showNotSelectedLocationErrorDialog}
+        onClose={closeNotSelectedLocationErrorDialog}
+      >
+        <Text style={styles.notSelectedLocationText}>
+          {t("Locations.modal.emptyLocationCheck.text")}
+        </Text>
+      </CustomModal>
 
       <Text style={styles.locationsLabel}>{`${t(
         "Locations.text.locations"
@@ -365,13 +390,17 @@ const styles = StyleSheet.create({
   },
   deleteCustomGroupContainer: {
     flexDirection: "row",
-    // backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center",
   },
   deleteCustomGroupText: {
     color: COLORS.secondaryDark,
     fontStyle: "italic",
+  },
+  notSelectedLocationText: {
+    textAlign: "center",
+    fontSize: 18,
+    color: COLORS.errorDark,
   },
 });
 

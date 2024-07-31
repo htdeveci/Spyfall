@@ -23,6 +23,9 @@ export default function Gameplay({ navigation, route }) {
   const players = useSelector((store) => store.players);
   const locationGroups = useSelector((store) => store.locations.current);
   const enableRoles = useSelector((store) => store.settings.enableRoles);
+  const makeEveryoneSpy = useSelector(
+    (store) => store.settings.makeEveryoneSpy
+  );
   const [showPlayerRoleModal, setShowPlayerRoleModal] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [allPlayersWithRoles, setAllPlayersWithRoles] = useState(null);
@@ -36,7 +39,7 @@ export default function Gameplay({ navigation, route }) {
     enabledLocations = getEnabledLocations();
 
     let allPlayers = [];
-    if (numberOfSpy >= players.length || enabledLocations.length === 0) {
+    if (numberOfSpy >= players.length || makeEveryoneSpy) {
       players.forEach((player) => {
         allPlayers.push({
           ...player,

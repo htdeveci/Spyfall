@@ -20,14 +20,18 @@ import CustomPageTitle from "../components/UI/CustomPageTitle";
 import {
   changeLanguage,
   toggleEnableRolesStatus,
+  toggleMakeEveryoneSpy,
 } from "../store/settingsSlice";
 
 export default function Settings({ navigation }) {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const enableRoles = useSelector((store) => store.settings.enableRoles);
+  const makeEveryoneSpy = useSelector(
+    (store) => store.settings.makeEveryoneSpy
+  );
   const dropdownRef = useRef();
-  const [makeEveryoneSpy, setMakeEveryoneSpy] = useState(false);
+  // const [makeEveryoneSpy, setMakeEveryoneSpy] = useState(false);
 
   const toggleRolesEnabled = () => {
     dispatch(toggleEnableRolesStatus());
@@ -56,8 +60,8 @@ export default function Settings({ navigation }) {
     );
   };
 
-  const toggleMakeEveryoneSpy = () => {
-    setMakeEveryoneSpy((prev) => !prev);
+  const toggleMakeEveryoneSpyHandler = () => {
+    dispatch(toggleMakeEveryoneSpy());
   };
 
   return (
@@ -162,13 +166,9 @@ export default function Settings({ navigation }) {
             </CustomButton>
           </View>
 
-          {/* 
-
-          // This switch makes everyone a spy. Logic will be implemented later on.
-          
           <View style={styles.line}>
             <CustomButton
-              onPress={toggleMakeEveryoneSpy}
+              onPress={toggleMakeEveryoneSpyHandler}
               innerStyle={{ justifyContent: "space-between" }}
               buttonColorProp={COLORS.lightGray}
               textStyle={{ color: COLORS.textReverse }}
@@ -179,7 +179,7 @@ export default function Settings({ navigation }) {
               customChildren
             >
               <Switch
-                onValueChange={toggleMakeEveryoneSpy}
+                onValueChange={toggleMakeEveryoneSpyHandler}
                 value={makeEveryoneSpy}
                 thumbColor={
                   makeEveryoneSpy ? COLORS.secondary : COLORS.darkGray
@@ -190,7 +190,7 @@ export default function Settings({ navigation }) {
                 }}
               />
             </CustomButton>
-          </View> */}
+          </View>
         </View>
 
         <BorderedView>
