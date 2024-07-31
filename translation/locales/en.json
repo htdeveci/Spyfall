@@ -63,6 +63,7 @@
     "dialog": {
       "defaultCheck": {
         "text": "Are you sure you want to return to default locations?",
+        "deleteCustomText": "Delete Special locations",
         "warning": "Attention! The changes you made will be deleted."
       },
       "saveCheck": {

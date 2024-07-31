@@ -18,7 +18,7 @@ import {
   changeCanRolesExpandable,
   changeLocationName,
   deleteLocation,
-  toggleAllRolesStatusForOneLocation,
+  changeAllRolesStatusForOneLocation,
   toggleLocationStatus,
 } from "../store/locationsSlice";
 import CustomButton from "./UI/CustomButton";
@@ -78,7 +78,7 @@ export default function Location({
     let enabled = "checked";
     if (enableAllRoles === "checked") enabled = "unchecked";
     dispatch(
-      toggleAllRolesStatusForOneLocation({
+      changeAllRolesStatusForOneLocation({
         locationGroupId,
         locationId,
         status: enabled === "checked",

@@ -22,7 +22,7 @@ export default function Gameplay({ navigation, route }) {
   const { numberOfSpy } = route.params;
   const players = useSelector((store) => store.players);
   const locationGroups = useSelector((store) => store.locations.current);
-  const enableRoles = useSelector((store) => store.locations.enableRoles);
+  const enableRoles = useSelector((store) => store.settings.enableRoles);
   const [showPlayerRoleModal, setShowPlayerRoleModal] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [allPlayersWithRoles, setAllPlayersWithRoles] = useState(null);

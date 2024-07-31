@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 
 import locationReducers from "./locationsSlice";
 import playerReducers from "./playersSlice";
+import settingsReducers from "./settingsSlice";
 
 const persistConfig = {
   key: "root",
@@ -15,6 +16,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   locations: locationReducers,
   players: playerReducers,
+  settings: settingsReducers,
 });
 
 const persistedReducers = persistReducer(persistConfig, rootReducer);

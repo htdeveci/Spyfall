@@ -1,6 +1,6 @@
 import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { PureComponent, useEffect, useRef, useState } from "react";
-import { Switch, Text } from "react-native";
+import { Pressable, Switch, Text } from "react-native";
 import { SectionList, StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -27,6 +27,7 @@ import {
 } from "./GameSetup";
 import CustomDialog from "../components/UI/CustomDialog";
 import { useTranslation } from "react-i18next";
+import { Checkbox } from "react-native-paper";
 
 class RenderLocations extends PureComponent {
   render() {
@@ -63,6 +64,7 @@ export default function Locations({ navigation }) {
   const locationGroups = useSelector((store) => store.locations.future);
   const savedLocationGroups = useSelector((store) => store.locations.current);
   const [isChanged, setIsChanged] = useState(false);
+  const [deleteCustomGroup, setDeleteCustomGroup] = useState(false);
   const [showDefaultLocationsDialog, setShowDefaultLocationsDialog] =
     useState(false);
   const [showSaveChangesDialog, setShowSaveChangesDialog] = useState(false);
@@ -109,7 +111,10 @@ export default function Locations({ navigation }) {
     dispatch(changeCanRolesExpandable({ canRolesExpandable: false }));
     setShowDefaultLocationsDialog(false);
     await dispatch(
-      returnToDefaultLocations({ currentLanguage: i18n.language })
+      returnToDefaultLocations({
+        currentLanguage: i18n.language,
+        deleteCustomGroup: deleteCustomGroup,
+      })
     );
     dispatch(changeCanRolesExpandable({ canRolesExpandable: true }));
   };
@@ -238,6 +243,10 @@ export default function Locations({ navigation }) {
     dispatch(toggleLocationGroupStatus({ locationGroupId }));
   };
 
+  const toggleDeleteCustomGroupSelection = () => {
+    setDeleteCustomGroup((prev) => !prev);
+  };
+
   return (
     <>
       <CustomDialog
@@ -246,10 +255,48 @@ export default function Locations({ navigation }) {
         onSubmit={returnToDefaultSettingsHandler}
       >
         {t("Locations.dialog.defaultCheck.text")}
-        {"\n\n"}
+        {"\n"}
+
+        <View style={styles.deleteCustomGroupContainer}>
+          <Pressable onPress={toggleDeleteCustomGroupSelection}>
+            <Text style={styles.deleteCustomGroupText}>
+              {t("Locations.dialog.defaultCheck.deleteCustomText")}
+            </Text>
+          </Pressable>
+          <Checkbox
+            status={deleteCustomGroup ? "checked" : "unchecked"}
+            onPress={toggleDeleteCustomGroupSelection}
+            color={COLORS.secondary}
+          />
+        </View>
+        {"\n"}
+
         <Text style={{ color: COLORS.errorDark, fontSize: 12 }}>
           {t("Locations.dialog.defaultCheck.warning")}
         </Text>
+
+        {/* <CustomButton
+          onPress={toggleDeleteCustomGroupSelection}
+          innerStyle={{ justifyContent: "space-between" }}
+          buttonColorProp={COLORS.lightGray}
+          textStyle={{ color: COLORS.textReverse }}
+          upperCase={false}
+          rippleColorProp={"#ffffff00"}
+          iconLabel={t("Settings.button.enableRoles")}
+          useOpacity={false}
+          customChildren
+        >
+          <Chec
+          <Switch
+            onValueChange={toggleDeleteCustomGroupSelection}
+            value={deleteCustomGroup}
+            thumbColor={deleteCustomGroup ? COLORS.secondary : COLORS.darkGray}
+            trackColor={{
+              false: COLORS.gray,
+              true: COLORS.secondaryDarker,
+            }}
+          />
+        </CustomButton> */}
       </CustomDialog>
 
       <CustomDialog
@@ -315,6 +362,16 @@ const styles = StyleSheet.create({
   },
   addMarginBottom: {
     marginBottom: GAP_BETWEEN_LAYERS / 2,
+  },
+  deleteCustomGroupContainer: {
+    flexDirection: "row",
+    // backgroundColor: "red",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  deleteCustomGroupText: {
+    color: COLORS.secondaryDark,
+    fontStyle: "italic",
   },
 });
 

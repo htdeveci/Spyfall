@@ -28,6 +28,7 @@ export const playerSlice = createSlice({
     },
     translateAllPlayersName: (state, action) => {
       state.forEach((player) => {
+        // this if state written for older versions of app updated succesfully, can be deleted later on
         if (player.changed === undefined) {
           player.changed = !initialState.find(
             (obj) => obj.playerName === player.playerName

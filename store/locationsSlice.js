@@ -7,7 +7,6 @@ import locationsDefaultsEN from "../assets/locations-defaults-en.json";
 let initialState = {
   current: locationsDefaultsTR,
   future: locationsDefaultsTR,
-  enableRoles: true,
   canRolesExpandable: true,
 };
 
@@ -19,18 +18,19 @@ export const locationsSlice = createSlice({
       return { ...state, future: state.current };
     },
     returnToDefaultLocations: (state, action) => {
-      const customGroup = state.current.find((locGroup) => locGroup.custom);
-      const defaults = getDefaultsFileByLanguage(
-        action.payload.currentLanguage
-      );
+      const { currentLanguage, deleteCustomGroup } = action.payload;
+
+      let defaults = getDefaultsFileByLanguage(currentLanguage);
+
+      if (!deleteCustomGroup) {
+        const customGroup = state.current.find((locGroup) => locGroup.custom);
+        defaults = customGroup ? [...defaults, customGroup] : defaults;
+      }
 
       return {
         ...state,
-        future: customGroup ? [...defaults, customGroup] : defaults,
+        future: defaults,
       };
-    },
-    toggleGameRolesStatus: (state) => {
-      state.enableRoles = !state.enableRoles;
     },
     toggleLocationGroupStatus: (state, action) => {
       const locationGroup = state.future.find(
@@ -51,7 +51,7 @@ export const locationsSlice = createSlice({
         location.changed;
       location.locationName = action.payload.locationName;
     },
-    toggleAllRolesStatusForOneLocation: (state, action) => {
+    changeAllRolesStatusForOneLocation: (state, action) => {
       const location = getLocationById(state.future, action);
       location.roles.forEach((role) => {
         role.enabled = action.payload.status;
@@ -126,6 +126,8 @@ export const locationsSlice = createSlice({
       }
     },
     translateAllLocationsAndRolesNames: (state, action) => {
+      const { languageCode, customGroupTitle } = action.payload;
+
       // this if state written for older versions of app updated succesfully, can be deleted later on
       if (state.canRolesExpandable === undefined) {
         state.canRolesExpandable = true;
@@ -141,11 +143,11 @@ export const locationsSlice = createSlice({
           }
 
           if (locationGroup.custom) {
-            locationGroup.title = action.payload.customGroupTitle;
+            locationGroup.title = customGroupTitle;
             return;
           } else {
             locationGroup.title = getLocationGroupById(
-              getDefaultsFileByLanguage(action.payload.languageCode),
+              getDefaultsFileByLanguage(languageCode),
               locationGroup.id
             ).title;
           }
@@ -158,7 +160,7 @@ export const locationsSlice = createSlice({
 
             if (!location.changed) {
               location.locationName = getLocationById(
-                getDefaultsFileByLanguage(action.payload.languageCode),
+                getDefaultsFileByLanguage(languageCode),
                 {
                   payload: {
                     locationGroupId: locationGroup.id,
@@ -176,7 +178,7 @@ export const locationsSlice = createSlice({
 
               if (!role.changed) {
                 role.roleName = getRoleById(
-                  getDefaultsFileByLanguage(action.payload.languageCode),
+                  getDefaultsFileByLanguage(languageCode),
                   {
                     payload: {
                       locationGroupId: locationGroup.id,
@@ -260,7 +262,7 @@ export const {
   toggleLocationStatus,
   changeLocationName,
   toggleLocationGroupStatus,
-  toggleAllRolesStatusForOneLocation,
+  changeAllRolesStatusForOneLocation,
   toggleRoleStatus,
   changeRoleName,
   cancelChanges,
@@ -269,7 +271,6 @@ export const {
   returnToDefaultLocations,
   addNewLocationSlot,
   deleteLocation,
-  toggleGameRolesStatus,
   translateAllLocationsAndRolesNames,
   changeCanRolesExpandable,
 } = locationsSlice.actions;

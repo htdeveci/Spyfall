@@ -63,6 +63,7 @@
     "dialog": {
       "defaultCheck": {
         "text": "Varsayılan mekanlara dönmek istediğinize emin misiniz?",
+        "deleteCustomText": "Özel mekanları sil",
         "warning": "Dikkat! Yaptığınız değişiklikler silinecektir."
       },
       "saveCheck": {

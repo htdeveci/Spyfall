@@ -13,23 +13,24 @@ import {
 import CustomDropdown from "../components/UI/CustomDropdown";
 import { languageResources } from "../translation/i18n";
 import languageList from "../translation/languagesList.json";
-import {
-  toggleGameRolesStatus,
-  translateAllLocationsAndRolesNames,
-} from "../store/locationsSlice";
+import { translateAllLocationsAndRolesNames } from "../store/locationsSlice";
 import BorderedView from "../components/UI/BorderedView";
 import { translateAllPlayersName } from "../store/playersSlice";
 import CustomPageTitle from "../components/UI/CustomPageTitle";
+import {
+  changeLanguage,
+  toggleEnableRolesStatus,
+} from "../store/settingsSlice";
 
 export default function Settings({ navigation }) {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
-  const enableRoles = useSelector((store) => store.locations.enableRoles);
+  const enableRoles = useSelector((store) => store.settings.enableRoles);
   const dropdownRef = useRef();
   const [makeEveryoneSpy, setMakeEveryoneSpy] = useState(false);
 
   const toggleRolesEnabled = () => {
-    dispatch(toggleGameRolesStatus());
+    dispatch(toggleEnableRolesStatus());
   };
 
   const closeSettingsButtonHandler = () => {
@@ -38,6 +39,8 @@ export default function Settings({ navigation }) {
 
   const changeLanguageHandler = (selectedLanguage) => {
     i18n.changeLanguage(selectedLanguage);
+
+    dispatch(changeLanguage({ language: selectedLanguage }));
 
     dispatch(
       translateAllPlayersName({
